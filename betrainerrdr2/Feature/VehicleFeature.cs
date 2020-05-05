@@ -82,13 +82,19 @@ namespace BETrainerRdr2
                 // Invincible
                 if (vehicle != -1 && _invincibleUpdated)
                 {
+                    Function.Call(Hash.SET_ENTITY_INVINCIBLE, vehicle, Invincible);
+                    _invincibleUpdated = false;
+                }
+                if (mount != -1 && _invincibleUpdated)
+                {
                     Function.Call(Hash.SET_ENTITY_INVINCIBLE, mount, Invincible);
+                    _invincibleUpdated = false;
                 }
 
                 // Inifinite stamina
                 if (mount != -1)
                 {
-                    Game.Player.Character.CurrentMount.StaminaCore = 100;
+                    Function.Call((Hash)GlobalConst.CustomHash.SET_PED_STAMINA, mount, 100f);
                 }
 
                 // Boost

@@ -107,12 +107,10 @@ namespace BETrainerRdr2
         private const string CONFIG_PLAYER = "Player";
         private const string CONFIG_PLAYER_INVINCIBLE = "Invincible";
         private const string CONFIG_PLAYER_INFINITE_ABILITY = "InfiniteAbility";
-        private const string CONFIG_PLAYER_FAST_RUN = "FastRun";
-        private const string CONFIG_PLAYER_FAST_SWIM = "FastSwim";
+        private const string CONFIG_PLAYER_INFINITE_STAMINA = "InfiniteStamina";
         private const string CONFIG_PLAYER_SUPER_JUMP = "SuperJump";
         private const string CONFIG_PLAYER_NOISELESS = "Noiseless";
         private const string CONFIG_PLAYER_NEVER_WANTED = "NeverWanted";
-        private const string CONFIG_PLAYER_POLICE_IGNORED = "PoliceIgnored";
         private const string CONFIG_PLAYER_EVERYONE_IGNORED = "EveryoneIgnored";
 
         private const string CONFIG_LOCATION = "Location";
@@ -121,7 +119,6 @@ namespace BETrainerRdr2
         private const string CONFIG_VEHICLE = "Vehicle";
         private const string CONFIG_VEHICLE_INVINCIBLE = "Invincible";
         private const string CONFIG_VEHICLE_INFINITE_STAMINA = "InfiniteStamina";
-        private const string CONFIG_VEHICLE_SEATBELT = "SeatBelt";
         private const string CONFIG_VEHICLE_SPAWN_INTO = "SpawnIntoVehicle";
         private const string CONFIG_VEHICLE_BOOST_PROGRESSIVE = "BoostProgressive";
         private const string CONFIG_VEHICLE_BOOST_PROGRESSIVE_SPEED_INC = "BoostProgressiveSpeedInc";
@@ -130,21 +127,13 @@ namespace BETrainerRdr2
         private const string CONFIG_VEHICLE_SPEEDMETER_SHOW = "SpeedMeterShow";
         private const string CONFIG_VEHICLE_SPEEDMETER_SHOW_IN_METRIC = "SpeedMeterShowInMetric";
         private const string CONFIG_VEHICLE_SPEEDMETER_SHOW_WITHOUT_VEHICLE = "SpeedMeterShowWithoutVehicle";
-        private const string CONFIG_VEHICLE_DOOR_INSTANT = "DoorInstantOpenClose";
 
         private const string CONFIG_WEAPON = "Weapon";
         private const string CONFIG_WEAPON_INFINITE_AMMO = "InfiniteAmmo";
         private const string CONFIG_WEAPON_DAMAGE_MULTIPLIER_INDEX = "DamageMultiplierIndex";
-        private const string CONFIG_WEAPON_PERMANENT_PARACHUTE = "PermanentParachute";
-        private const string CONFIG_WEAPON_NO_RELOAD = "NoReload";
-        private const string CONFIG_WEAPON_FIRE_AMMO = "FireAmmo";
-        private const string CONFIG_WEAPON_EXPLOSIVE_AMMO = "ExplosiveAmmo";
-        private const string CONFIG_WEAPON_EXPLOSIVE_MELEE = "ExplosiveMelee";
-        private const string CONFIG_WEAPON_VEHICLE_ROCKETS = "VehicleRockets";
 
         private const string CONFIG_TIME = "Time";
         private const string CONFIG_TIME_SHOW_TIME = "ShowTime";
-        private const string CONFIG_TIME_BULLET_TIME = "BulletTime";
         private const string CONFIG_TIME_PAUSED = "Paused";
         private const string CONFIG_TIME_SYNC_WITH_SYSTEM = "SyncWithSystem";
         private const string CONFIG_AIMING_SPEED = "AimingSpeed";
@@ -162,7 +151,6 @@ namespace BETrainerRdr2
         private const string CONFIG_WEATHER_FREEZE = "Freeze";
 
         private const string CONFIG_MISC = "Misc";
-        private const string CONFIG_MISC_PORTABLE_RADIO = "PortableRadio";
         private const string CONFIG_MISC_HIDE_HUD = "HideHUD";
 
         private const string CONFIG_LANGUAGE = "Language";
@@ -202,9 +190,8 @@ namespace BETrainerRdr2
 
                 // Player
                 Feature.Player.Invincible = Utils.ParseBoolStr(ini.GetValue(CONFIG_PLAYER, CONFIG_PLAYER_INVINCIBLE)); 
-                Feature.Player.InfiniteAbility = Utils.ParseBoolStr(ini.GetValue(CONFIG_PLAYER, CONFIG_PLAYER_INFINITE_ABILITY)); 
-                //Feature.Player.FastRun = Utils.ParseBoolStr(ini.GetValue(CONFIG_PLAYER, CONFIG_PLAYER_FAST_RUN)); 
-                //Feature.Player.FastSwim = Utils.ParseBoolStr(ini.GetValue(CONFIG_PLAYER, CONFIG_PLAYER_FAST_SWIM)); 
+                Feature.Player.InfiniteAbility = Utils.ParseBoolStr(ini.GetValue(CONFIG_PLAYER, CONFIG_PLAYER_INFINITE_ABILITY));
+                Feature.Player.InfiniteStamina = Utils.ParseBoolStr(ini.GetValue(CONFIG_PLAYER, CONFIG_PLAYER_INFINITE_STAMINA));
                 Feature.Player.SuperJump = Utils.ParseBoolStr(ini.GetValue(CONFIG_PLAYER, CONFIG_PLAYER_SUPER_JUMP)); 
                 Feature.Player.Noiseless = Utils.ParseBoolStr(ini.GetValue(CONFIG_PLAYER, CONFIG_PLAYER_NOISELESS)); 
                 Feature.Player.Wanted.NeverWanted = Utils.ParseBoolStr(ini.GetValue(CONFIG_PLAYER, CONFIG_PLAYER_NEVER_WANTED)); 
@@ -307,8 +294,7 @@ namespace BETrainerRdr2
                 // Player
                 ini.SetValue(CONFIG_PLAYER, CONFIG_PLAYER_INVINCIBLE, Feature.Player.Invincible.ToString());
                 ini.SetValue(CONFIG_PLAYER, CONFIG_PLAYER_INFINITE_ABILITY, Feature.Player.InfiniteAbility.ToString());
-                //ini.SetValue(CONFIG_PLAYER, CONFIG_PLAYER_FAST_RUN, Feature.Player.FastRun.ToString());
-                //ini.SetValue(CONFIG_PLAYER, CONFIG_PLAYER_FAST_SWIM, Feature.Player.FastSwim.ToString());
+                ini.SetValue(CONFIG_PLAYER, CONFIG_PLAYER_INFINITE_STAMINA, Feature.Player.InfiniteStamina.ToString());
                 ini.SetValue(CONFIG_PLAYER, CONFIG_PLAYER_SUPER_JUMP, Feature.Player.SuperJump.ToString());
                 ini.SetValue(CONFIG_PLAYER, CONFIG_PLAYER_NOISELESS, Feature.Player.Noiseless.ToString());
                 ini.SetValue(CONFIG_PLAYER, CONFIG_PLAYER_NEVER_WANTED, Feature.Player.Wanted.NeverWanted.ToString());

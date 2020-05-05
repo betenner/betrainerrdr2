@@ -397,8 +397,7 @@ namespace BETrainerRdr2.Menu
             {
                 public static MenuItem Invincible = null;
                 public static MenuItem InfiniteAbility = null;
-                public static MenuItem FastRun = null;
-                public static MenuItem FastSwim = null;
+                public static MenuItem InfiniteStamina = null;
                 public static MenuItem SuperJump = null;
                 public static MenuItem Noiseless = null;
 
@@ -1075,6 +1074,7 @@ namespace BETrainerRdr2.Menu
             AddMenuItem(Menus.Player, MenuText.Player.I04_HEAL, false, false, null, Feature.Player.QuickHeal);
             MenuItems.Player.Invincible = AddMenuItem(Menus.Player, MenuText.Player.I05_INVINCIBLE, true, Feature.Player.Invincible, null, Feature.Player.SetInvincible);
             MenuItems.Player.InfiniteAbility = AddMenuItem(Menus.Player, MenuText.Player.I06_INFINITE_ABILITY, true, Feature.Player.InfiniteAbility, null, Feature.Player.SetInfiniteAbility);
+            MenuItems.Player.InfiniteStamina = AddMenuItem(Menus.Player, MenuText.Player.INFINITE_STAMINA, true, Feature.Player.InfiniteStamina, null, Feature.Player.SetInfiniteStamina);
             //MenuItems.Player.FastRun = AddMenuItem(Menus.Player, MenuText.Player.I07_FAST_RUN, true, Feature.Player.FastRun, null, Feature.Player.SetFastRun);
             //MenuItems.Player.FastSwim = AddMenuItem(Menus.Player, MenuText.Player.I08_FAST_SWIM, true, Feature.Player.FastSwim, null, Feature.Player.SetFastSwim);
             MenuItems.Player.SuperJump = AddMenuItem(Menus.Player, MenuText.Player.I09_SUPER_JUMP, true, Feature.Player.SuperJump, null, Feature.Player.SetSuperJump);

@@ -14,8 +14,7 @@ namespace BETrainerRdr2
         {
             public static bool Invincible = false;
             public static bool InfiniteAbility = false;
-            public static bool FastRun = false;
-            public static bool FastSwim = false;
+            public static bool InfiniteStamina = false;
             public static bool SuperJump = false;
             public static bool Noiseless = false;
 
@@ -50,7 +49,17 @@ namespace BETrainerRdr2
             {
                 if (Invincible)
                 {
-                    Function.Call(Hash.SET_PLAYER_INVINCIBLE, true);
+                    Function.Call(Hash.SET_PLAYER_INVINCIBLE, Game.Player.Handle, true);
+                }
+
+                if (InfiniteStamina)
+                {
+                    Function.Call(Hash.RESTORE_PLAYER_STAMINA, Game.Player.Handle, 100f);
+                }
+
+                if (InfiniteAbility)
+                {
+                    Function.Call((Hash)GlobalConst.CustomHash.RESTORE_SPECIAL_ABILITY, Game.Player.Handle, -1, false);
                 }
 
                 if (SuperJump)
@@ -87,6 +96,7 @@ namespace BETrainerRdr2
             public static void SetInvincible(MenuItem sender)
             {
                 Invincible = sender.On;
+                if (!Invincible) Function.Call(Hash.SET_PLAYER_INVINCIBLE, Game.Player.Handle, false);
                 Config.DoAutoSave();
             }
 
@@ -97,6 +107,12 @@ namespace BETrainerRdr2
             public static void SetInfiniteAbility(MenuItem sender)
             {
                 InfiniteAbility = sender.On;
+                Config.DoAutoSave();
+            }
+
+            public static void SetInfiniteStamina(MenuItem sender)
+            {
+                InfiniteStamina = sender.On;
                 Config.DoAutoSave();
             }
 

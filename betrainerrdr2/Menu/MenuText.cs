@@ -79,6 +79,7 @@ namespace BETrainerRdr2.Menu
             public static readonly MLString I08_FAST_SWIM = Utils.CSML("Fast Swim", "快速游泳");
             public static readonly MLString I09_SUPER_JUMP = Utils.CSML("Super Jump", "超级跳");
             public static readonly MLString I10_NOISELESS = Utils.CSML("Noiseless", "无声模式");
+            public static readonly MLString INFINITE_STAMINA = "Infinite Stamina";
 
             /// <summary>
             /// Wanted menu

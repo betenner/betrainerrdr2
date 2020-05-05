@@ -67,6 +67,7 @@ namespace BETrainerRdr2
             public const ulong SET_MINIMAP_REVEALED = 0x4B8F743A4A6D2FF8;
             public const ulong REVEAL_MAP = 0xF8096DF9B87246E3;
             public const ulong SET_PED_VISIBLE = 0x283978A15512B2FE;
+            public const ulong SET_PED_STAMINA = 0x675680D089BFA21F;
         }
 
         /// <summary>
