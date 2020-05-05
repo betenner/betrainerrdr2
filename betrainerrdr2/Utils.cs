@@ -40,9 +40,6 @@ namespace BETrainerRdr2
         public static void ShowNotification(MLString message)
         {
             RDR2.UI.Screen.ShowSubtitle(ML(message));
-            //Function.Call(Hash._SET_NOTIFICATION_TEXT_ENTRY, "STRING");
-            //Function.Call(Hash._ADD_TEXT_COMPONENT_STRING, message[Trainer.LanguageCode]);
-            //Function.Call(Hash._DRAW_NOTIFICATION, 0, 1);
         }
 
         /// <summary>
@@ -57,8 +54,6 @@ namespace BETrainerRdr2
         /// <param name="screenHeight">Screen height in pixel</param>
         public static void DrawRect(int x, int y, int width, int height, Color color, int screenWidth = GlobalConst.DEFAULT_SCREEN_WIDTH, int screenHeight = GlobalConst.DEFAULT_SCREEN_HEIGHT)
         {
-            //ContainerElement ce = new ContainerElement(new PointF(x, y), new SizeF(width, height), color, centered);
-            //ce.Draw();
             float xp = (float)x / screenWidth;
             float yp = (float)y / screenHeight;
             float wp = (float)width / screenWidth;

@@ -39,6 +39,20 @@ namespace BETrainerRdr2.Menu
             public static readonly MLString MODEL = "Model";
         }
 
+        public static class Model
+        {
+            public static readonly MLString ANIMAL = "Other Animal";
+            public static readonly MLString HORSE = "Horse";
+            public static readonly MLString DOG = "Dog";
+            public static readonly MLString FISH = "Fish";
+            public static readonly MLString MALE = "Male NPC";
+            public static readonly MLString FEMALE = "Female NPC";
+            public static readonly MLString YOUNG = "Young NPC";
+            public static readonly MLString MIDDLE_AGED = "Middle Aged NPC";
+            public static readonly MLString OLD = "Old NPC";
+            public static readonly MLString CUTSCENE = "Cutscene NPC";
+        }
+
         /// <summary>
         /// Player menu
         /// </summary>

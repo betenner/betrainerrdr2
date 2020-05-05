@@ -1,9 +1,14 @@
-﻿// Copyright (c) BE Group 2015-2017
+﻿///////////////////////////////////////////////
+//   BE Trainer.NET for Red Dead Redemption 2
+//               by BE.Tenner
+//        Copyright (c) BE Group 2020
+//                Thanks to
+//   ScriptHookRdr2 & ScriptHookRdr2DotNet
+//             Native Trainer
+///////////////////////////////////////////////
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.IO;
 

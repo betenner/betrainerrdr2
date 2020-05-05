@@ -10,11 +10,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using BEGroup.Utility;
 using BETrainerRdr2.Config;
-using BETrainerRdr2.SkinProps;
 using BETrainerRdr2.Teleport;
 using BETrainerRdr2.Vehicle;
 

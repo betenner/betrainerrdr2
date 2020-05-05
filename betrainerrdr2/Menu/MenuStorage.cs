@@ -781,12 +781,16 @@ namespace BETrainerRdr2.Menu
             foreach (var val in Enum.GetValues(typeof(ModelData.ModelType)))
             {
                 ModelData.ModelType type = (ModelData.ModelType)val;
-                Menu subMenu = new Menu(type.ToString());
-                AddMenuItem(Menus.Model, type.ToString(), false, false, subMenu);
+                Menu subMenu = new Menu(ModelData.GetTypeText(type));
+                AddMenuItem(Menus.Model, subMenu.Title, false, false, subMenu);
                 foreach (var md in ModelStorage.MODELS)
                 {
                     if ((md.Type & type) == type)
                     {
+                        if (type == ModelData.ModelType.Animal &&
+                            ((type & ModelData.ModelType.Dog) == ModelData.ModelType.Dog ||
+                            (type & ModelData.ModelType.Fish) == ModelData.ModelType.Fish ||
+                            (type & ModelData.ModelType.Horse) == ModelData.ModelType.Horse)) continue;
                         AddMenuItem(subMenu, md.Name, false, false, null, Feature.Model.Spawn, null, null, md);
                     }
                 }
