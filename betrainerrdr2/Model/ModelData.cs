@@ -26,6 +26,7 @@ namespace BETrainerRdr2.Model
         /// </summary>
         public enum ModelType
         {
+            None = 0,
             Animal = 1,
             Horse = 1 << 1,
             Dog = 1 << 2,
@@ -36,34 +37,6 @@ namespace BETrainerRdr2.Model
             MiddleAged = 1 << 7,
             Old = 1 << 8,
             Cutscene = 1 << 9,
-        }
-
-        public static MLString GetTypeText(ModelType type)
-        {
-            switch (type)
-            {
-                case ModelType.Animal: 
-                    return MenuText.Model.ANIMAL;
-                case ModelType.Cutscene: 
-                    return MenuText.Model.CUTSCENE;
-                case ModelType.Dog: 
-                    return MenuText.Model.DOG;
-                case ModelType.Female: 
-                    return MenuText.Model.FEMALE;
-                case ModelType.Fish:
-                    return MenuText.Model.FISH;
-                case ModelType.Horse:
-                    return MenuText.Model.HORSE;
-                case ModelType.Male:
-                    return MenuText.Model.MALE;
-                case ModelType.MiddleAged:
-                    return MenuText.Model.MIDDLE_AGED;
-                case ModelType.Old:
-                    return MenuText.Model.OLD;
-                case ModelType.Young:
-                    return MenuText.Model.YOUNG;
-            }
-            return MLString.Empty;
         }
 
         /// <summary>

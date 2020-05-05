@@ -318,6 +318,32 @@ namespace BETrainerRdr2.Menu
             /// </summary>
             public static Menu Model = null;
 
+            public static class Models
+            {
+                public static Menu Animal = null;
+                public static Menu Human = null;
+
+                public static class Animals
+                {
+                    public static Menu Horse = null;
+                    public static Menu Dog = null;
+                    public static Menu Fish = null;
+                    public static Menu Other = null;
+                }
+
+                public static class Humans
+                {
+                    public static Menu Cutscene = null;
+                    public static Menu MaleYoung = null;
+                    public static Menu MaleMiddle = null;
+                    public static Menu MaleOld = null;
+                    public static Menu FemaleYoung = null;
+                    public static Menu FemaleMiddle = null;
+                    public static Menu FemaleOld = null;
+                    public static Menu Misc = null;
+                }
+            }
+
             /// <summary>
             /// Date time speed menu
             /// </summary>
@@ -778,21 +804,58 @@ namespace BETrainerRdr2.Menu
         private static void InitModelMenu()
         {
             Menus.Model = new Menu(MenuText.Main.MODEL);
-            foreach (var val in Enum.GetValues(typeof(ModelData.ModelType)))
+            
+            Menus.Models.Animal = new Menu(MenuText.Model.ANIMAL);
+            Menus.Models.Animals.Horse = new Menu(MenuText.Model.Animal.HORSE);
+            AddModelMenuItems(Menus.Models.Animals.Horse, ModelData.ModelType.Animal | ModelData.ModelType.Horse);
+            Menus.Models.Animals.Dog = new Menu(MenuText.Model.Animal.DOG);
+            AddModelMenuItems(Menus.Models.Animals.Dog, ModelData.ModelType.Animal | ModelData.ModelType.Dog);
+            Menus.Models.Animals.Fish = new Menu(MenuText.Model.Animal.FISH);
+            AddModelMenuItems(Menus.Models.Animals.Fish, ModelData.ModelType.Animal | ModelData.ModelType.Fish);
+            Menus.Models.Animals.Other = new Menu(MenuText.Model.Animal.OTHER);
+            AddModelMenuItems(Menus.Models.Animals.Other, ModelData.ModelType.Animal, ModelData.ModelType.Horse | ModelData.ModelType.Dog | ModelData.ModelType.Fish);
+            AddMenuItem(Menus.Models.Animal, MenuText.Model.Animal.HORSE, false, false, Menus.Models.Animals.Horse);
+            AddMenuItem(Menus.Models.Animal, MenuText.Model.Animal.DOG, false, false, Menus.Models.Animals.Dog);
+            AddMenuItem(Menus.Models.Animal, MenuText.Model.Animal.FISH, false, false, Menus.Models.Animals.Fish);
+            AddMenuItem(Menus.Models.Animal, MenuText.Model.Animal.OTHER, false, false, Menus.Models.Animals.Other);
+
+            Menus.Models.Human = new Menu(MenuText.Model.HUMAN);
+            Menus.Models.Humans.Cutscene = new Menu(MenuText.Model.Human.CUTSCENE);
+            AddModelMenuItems(Menus.Models.Humans.Cutscene, ModelData.ModelType.Cutscene, ModelData.ModelType.Animal);
+            Menus.Models.Humans.MaleYoung = new Menu(MenuText.Model.Human.MALE_YOUNG);
+            AddModelMenuItems(Menus.Models.Humans.MaleYoung, ModelData.ModelType.Male | ModelData.ModelType.Young, ModelData.ModelType.Animal | ModelData.ModelType.Cutscene);
+            Menus.Models.Humans.MaleMiddle = new Menu(MenuText.Model.Human.MALE_MIDDLE);
+            AddModelMenuItems(Menus.Models.Humans.MaleMiddle, ModelData.ModelType.Male | ModelData.ModelType.MiddleAged, ModelData.ModelType.Animal | ModelData.ModelType.Cutscene);
+            Menus.Models.Humans.MaleOld = new Menu(MenuText.Model.Human.MALE_OLD);
+            AddModelMenuItems(Menus.Models.Humans.MaleOld, ModelData.ModelType.Male | ModelData.ModelType.Old, ModelData.ModelType.Animal | ModelData.ModelType.Cutscene);
+            Menus.Models.Humans.FemaleYoung = new Menu(MenuText.Model.Human.FEMALE_YOUNG);
+            AddModelMenuItems(Menus.Models.Humans.FemaleYoung, ModelData.ModelType.Female | ModelData.ModelType.Young, ModelData.ModelType.Animal | ModelData.ModelType.Cutscene);
+            Menus.Models.Humans.FemaleMiddle = new Menu(MenuText.Model.Human.FEMALE_MIDDLE);
+            AddModelMenuItems(Menus.Models.Humans.FemaleMiddle, ModelData.ModelType.Female | ModelData.ModelType.MiddleAged, ModelData.ModelType.Animal | ModelData.ModelType.Cutscene);
+            Menus.Models.Humans.FemaleOld = new Menu(MenuText.Model.Human.FEMALE_OLD);
+            AddModelMenuItems(Menus.Models.Humans.FemaleOld, ModelData.ModelType.Female | ModelData.ModelType.Old, ModelData.ModelType.Animal | ModelData.ModelType.Cutscene);
+            Menus.Models.Humans.Misc = new Menu(MenuText.Model.Human.MISC);
+            AddModelMenuItems(Menus.Models.Humans.Misc, ModelData.ModelType.None, ModelData.ModelType.Animal | ModelData.ModelType.Cutscene | ModelData.ModelType.Male | ModelData.ModelType.Female | ModelData.ModelType.Young | ModelData.ModelType.MiddleAged | ModelData.ModelType.Old);
+            AddMenuItem(Menus.Models.Human, MenuText.Model.Human.CUTSCENE, false, false, Menus.Models.Humans.Cutscene);
+            AddMenuItem(Menus.Models.Human, MenuText.Model.Human.MALE_YOUNG, false, false, Menus.Models.Humans.MaleYoung);
+            AddMenuItem(Menus.Models.Human, MenuText.Model.Human.MALE_MIDDLE, false, false, Menus.Models.Humans.MaleMiddle);
+            AddMenuItem(Menus.Models.Human, MenuText.Model.Human.MALE_OLD, false, false, Menus.Models.Humans.MaleOld);
+            AddMenuItem(Menus.Models.Human, MenuText.Model.Human.FEMALE_YOUNG, false, false, Menus.Models.Humans.FemaleYoung);
+            AddMenuItem(Menus.Models.Human, MenuText.Model.Human.FEMALE_MIDDLE, false, false, Menus.Models.Humans.FemaleMiddle);
+            AddMenuItem(Menus.Models.Human, MenuText.Model.Human.FEMALE_OLD, false, false, Menus.Models.Humans.FemaleOld);
+            AddMenuItem(Menus.Models.Human, MenuText.Model.Human.MISC, false, false, Menus.Models.Humans.Misc);
+
+            AddMenuItem(Menus.Model, MenuText.Model.ANIMAL, false, false, Menus.Models.Animal);
+            AddMenuItem(Menus.Model, MenuText.Model.HUMAN, false, false, Menus.Models.Human);
+        }
+
+        private static void AddModelMenuItems(Menu parent, ModelData.ModelType includeType, ModelData.ModelType excludeType = ModelData.ModelType.None)
+        {
+            foreach (var md in ModelStorage.MODELS)
             {
-                ModelData.ModelType type = (ModelData.ModelType)val;
-                Menu subMenu = new Menu(ModelData.GetTypeText(type));
-                AddMenuItem(Menus.Model, subMenu.Title, false, false, subMenu);
-                foreach (var md in ModelStorage.MODELS)
+                if ((md.Type & includeType) == includeType && (md.Type & excludeType) == ModelData.ModelType.None)
                 {
-                    if ((md.Type & type) == type)
-                    {
-                        if (type == ModelData.ModelType.Animal &&
-                            ((type & ModelData.ModelType.Dog) == ModelData.ModelType.Dog ||
-                            (type & ModelData.ModelType.Fish) == ModelData.ModelType.Fish ||
-                            (type & ModelData.ModelType.Horse) == ModelData.ModelType.Horse)) continue;
-                        AddMenuItem(subMenu, md.Name, false, false, null, Feature.Model.Spawn, null, null, md);
-                    }
+                    AddMenuItem(parent, md.Name, false, false, null, Feature.Model.Spawn, null, null, md);
                 }
             }
         }

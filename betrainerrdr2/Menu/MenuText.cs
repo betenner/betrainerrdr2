@@ -41,16 +41,26 @@ namespace BETrainerRdr2.Menu
 
         public static class Model
         {
-            public static readonly MLString ANIMAL = "Other Animal";
-            public static readonly MLString HORSE = "Horse";
-            public static readonly MLString DOG = "Dog";
-            public static readonly MLString FISH = "Fish";
-            public static readonly MLString MALE = "Male NPC";
-            public static readonly MLString FEMALE = "Female NPC";
-            public static readonly MLString YOUNG = "Young NPC";
-            public static readonly MLString MIDDLE_AGED = "Middle Aged NPC";
-            public static readonly MLString OLD = "Old NPC";
-            public static readonly MLString CUTSCENE = "Cutscene NPC";
+            public static readonly MLString ANIMAL = "Animal";
+            public static readonly MLString HUMAN = "Human";
+            public static class Animal
+            {
+                public static readonly MLString HORSE = "Horse";
+                public static readonly MLString DOG = "Dog";
+                public static readonly MLString FISH = "Fish";
+                public static readonly MLString OTHER = "Other";
+            }
+            public static class Human
+            {
+                public static readonly MLString MALE_YOUNG = "Male Young";
+                public static readonly MLString MALE_MIDDLE = "Male MIddle";
+                public static readonly MLString MALE_OLD = "Male Old";
+                public static readonly MLString FEMALE_YOUNG = "Female Young";
+                public static readonly MLString FEMALE_MIDDLE = "Female MIddle";
+                public static readonly MLString FEMALE_OLD = "Female Old";
+                public static readonly MLString CUTSCENE = "Cutscene NPC";
+                public static readonly MLString MISC = "Misc";
+            }
         }
 
         /// <summary>
