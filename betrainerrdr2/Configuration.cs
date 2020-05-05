@@ -234,6 +234,7 @@ namespace BETrainerRdr2
                 Feature.DateTimeSpeed.Paused = Utils.ParseBoolStr(ini.GetValue(CONFIG_TIME, CONFIG_TIME_PAUSED));
                 Feature.DateTimeSpeed.SyncWithSystem = Utils.ParseBoolStr(ini.GetValue(CONFIG_TIME, CONFIG_TIME_SYNC_WITH_SYSTEM));
                 Feature.DateTimeSpeed.AimingSpeed = Utils.ParseFloat(ini.GetValue(CONFIG_TIME, CONFIG_AIMING_SPEED), Feature.DateTimeSpeed.AimingSpeed);
+                Feature.DateTimeSpeed.UpdateAimingSpeed();
 
                 // World
                 //Feature.World.MoonGravity = Utils.ParseBoolStr(ini.GetValue(CONFIG_WORLD, CONFIG_WORLD_MOON_GRAVITY));
