@@ -56,6 +56,7 @@
     <Compile Include="Feature\ConfigurationFeature.cs" />
     <Compile Include="Feature\Feature.cs" />
     <Compile Include="Feature\LocationFeature.cs" />
+    <Compile Include="Feature\ModelFeature.cs" />
     <Compile Include="Feature\MiscFeature.cs" />
     <Compile Include="Feature\PlayerFeature.cs" />
     <Compile Include="Feature\DateTimeSpeedFeature.cs" />

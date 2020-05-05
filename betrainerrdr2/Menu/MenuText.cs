@@ -1,11 +1,11 @@
-﻿//////////////////////////////////////////////
-//   BE Trainer.NET for Grand Theft Auto V
-//             by BE.Tenner
-//      Copyright (c) BE Group 2015-2017
-//               Thanks to
-//    ScriptHookV & ScriptHookVDotNet
-//  Native Trainer & Enhanced Native Trainer
-//////////////////////////////////////////////
+﻿///////////////////////////////////////////////
+//   BE Trainer.NET for Red Dead Redemption 2
+//               by BE.Tenner
+//        Copyright (c) BE Group 2020
+//                Thanks to
+//   ScriptHookRdr2 & ScriptHookRdr2DotNet
+//             Native Trainer
+///////////////////////////////////////////////
 
 using System;
 using System.Collections.Generic;
@@ -36,6 +36,7 @@ namespace BETrainerRdr2.Menu
             public static readonly MLString I08_MISC = Utils.CSML("Misc", "其他");
             public static readonly MLString I09_CONFIGURATION = Utils.CSML("Configuration", "配置");
             public static readonly MLString I10_LANGUAGE = "Language / 语言";
+            public static readonly MLString MODEL = "Model";
         }
 
         /// <summary>

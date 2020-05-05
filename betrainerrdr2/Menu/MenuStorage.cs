@@ -1,11 +1,11 @@
-﻿//////////////////////////////////////////////
-//   BE Trainer.NET for Grand Theft Auto V
-//             by BE.Tenner
-//      Copyright (c) BE Group 2015-2017
-//               Thanks to
-//    ScriptHookV & ScriptHookVDotNet
-//  Native Trainer & Enhanced Native Trainer
-//////////////////////////////////////////////
+﻿///////////////////////////////////////////////
+//   BE Trainer.NET for Red Dead Redemption 2
+//               by BE.Tenner
+//        Copyright (c) BE Group 2020
+//                Thanks to
+//   ScriptHookRdr2 & ScriptHookRdr2DotNet
+//             Native Trainer
+///////////////////////////////////////////////
 
 using System;
 using System.Collections.Generic;
@@ -15,6 +15,7 @@ using BETrainerRdr2.Teleport;
 using BETrainerRdr2.Vehicle;
 using BETrainerRdr2.Weapon;
 using BETrainerRdr2.Weather;
+using BETrainerRdr2.Model;
 
 namespace BETrainerRdr2.Menu
 {
@@ -311,6 +312,11 @@ namespace BETrainerRdr2.Menu
                 /// </summary>
                 public static Menu GetSpecificWeapon = null;
             }
+
+            /// <summary>
+            /// Model menu
+            /// </summary>
+            public static Menu Model = null;
 
             /// <summary>
             /// Date time speed menu
@@ -756,6 +762,7 @@ namespace BETrainerRdr2.Menu
             InitLocationMenu();
             InitVehicleMenu();
             InitWeaponMenu();
+            InitModelMenu();
             InitDateTimeSpeedMenu();
             //InitWorldMenu();
             InitWeatherMenu();
@@ -763,6 +770,27 @@ namespace BETrainerRdr2.Menu
             InitConfigurationMenu();
             //InitLanguageMenu();
             InitMainMenu();
+        }
+
+        /// <summary>
+        /// Initializes model menu
+        /// </summary>
+        private static void InitModelMenu()
+        {
+            Menus.Model = new Menu(MenuText.Main.MODEL);
+            foreach (var val in Enum.GetValues(typeof(ModelData.ModelType)))
+            {
+                ModelData.ModelType type = (ModelData.ModelType)val;
+                Menu subMenu = new Menu(type.ToString());
+                AddMenuItem(Menus.Model, type.ToString(), false, false, subMenu);
+                foreach (var md in ModelStorage.MODELS)
+                {
+                    if ((md.Type & type) == type)
+                    {
+                        AddMenuItem(subMenu, md.Name, false, false, null, Feature.Model.Spawn, null, null, md);
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -1559,6 +1587,7 @@ namespace BETrainerRdr2.Menu
             AddMenuItem(Menus.Main, MenuText.Main.I02_LOCATION, false, false, Menus.Location);
             AddMenuItem(Menus.Main, MenuText.Main.I03_VEHICLE, false, false, Menus.Vehicle);
             AddMenuItem(Menus.Main, MenuText.Main.I04_WEAPON, false, false, Menus.Weapon);
+            AddMenuItem(Menus.Main, MenuText.Main.MODEL, false, false, Menus.Model);
             AddMenuItem(Menus.Main, MenuText.Main.I05_DATE_TIME_SPEED, false, false, Menus.DateTimeSpeed);
             //AddMenuItem(Menus.Main, MenuText.Main.I06_WORLD, false, false, Menus.World);
             AddMenuItem(Menus.Main, MenuText.Main.I07_WEATHER, false, false, Menus.Weather);

@@ -1,11 +1,11 @@
-﻿//////////////////////////////////////////////
-//   BE Trainer.NET for Grand Theft Auto V
-//             by BE.Tenner
-//      Copyright (c) BE Group 2015-2017
-//               Thanks to
-//    ScriptHookV & ScriptHookVDotNet
-//  Native Trainer & Enhanced Native Trainer
-//////////////////////////////////////////////
+﻿///////////////////////////////////////////////
+//   BE Trainer.NET for Red Dead Redemption 2
+//               by BE.Tenner
+//        Copyright (c) BE Group 2020
+//                Thanks to
+//   ScriptHookRdr2 & ScriptHookRdr2DotNet
+//             Native Trainer
+///////////////////////////////////////////////
 
 using BETrainerRdr2.Menu;
 using System;

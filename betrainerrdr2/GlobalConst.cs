@@ -50,6 +50,9 @@ namespace BETrainerRdr2
         /// </summary>
         public const string SERIALIZATION_COMMA = ",";
 
+        /// <summary>
+        /// Custom function hashes
+        /// </summary>
         public static class CustomHash
         {
             public const ulong RESTORE_SPECIAL_ABILITY = 0x1D77B47AFA584E90;
@@ -60,6 +63,7 @@ namespace BETrainerRdr2
             public const ulong SET_PLAYER_PRICE_ON_A_HEAD = 0x093A9D1F72DF0D19;
             public const ulong SET_MINIMAP_REVEALED = 0x4B8F743A4A6D2FF8;
             public const ulong REVEAL_MAP = 0xF8096DF9B87246E3;
+            public const ulong SET_PED_VISIBLE = 0x283978A15512B2FE;
         }
 
         /// <summary>
@@ -100,6 +104,8 @@ namespace BETrainerRdr2
             public static readonly MLString VEHICLE_SPAWNED = Utils.CSML("{0} spawned.", "“{0}”已生成。");
             public static readonly MLString VEHICLE_REPAIRED = Utils.CSML("Vehicle repaired.", "载具已修复。");
             public static readonly MLString VEHICLE_CLEANED = Utils.CSML("Vehicle cleaned.", "载具已清洁。");
+
+            public static readonly MLString MODEL_SPAWNED = "{0} spawned.";
 
             public static readonly MLString VP_NO_PEARL = Utils.CSML("Pearl topcoat can't be applied to current paint type.", "当前喷漆种类无法应用高亮层");
             public static readonly MLString VP_NO_WHEEL = Utils.CSML("Can't change the color of the default wheel.", "默认轮胎无法更改颜色。");
