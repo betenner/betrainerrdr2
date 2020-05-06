@@ -7,16 +7,6 @@
 //             Native Trainer
 ///////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using RDR2;
-using RDR2.Native;
-using BETrainerRdr2.Menu;
-
 namespace BETrainerRdr2
 {
     /// <summary>
@@ -33,7 +23,6 @@ namespace BETrainerRdr2
             Vehicle.Update();
             Weapon.Update();
             DateTimeSpeed.Update();
-            //World.UpdateFeatures();
             Weather.Update();
             Misc.Update();
         }
@@ -49,7 +38,6 @@ namespace BETrainerRdr2
             Vehicle.Init();
             Weapon.Init();
             DateTimeSpeed.Init();
-            //World.InitFeatures();
             Weather.Init();
             Misc.Init();
         }

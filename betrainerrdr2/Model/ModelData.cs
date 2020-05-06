@@ -7,13 +7,6 @@
 //             Native Trainer
 ///////////////////////////////////////////////
 
-using BETrainerRdr2.Menu;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace BETrainerRdr2.Model
 {
     /// <summary>

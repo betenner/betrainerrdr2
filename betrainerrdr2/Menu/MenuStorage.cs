@@ -7,10 +7,7 @@
 //             Native Trainer
 ///////////////////////////////////////////////
 
-using System;
 using System.Collections.Generic;
-using RDR2;
-using RDR2.Native;
 using BETrainerRdr2.Teleport;
 using BETrainerRdr2.Vehicle;
 using BETrainerRdr2.Weapon;
@@ -697,14 +694,6 @@ namespace BETrainerRdr2.Menu
         }
 
         /// <summary>
-        /// Plays menu beep
-        /// </summary>
-        public static void PlayMenuBeep()
-        {
-            //Utils.PlaySound("NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET");
-        }
-
-        /// <summary>
         /// Gets whether the specified menu is in the menu stack
         /// </summary>
         /// <param name="menu">Menu object</param>
@@ -732,7 +721,6 @@ namespace BETrainerRdr2.Menu
         {
             if (depth <= 0 && Trainer.ShowingTrainerMenu)
             {
-                PlayMenuBeep();
                 Trainer.ShowingTrainerMenu = false;
             }
             if (_menuStack.Count > depth)
@@ -741,7 +729,6 @@ namespace BETrainerRdr2.Menu
                 {
                     _menuStack.Pop();
                 }
-                PlayMenuBeep();
             }
         }
 
@@ -754,11 +741,9 @@ namespace BETrainerRdr2.Menu
             if (_menuStack.Count > 1)
             {
                 _menuStack.Pop();
-                PlayMenuBeep();
             }
             else if (_menuStack.Count == 1 && Trainer.ShowingTrainerMenu)
             {
-                PlayMenuBeep();
                 Trainer.ShowingTrainerMenu = false;
             }
         }
@@ -864,10 +849,10 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitMiscMenu()
         {
-            Menus.Misc = new Menu(MenuText.Misc.I00_TITLE);
-            //MenuItems.Misc.PortableRadio = AddMenuItem(Menus.Misc, MenuText.Misc.I01_PORTABLE_RADIO, true, Feature.Misc.PortableRadio, null, Feature.Misc.SetPortableRadio);
-            MenuItems.Misc.HideHud = AddMenuItem(Menus.Misc, MenuText.Misc.I02_HIDE_HUD, true, Feature.Misc.HideHud, null, Feature.Misc.SetHideHud);
-            //MenuItems.Misc.NextRadioTrack = AddMenuItem(Menus.Misc, MenuText.Misc.I03_NEXT_RADIO_TRACK, false, false, null, Feature.Misc.NextRadioTrack);
+            Menus.Misc = new Menu(MenuText.Misc.TITLE);
+            //MenuItems.Misc.PortableRadio = AddMenuItem(Menus.Misc, MenuText.Misc.PORTABLE_RADIO, true, Feature.Misc.PortableRadio, null, Feature.Misc.SetPortableRadio);
+            MenuItems.Misc.HideHud = AddMenuItem(Menus.Misc, MenuText.Misc.HIDE_HUD, true, Feature.Misc.HideHud, null, Feature.Misc.SetHideHud);
+            //MenuItems.Misc.NextRadioTrack = AddMenuItem(Menus.Misc, MenuText.Misc.NEXT_RADIO_TRACK, false, false, null, Feature.Misc.NextRadioTrack);
             MenuItems.Misc.RevealMap = AddMenuItem(Menus.Misc, MenuText.Misc.REVEAL_MAP, false, false, null, Feature.Misc.RevealMap);
         }
 
@@ -876,28 +861,13 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitWeatherMenu()
         {
-            Menus.Weather = new Menu(MenuText.Weather.I00_TITLE);
-            MenuItems.Weather.Wind = AddMenuItem(Menus.Weather, MenuText.Weather.I01_WIND, true, Feature.Weather.Wind, null, Feature.Weather.SetWind);
-            MenuItems.Weather.Freeze = AddMenuItem(Menus.Weather, MenuText.Weather.I02_FREEZE_WEATHER, true, Feature.Weather.Freeze, null, Feature.Weather.SetFreeze);
+            Menus.Weather = new Menu(MenuText.Weather.TITLE);
+            MenuItems.Weather.Wind = AddMenuItem(Menus.Weather, MenuText.Weather.WIND, true, Feature.Weather.Wind, null, Feature.Weather.SetWind);
+            MenuItems.Weather.Freeze = AddMenuItem(Menus.Weather, MenuText.Weather.FREEZE_WEATHER, true, Feature.Weather.Freeze, null, Feature.Weather.SetFreeze);
             for (int i = 0; i < WeatherStorage.WEATHERS.Length; i++)
             {
                 AddMenuItem(Menus.Weather, WeatherStorage.WEATHERS[i].Name, false, false, null, Feature.Weather.SetWeather, null, null, WeatherStorage.WEATHERS[i]);
             }
-        }
-
-        
-        /// <summary>
-        /// Initializes world menu
-        /// </summary>
-        private static void InitWorldMenu()
-        {
-            //Menus.World = new Menu(MenuText.World.I00_TITLE);
-            //MenuItems.World.MoonGravity = AddMenuItem(Menus.World, MenuText.World.I01_MOON_GRAVITY, true, Feature.World.MoonGravity, null, Feature.World.SetMoonGravity);
-            //MenuItems.World.RandomCops = AddMenuItem(Menus.World, MenuText.World.I02_RANDOM_COPS, true, Feature.World.RandomCops, null, Feature.World.SetRandomCops);
-            //MenuItems.World.RandomTrains = AddMenuItem(Menus.World, MenuText.World.I03_RANDOM_TRAINS, true, Feature.World.RandomTrains, null, Feature.World.SetRandomTrains);
-            //MenuItems.World.RandomBoats = AddMenuItem(Menus.World, MenuText.World.I04_RANDOM_BOATS, true, Feature.World.RandomBoats, null, Feature.World.SetRandomBoats);
-            //MenuItems.World.GarbageTrucks = AddMenuItem(Menus.World, MenuText.World.I05_GARBAGE_TRUCKS, true, Feature.World.GarbageTrucks, null, Feature.World.SetGarbageTrucks);
-            //MenuItems.World.RestrictedZones = AddMenuItem(Menus.World, MenuText.World.I06_RESTRICTED_ZONES, true, Feature.World.RestrictedZones, null, Feature.World.SetRestrictedZones);
         }
 
         /// <summary>
@@ -905,20 +875,20 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitDateTimeSpeedMenu()
         {
-            Menus.DateTimeSpeed = new Menu(MenuText.DateTimeSpeed.I00_TITLE);
+            Menus.DateTimeSpeed = new Menu(MenuText.DateTimeSpeed.TITLE);
             InitSetDateTimeMenu();
-            MenuItems.DateTimeSpeed.SetDateTime = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.I01_SET_DATETIME, false, false, Menus.DateTimeSpeeds.SetDateTime, null, Feature.DateTimeSpeed.PreEnterSetDateTime);
+            MenuItems.DateTimeSpeed.SetDateTime = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.SET_DATETIME, false, false, Menus.DateTimeSpeeds.SetDateTime, null, Feature.DateTimeSpeed.PreEnterSetDateTime);
             InitSetGameSpeedMenu();
-            MenuItems.DateTimeSpeed.SetGameSpeed = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.I02_SET_GAME_SPEED, false, false, Menus.DateTimeSpeeds.SetGameSpeed);
+            MenuItems.DateTimeSpeed.SetGameSpeed = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.SET_GAME_SPEED, false, false, Menus.DateTimeSpeeds.SetGameSpeed);
             InitSetAimingSpeedMenu();
-            MenuItems.DateTimeSpeed.SetAimingSpeed = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.I03_SET_AIMING_SPEED, false, false, Menus.DateTimeSpeeds.SetAimingSpeed);
-            MenuItems.DateTimeSpeed.HourForward = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.I04_HOUR_FORWARD, false, false, null, Feature.DateTimeSpeed.HourForward);
-            MenuItems.DateTimeSpeed.HourBackward = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.I05_HOUR_BACKWARD, false, false, null, Feature.DateTimeSpeed.HourBackward);
-            MenuItems.DateTimeSpeed.DayForward = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.I06_DAY_FORWARD, false, false, null, Feature.DateTimeSpeed.DayForward);
-            MenuItems.DateTimeSpeed.DayBackward = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.I07_DAY_BACKWARD, false, false, null, Feature.DateTimeSpeed.DayBackward);
-            MenuItems.DateTimeSpeed.ShowTime = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.I08_SHOW_TIME, true, Feature.DateTimeSpeed.ShowTime, null, Feature.DateTimeSpeed.SetShowTime);
-            MenuItems.DateTimeSpeed.Paused = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.I09_TIME_PAUSED, true, Feature.DateTimeSpeed.Paused, null, Feature.DateTimeSpeed.SetPaused);
-            MenuItems.DateTimeSpeed.SyncWithSystem = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.I10_SYNC_WITH_SYSTEM, true, Feature.DateTimeSpeed.SyncWithSystem, null, Feature.DateTimeSpeed.SetSyncWithSystem);
+            MenuItems.DateTimeSpeed.SetAimingSpeed = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.SET_AIMING_SPEED, false, false, Menus.DateTimeSpeeds.SetAimingSpeed);
+            MenuItems.DateTimeSpeed.HourForward = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.HOUR_FORWARD, false, false, null, Feature.DateTimeSpeed.HourForward);
+            MenuItems.DateTimeSpeed.HourBackward = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.HOUR_BACKWARD, false, false, null, Feature.DateTimeSpeed.HourBackward);
+            MenuItems.DateTimeSpeed.DayForward = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.DAY_FORWARD, false, false, null, Feature.DateTimeSpeed.DayForward);
+            MenuItems.DateTimeSpeed.DayBackward = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.DAY_BACKWARD, false, false, null, Feature.DateTimeSpeed.DayBackward);
+            MenuItems.DateTimeSpeed.ShowTime = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.SHOW_TIME, true, Feature.DateTimeSpeed.ShowTime, null, Feature.DateTimeSpeed.SetShowTime);
+            MenuItems.DateTimeSpeed.Paused = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.TIME_PAUSED, true, Feature.DateTimeSpeed.Paused, null, Feature.DateTimeSpeed.SetPaused);
+            MenuItems.DateTimeSpeed.SyncWithSystem = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.SYNC_WITH_SYSTEM, true, Feature.DateTimeSpeed.SyncWithSystem, null, Feature.DateTimeSpeed.SetSyncWithSystem);
         }
 
         /// <summary>
@@ -926,18 +896,18 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitSetAimingSpeedMenu()
         {
-            Menus.DateTimeSpeeds.SetAimingSpeed = new Menu(MenuText.DateTimeSpeed.I03_SET_AIMING_SPEED);
+            Menus.DateTimeSpeeds.SetAimingSpeed = new Menu(MenuText.DateTimeSpeed.SET_AIMING_SPEED);
             MenuItems.DateTimeSpeed.SetAimingSpeedMenu.Speed = AddMenuItem(Menus.DateTimeSpeeds.SetAimingSpeed, null);
             Feature.DateTimeSpeed.UpdateAimingSpeed();
             MenuItems.DateTimeSpeed.SetAimingSpeedMenu.Speed.ShowLeftRightAdjustableSign = true;
             MenuItems.DateTimeSpeed.SetAimingSpeedMenu.Speed.LeftPressed += Feature.DateTimeSpeed.DecAimingSpeed;
             MenuItems.DateTimeSpeed.SetAimingSpeedMenu.Speed.RightPressed += Feature.DateTimeSpeed.IncAimingSpeed;
-            MenuItems.DateTimeSpeed.SetAimingSpeedMenu.SetTo100 = AddMenuItem(Menus.DateTimeSpeeds.SetAimingSpeed, MenuText.DateTimeSpeed.SetAimingSpeed.I02_SET_TO_100, false, false, null, Feature.DateTimeSpeed.SetAimingSpeedTo100);
-            MenuItems.DateTimeSpeed.SetAimingSpeedMenu.SetTo075 = AddMenuItem(Menus.DateTimeSpeeds.SetAimingSpeed, MenuText.DateTimeSpeed.SetAimingSpeed.I03_SET_TO_75, false, false, null, Feature.DateTimeSpeed.SetAimingSpeedTo075);
-            MenuItems.DateTimeSpeed.SetAimingSpeedMenu.SetTo025 = AddMenuItem(Menus.DateTimeSpeeds.SetAimingSpeed, MenuText.DateTimeSpeed.SetAimingSpeed.I04_SET_TO_50, false, false, null, Feature.DateTimeSpeed.SetAimingSpeedTo050);
-            MenuItems.DateTimeSpeed.SetAimingSpeedMenu.SetTo050 = AddMenuItem(Menus.DateTimeSpeeds.SetAimingSpeed, MenuText.DateTimeSpeed.SetAimingSpeed.I05_SET_TO_25, false, false, null, Feature.DateTimeSpeed.SetAimingSpeedTo025);
-            MenuItems.DateTimeSpeed.SetAimingSpeedMenu.SetTo010 = AddMenuItem(Menus.DateTimeSpeeds.SetAimingSpeed, MenuText.DateTimeSpeed.SetAimingSpeed.I06_SET_TO_10, false, false, null, Feature.DateTimeSpeed.SetAimingSpeedTo010);
-            MenuItems.DateTimeSpeed.SetAimingSpeedMenu.SetTo000 = AddMenuItem(Menus.DateTimeSpeeds.SetAimingSpeed, MenuText.DateTimeSpeed.SetAimingSpeed.I07_SET_TO_0, false, false, null, Feature.DateTimeSpeed.SetAimingSpeedTo000);
+            MenuItems.DateTimeSpeed.SetAimingSpeedMenu.SetTo100 = AddMenuItem(Menus.DateTimeSpeeds.SetAimingSpeed, MenuText.DateTimeSpeed.SetAimingSpeed.SET_TO_100, false, false, null, Feature.DateTimeSpeed.SetAimingSpeedTo100);
+            MenuItems.DateTimeSpeed.SetAimingSpeedMenu.SetTo075 = AddMenuItem(Menus.DateTimeSpeeds.SetAimingSpeed, MenuText.DateTimeSpeed.SetAimingSpeed.SET_TO_75, false, false, null, Feature.DateTimeSpeed.SetAimingSpeedTo075);
+            MenuItems.DateTimeSpeed.SetAimingSpeedMenu.SetTo025 = AddMenuItem(Menus.DateTimeSpeeds.SetAimingSpeed, MenuText.DateTimeSpeed.SetAimingSpeed.SET_TO_50, false, false, null, Feature.DateTimeSpeed.SetAimingSpeedTo050);
+            MenuItems.DateTimeSpeed.SetAimingSpeedMenu.SetTo050 = AddMenuItem(Menus.DateTimeSpeeds.SetAimingSpeed, MenuText.DateTimeSpeed.SetAimingSpeed.SET_TO_25, false, false, null, Feature.DateTimeSpeed.SetAimingSpeedTo025);
+            MenuItems.DateTimeSpeed.SetAimingSpeedMenu.SetTo010 = AddMenuItem(Menus.DateTimeSpeeds.SetAimingSpeed, MenuText.DateTimeSpeed.SetAimingSpeed.SET_TO_10, false, false, null, Feature.DateTimeSpeed.SetAimingSpeedTo010);
+            MenuItems.DateTimeSpeed.SetAimingSpeedMenu.SetTo000 = AddMenuItem(Menus.DateTimeSpeeds.SetAimingSpeed, MenuText.DateTimeSpeed.SetAimingSpeed.SET_TO_0, false, false, null, Feature.DateTimeSpeed.SetAimingSpeedTo000);
         }
 
         /// <summary>
@@ -945,18 +915,18 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitSetGameSpeedMenu()
         {
-            Menus.DateTimeSpeeds.SetGameSpeed = new Menu(MenuText.DateTimeSpeed.I02_SET_GAME_SPEED);
+            Menus.DateTimeSpeeds.SetGameSpeed = new Menu(MenuText.DateTimeSpeed.SET_GAME_SPEED);
             MenuItems.DateTimeSpeed.SetGameSpeedMenu.Speed = AddMenuItem(Menus.DateTimeSpeeds.SetGameSpeed, null);
             Feature.DateTimeSpeed.UpdateGameSpeed();
             MenuItems.DateTimeSpeed.SetGameSpeedMenu.Speed.ShowLeftRightAdjustableSign = true;
             MenuItems.DateTimeSpeed.SetGameSpeedMenu.Speed.LeftPressed += Feature.DateTimeSpeed.DecGameSpeed;
             MenuItems.DateTimeSpeed.SetGameSpeedMenu.Speed.RightPressed += Feature.DateTimeSpeed.IncGameSpeed;
-            MenuItems.DateTimeSpeed.SetGameSpeedMenu.SetTo100 = AddMenuItem(Menus.DateTimeSpeeds.SetGameSpeed, MenuText.DateTimeSpeed.SetGameSpeed.I02_SET_TO_100, false, false, null, Feature.DateTimeSpeed.SetGameSpeedTo100);
-            MenuItems.DateTimeSpeed.SetGameSpeedMenu.SetTo075 = AddMenuItem(Menus.DateTimeSpeeds.SetGameSpeed, MenuText.DateTimeSpeed.SetGameSpeed.I03_SET_TO_75, false, false, null, Feature.DateTimeSpeed.SetGameSpeedTo075);
-            MenuItems.DateTimeSpeed.SetGameSpeedMenu.SetTo025 = AddMenuItem(Menus.DateTimeSpeeds.SetGameSpeed, MenuText.DateTimeSpeed.SetGameSpeed.I04_SET_TO_50, false, false, null, Feature.DateTimeSpeed.SetGameSpeedTo050);
-            MenuItems.DateTimeSpeed.SetGameSpeedMenu.SetTo050 = AddMenuItem(Menus.DateTimeSpeeds.SetGameSpeed, MenuText.DateTimeSpeed.SetGameSpeed.I05_SET_TO_25, false, false, null, Feature.DateTimeSpeed.SetGameSpeedTo025);
-            MenuItems.DateTimeSpeed.SetGameSpeedMenu.SetTo010 = AddMenuItem(Menus.DateTimeSpeeds.SetGameSpeed, MenuText.DateTimeSpeed.SetGameSpeed.I06_SET_TO_10, false, false, null, Feature.DateTimeSpeed.SetGameSpeedTo010);
-            MenuItems.DateTimeSpeed.SetGameSpeedMenu.SetTo000 = AddMenuItem(Menus.DateTimeSpeeds.SetGameSpeed, MenuText.DateTimeSpeed.SetGameSpeed.I07_SET_TO_0, false, false, null, Feature.DateTimeSpeed.SetGameSpeedTo000);
+            MenuItems.DateTimeSpeed.SetGameSpeedMenu.SetTo100 = AddMenuItem(Menus.DateTimeSpeeds.SetGameSpeed, MenuText.DateTimeSpeed.SetGameSpeed.SET_TO_100, false, false, null, Feature.DateTimeSpeed.SetGameSpeedTo100);
+            MenuItems.DateTimeSpeed.SetGameSpeedMenu.SetTo075 = AddMenuItem(Menus.DateTimeSpeeds.SetGameSpeed, MenuText.DateTimeSpeed.SetGameSpeed.SET_TO_75, false, false, null, Feature.DateTimeSpeed.SetGameSpeedTo075);
+            MenuItems.DateTimeSpeed.SetGameSpeedMenu.SetTo025 = AddMenuItem(Menus.DateTimeSpeeds.SetGameSpeed, MenuText.DateTimeSpeed.SetGameSpeed.SET_TO_50, false, false, null, Feature.DateTimeSpeed.SetGameSpeedTo050);
+            MenuItems.DateTimeSpeed.SetGameSpeedMenu.SetTo050 = AddMenuItem(Menus.DateTimeSpeeds.SetGameSpeed, MenuText.DateTimeSpeed.SetGameSpeed.SET_TO_25, false, false, null, Feature.DateTimeSpeed.SetGameSpeedTo025);
+            MenuItems.DateTimeSpeed.SetGameSpeedMenu.SetTo010 = AddMenuItem(Menus.DateTimeSpeeds.SetGameSpeed, MenuText.DateTimeSpeed.SetGameSpeed.SET_TO_10, false, false, null, Feature.DateTimeSpeed.SetGameSpeedTo010);
+            MenuItems.DateTimeSpeed.SetGameSpeedMenu.SetTo000 = AddMenuItem(Menus.DateTimeSpeeds.SetGameSpeed, MenuText.DateTimeSpeed.SetGameSpeed.SET_TO_0, false, false, null, Feature.DateTimeSpeed.SetGameSpeedTo000);
         }
 
         /// <summary>
@@ -964,7 +934,7 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitSetDateTimeMenu()
         {
-            Menus.DateTimeSpeeds.SetDateTime = new Menu(MenuText.DateTimeSpeed.SetDateTime.I00_TITLE);
+            Menus.DateTimeSpeeds.SetDateTime = new Menu(MenuText.DateTimeSpeed.SetDateTime.TITLE);
             MenuItems.DateTimeSpeed.SetDateTimeMenu.Year = AddMenuItem(Menus.DateTimeSpeeds.SetDateTime, null, false, false, null, Feature.DateTimeSpeed.Set);
             MenuItems.DateTimeSpeed.SetDateTimeMenu.Year.ShowLeftRightAdjustableSign = true;
             MenuItems.DateTimeSpeed.SetDateTimeMenu.Year.LeftPressed += Feature.DateTimeSpeed.DecYear;
@@ -989,8 +959,8 @@ namespace BETrainerRdr2.Menu
             MenuItems.DateTimeSpeed.SetDateTimeMenu.Second.ShowLeftRightAdjustableSign = true;
             MenuItems.DateTimeSpeed.SetDateTimeMenu.Second.LeftPressed += Feature.DateTimeSpeed.DecSecond;
             MenuItems.DateTimeSpeed.SetDateTimeMenu.Second.RightPressed += Feature.DateTimeSpeed.IncSecond;
-            MenuItems.DateTimeSpeed.SetDateTimeMenu.SetToCurrent = AddMenuItem(Menus.DateTimeSpeeds.SetDateTime, MenuText.DateTimeSpeed.SetDateTime.I07_SET_TO_CURRENT, false, false, null, Feature.DateTimeSpeed.SetToCurrent);
-            MenuItems.DateTimeSpeed.SetDateTimeMenu.SetToSystem = AddMenuItem(Menus.DateTimeSpeeds.SetDateTime, MenuText.DateTimeSpeed.SetDateTime.I08_SET_TO_SYSTEM, false, false, null, Feature.DateTimeSpeed.SetToSystem);
+            MenuItems.DateTimeSpeed.SetDateTimeMenu.SetToCurrent = AddMenuItem(Menus.DateTimeSpeeds.SetDateTime, MenuText.DateTimeSpeed.SetDateTime.SET_TO_CURRENT, false, false, null, Feature.DateTimeSpeed.SetToCurrent);
+            MenuItems.DateTimeSpeed.SetDateTimeMenu.SetToSystem = AddMenuItem(Menus.DateTimeSpeeds.SetDateTime, MenuText.DateTimeSpeed.SetDateTime.SET_TO_SYSTEM, false, false, null, Feature.DateTimeSpeed.SetToSystem);
         }
 
         /// <summary>
@@ -998,21 +968,15 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitWeaponMenu()
         {
-            Menus.Weapon = new Menu(MenuText.Weapon.I00_TITLE);
+            Menus.Weapon = new Menu(MenuText.Weapon.TITLE);
             Menus.Weapon.Width = 400;
             Menus.Weapon.PageTextOffset = new System.Drawing.Point(330, 8);
             Menus.Weapon.ToggleTextOffset = new System.Drawing.Point(350, 8);
             Menus.Weapon.LeftRightAdjustableSignOffset = new System.Drawing.Point(360, 8);
-            //MenuItems.Weapon.GetAllWeapons = AddMenuItem(Menus.Weapon, MenuText.Weapon.I01_GET_ALL_WEAPONS, false, false, null, Feature.Weapon.GetAllWeapons);
+            //MenuItems.Weapon.GetAllWeapons = AddMenuItem(Menus.Weapon, MenuText.Weapon.GET_ALL_WEAPONS, false, false, null, Feature.Weapon.GetAllWeapons);
             InitSpecificWeaponMenu();
-            MenuItems.Weapon.GetSpecificWeapon = AddMenuItem(Menus.Weapon, MenuText.Weapon.I02_GET_SPECIFIC_WEAPON, false, false, Menus.Weapons.GetSpecificWeapon);
-            MenuItems.Weapon.InfiniteAmmo = AddMenuItem(Menus.Weapon, MenuText.Weapon.I03_INFINITE_AMMO, true, Feature.Weapon.InfiniteAmmo, null, Feature.Weapon.SetInfiniteAmmo);
-            //MenuItems.Weapon.PermanentParachute = AddMenuItem(Menus.Weapon, MenuText.Weapon.I04_PERMANENT_PARACHUTE, true, Feature.Weapon.PermanentParachute, null, Feature.Weapon.SetPermanentParachute);
-            //MenuItems.Weapon.NoReload = AddMenuItem(Menus.Weapon, MenuText.Weapon.I05_NO_RELOAD, true, Feature.Weapon.NoReload, null, Feature.Weapon.SetNoReload);
-            //MenuItems.Weapon.FireAmmo = AddMenuItem(Menus.Weapon, MenuText.Weapon.I06_FIRE_AMMO, true, Feature.Weapon.FireAmmo, null, Feature.Weapon.SetFireAmmo);
-            //MenuItems.Weapon.ExplosiveAmmo = AddMenuItem(Menus.Weapon, MenuText.Weapon.I07_EXPLOSIVE_AMMO, true, Feature.Weapon.FireAmmo, null, Feature.Weapon.SetFireAmmo);
-            //MenuItems.Weapon.ExplosiveMelee = AddMenuItem(Menus.Weapon, MenuText.Weapon.I08_EXPLOSIVE_MELEE, true, Feature.Weapon.ExplosiveMelee, null, Feature.Weapon.SetExplosiveMelee);
-            //MenuItems.Weapon.VehicleRockets = AddMenuItem(Menus.Weapon, MenuText.Weapon.I09_VEHICLE_ROCKETS, true, Feature.Weapon.VehicleRocket, null, Feature.Weapon.SetVehicleRocket);
+            MenuItems.Weapon.GetSpecificWeapon = AddMenuItem(Menus.Weapon, MenuText.Weapon.GET_SPECIFIC_WEAPON, false, false, Menus.Weapons.GetSpecificWeapon);
+            MenuItems.Weapon.InfiniteAmmo = AddMenuItem(Menus.Weapon, MenuText.Weapon.INFINITE_AMMO, true, Feature.Weapon.InfiniteAmmo, null, Feature.Weapon.SetInfiniteAmmo);
 
             // Damage multiplier
             MenuItems.Weapon.DamageMultiplier = AddMenuItem(Menus.Weapon, MenuText.Weapon.I031_DAMAGE_MULTIPLIER, false, false, null, null, null, null, Feature.Weapon.DEFAULT_DAMAGE_MULTIPLIER_INDEX);
@@ -1027,25 +991,13 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitSpecificWeaponMenu()
         {
-            Menus.Weapons.GetSpecificWeapon = new Menu(MenuText.Weapon.SpecificWeapon.I00_TITLE);
+            Menus.Weapons.GetSpecificWeapon = new Menu(MenuText.Weapon.SpecificWeapon.TITLE);
             Menus.Weapons.GetSpecificWeapon.Width = 400;
             Menus.Weapons.GetSpecificWeapon.PageTextOffset = new System.Drawing.Point(330, 8);
             foreach (var weap in WeaponStorage.WEAPONS)
             {
                 AddMenuItem(Menus.Weapons.GetSpecificWeapon, weap.Name, false, false, null, Feature.Weapon.GiveSpecifiedWeapon, null, null, weap.InternalValue);
             }
-            //Menu[] mCategory = new Menu[WeaponStorage.WEAPON_CATEGORY_COUNT];
-            //for (int i = 0; i < WeaponStorage.WEAPON_CATEGORY_COUNT; i++)
-            //{
-            //    mCategory[i] = new Menu(WeaponStorage.WEAPON_CATEGORY_NAMES[i]);
-            //    Menu[] mWeapon = new Menu[Weapon.WeaponStorage.WEAPONS[i].Length];
-            //    for (int j = 0; j < WeaponStorage.WEAPONS[i].Length; j++)
-            //    {
-            //        mWeapon[j] = new Menu(WeaponStorage.WEAPONS[i][j].Name);
-            //        AddMenuItem(mCategory[i], WeaponStorage.WEAPONS[i][j].Name, false, false, mWeapon[j], null, Feature.Weapon.PreEnterSpecificWeaponMenu, null, WeaponStorage.WEAPONS[i][j]);
-            //    }
-            //    AddMenuItem(Menus.Weapons.GetSpecificWeapon, WeaponStorage.WEAPON_CATEGORY_NAMES[i], false, false, mCategory[i]);
-            //}
         }
 
         /// <summary>
@@ -1056,29 +1008,24 @@ namespace BETrainerRdr2.Menu
             const int DEFAULT_CASH_AMOUNT = 10000;
             const string POSITIVE_SIGN = "+";
 
-            Menus.Player = new Menu(MenuText.Player.I00_TITLE);
-
-            //InitPlayerModelSkinPropsMenu();
-            //AddMenuItem(Menus.Player, MenuText.Player.I01_MODEL_SKIN_PROPS, false, false, Menus.Players.MSP);
+            Menus.Player = new Menu(MenuText.Player.TITLE);
 
             InitPlayerWantedMenu();
-            AddMenuItem(Menus.Player, MenuText.Player.I02_WANTED, false, false, Menus.Players.Wanted);
+            AddMenuItem(Menus.Player, MenuText.Player.WANTED, false, false, Menus.Players.Wanted);
 
             // Cash menu
-            MenuItem miCash = AddMenuItem(Menus.Player, MenuText.Player.I03_CASH, false, false, null, Feature.Player.ChangeCash, null, null, DEFAULT_CASH_AMOUNT);
+            MenuItem miCash = AddMenuItem(Menus.Player, MenuText.Player.CASH, false, false, null, Feature.Player.ChangeCash, null, null, DEFAULT_CASH_AMOUNT);
             miCash.ShowLeftRightAdjustableSign = true;
             miCash.LeftPressed += Feature.Player.DecreaseCash;
             miCash.RightPressed += Feature.Player.IncreaseCash;
-            miCash.Text = Utils.FormatML(MenuText.Player.I03_CASH, POSITIVE_SIGN, DEFAULT_CASH_AMOUNT / 100f);
+            miCash.Text = Utils.FormatML(MenuText.Player.CASH, POSITIVE_SIGN, DEFAULT_CASH_AMOUNT / 100f);
 
-            AddMenuItem(Menus.Player, MenuText.Player.I04_HEAL, false, false, null, Feature.Player.QuickHeal);
-            MenuItems.Player.Invincible = AddMenuItem(Menus.Player, MenuText.Player.I05_INVINCIBLE, true, Feature.Player.Invincible, null, Feature.Player.SetInvincible);
-            MenuItems.Player.InfiniteAbility = AddMenuItem(Menus.Player, MenuText.Player.I06_INFINITE_ABILITY, true, Feature.Player.InfiniteAbility, null, Feature.Player.SetInfiniteAbility);
+            AddMenuItem(Menus.Player, MenuText.Player.HEAL, false, false, null, Feature.Player.QuickHeal);
+            MenuItems.Player.Invincible = AddMenuItem(Menus.Player, MenuText.Player.INVINCIBLE, true, Feature.Player.Invincible, null, Feature.Player.SetInvincible);
+            MenuItems.Player.InfiniteAbility = AddMenuItem(Menus.Player, MenuText.Player.INFINITE_ABILITY, true, Feature.Player.InfiniteAbility, null, Feature.Player.SetInfiniteAbility);
             MenuItems.Player.InfiniteStamina = AddMenuItem(Menus.Player, MenuText.Player.INFINITE_STAMINA, true, Feature.Player.InfiniteStamina, null, Feature.Player.SetInfiniteStamina);
-            //MenuItems.Player.FastRun = AddMenuItem(Menus.Player, MenuText.Player.I07_FAST_RUN, true, Feature.Player.FastRun, null, Feature.Player.SetFastRun);
-            //MenuItems.Player.FastSwim = AddMenuItem(Menus.Player, MenuText.Player.I08_FAST_SWIM, true, Feature.Player.FastSwim, null, Feature.Player.SetFastSwim);
-            MenuItems.Player.SuperJump = AddMenuItem(Menus.Player, MenuText.Player.I09_SUPER_JUMP, true, Feature.Player.SuperJump, null, Feature.Player.SetSuperJump);
-            MenuItems.Player.Noiseless = AddMenuItem(Menus.Player, MenuText.Player.I10_NOISELESS, true, Feature.Player.Noiseless, null, Feature.Player.SetNoiseless);
+            MenuItems.Player.SuperJump = AddMenuItem(Menus.Player, MenuText.Player.SUPER_JUMP, true, Feature.Player.SuperJump, null, Feature.Player.SetSuperJump);
+            MenuItems.Player.Noiseless = AddMenuItem(Menus.Player, MenuText.Player.NOISELESS, true, Feature.Player.Noiseless, null, Feature.Player.SetNoiseless);
         }
 
         /// <summary>
@@ -1086,152 +1033,10 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitPlayerWantedMenu()
         {
-            Menus.Players.Wanted = new Menu(MenuText.Player.Wanted.I00_TITLE);
+            Menus.Players.Wanted = new Menu(MenuText.Player.Wanted.TITLE);
             MenuItems.Player.Wanted.ClearBounty = AddMenuItem(Menus.Players.Wanted, MenuText.Player.Wanted.I001_CLEAR_BOUNTY, false, false, null, Feature.Player.Wanted.ClearBounty);
-            MenuItems.Player.Wanted.NeverWanted = AddMenuItem(Menus.Players.Wanted, MenuText.Player.Wanted.I01_NEVER_WANTED, true, Feature.Player.Wanted.NeverWanted, null, Feature.Player.Wanted.SetNeverWanted);
-            //MenuItems.Player.Wanted.PoliceIgnored = AddMenuItem(Menus.Players.Wanted, MenuText.Player.Wanted.I02_POLICE_IGNORED, true, Feature.Player.Wanted.PoliceIgnored, null, Feature.Player.Wanted.SetPoliceIgnored);
-            MenuItems.Player.Wanted.EveryoneIgnored = AddMenuItem(Menus.Players.Wanted, MenuText.Player.Wanted.I03_EVERYONE_IGNORED, true, Feature.Player.Wanted.EveryoneIgnored, null, Feature.Player.Wanted.SetEveryoneIgonred);
-        }
-
-        /// <summary>
-        /// Initialize player model & skin & props menu
-        /// </summary>
-        private static void InitPlayerModelSkinPropsMenu()
-        {
-            //Menus.Players.MSP = new Menu(MenuText.Player.ModelSkinProps.I00_TITLE);
-            //InitPlayerMSPCustomSetsMenu();
-            //InitPlayerMSPCustomSetItemMenu();
-            //AddMenuItem(Menus.Players.MSP, MenuText.Player.ModelSkinProps.I01_CUSTOM_SETS, false, false, Menus.Players.MSPs.CustomSet, null, Feature.Player.MSPCustomSets.GenerateItemList);
-            //InitPlayerModelSelectorMenu();
-            //AddMenuItem(Menus.Players.MSP, MenuText.Player.ModelSkinProps.I02_SET_MODEL, false, false, Menus.Players.MSPs.Model);
-            //InitPlayerSkinCategoryMenu();
-            //InitPlayerSkinDrawableSelectorMenu();
-            //InitPlayerSkinTextureSelectorMenu();
-            //AddMenuItem(Menus.Players.MSP, MenuText.Player.ModelSkinProps.I03_SET_SKIN, false, false, Menus.Players.MSPs.Skin, null, Feature.Player.Skin.GenerateSkinCategoriesMenu);
-            //InitPlayerPropCategoryMenu();
-            //InitPlayerPropSelectorMenu();
-            //InitPlayerPropTextureSelectorMenu();
-            //AddMenuItem(Menus.Players.MSP, MenuText.Player.ModelSkinProps.I04_SET_PROPS, false, false, Menus.Players.MSPs.Prop, null, Feature.Player.Prop.GeneratePropCategoriesMenu);
-            //AddMenuItem(Menus.Players.MSP, MenuText.Player.ModelSkinProps.I05_RANDOM_MODEL, false, false, null, Feature.Player.PlayerModel.SetToRandomModel);
-            //AddMenuItem(Menus.Players.MSP, MenuText.Player.ModelSkinProps.I06_RANDOM_SKIN, false, false, null, Feature.Player.Skin.RandomSkin);
-            //AddMenuItem(Menus.Players.MSP, MenuText.Player.ModelSkinProps.I07_RANDOM_PROPS, false, false, null, Feature.Player.Prop.RandomProps);
-            //AddMenuItem(Menus.Players.MSP, MenuText.Player.ModelSkinProps.I08_RESET_SKIN, false, false, null, Feature.Player.PlayerModel.ResetSkin);
-            //AddMenuItem(Menus.Players.MSP, MenuText.Player.ModelSkinProps.I09_CLEAR_PROPS, false, false, null, Feature.Player.Prop.ClearProps); 
-        }
-
-        /// <summary>
-        /// Initialize player Prop category menu
-        /// </summary>
-        private static void InitPlayerPropCategoryMenu()
-        {
-            Menus.Players.MSPs.Prop = new Menu(MenuText.Player.ModelSkinProps.PropCategories.I00_TITLE);
-        }
-
-        /// <summary>
-        /// Initialize player Prop selector menu
-        /// </summary>
-        private static void InitPlayerPropSelectorMenu()
-        {
-            Menus.Players.MSPs.Props.Drawable = new Menu(MenuText.Player.ModelSkinProps.PropCategories.PropsSelector.I00_TITLE);
-        }
-
-        /// <summary>
-        /// Initialize player Prop texture selector menu
-        /// </summary>
-        private static void InitPlayerPropTextureSelectorMenu()
-        {
-            Menus.Players.MSPs.Props.Texture = new Menu(MenuText.Player.ModelSkinProps.PropCategories.PropsSelector.TextureSelector.I00_TITLE);
-        }
-
-        /// <summary>
-        /// Initialize player skin category menu
-        /// </summary>
-        private static void InitPlayerSkinCategoryMenu()
-        {
-            Menus.Players.MSPs.Skin = new Menu(MenuText.Player.ModelSkinProps.SkinCategories.I00_TITLE);
-        }
-
-        /// <summary>
-        /// Initialize player skin drawable selector menu
-        /// </summary>
-        private static void InitPlayerSkinDrawableSelectorMenu()
-        {
-            Menus.Players.MSPs.Skins.Drawable = new Menu(MenuText.Player.ModelSkinProps.SkinCategories.DrawableSelector.I00_TITLE);
-        }
-
-        /// <summary>
-        /// Initialize player skin texture selector menu
-        /// </summary>
-        private static void InitPlayerSkinTextureSelectorMenu()
-        {
-            Menus.Players.MSPs.Skins.Texture = new Menu(MenuText.Player.ModelSkinProps.SkinCategories.DrawableSelector.TextureSelector.I00_TITLE);
-        }
-
-        /// <summary>
-        /// Initialize player Model selector menu
-        /// </summary>
-        private static void InitPlayerModelSelectorMenu()
-        {
-            //Menus.Players.MSPs.Model = new Menu(MenuText.Player.ModelSkinProps.ModelSelector.I00_TITLE);
-            //AddMenuItem(Menus.Players.MSPs.Model, MenuText.Player.ModelSkinProps.ModelSelector.I01_MICHAEL, false, false, null, Feature.Player.PlayerModel.SetToMichael);
-            //AddMenuItem(Menus.Players.MSPs.Model, MenuText.Player.ModelSkinProps.ModelSelector.I02_FRANKLIN, false, false, null, Feature.Player.PlayerModel.SetToFranklin);
-            //AddMenuItem(Menus.Players.MSPs.Model, MenuText.Player.ModelSkinProps.ModelSelector.I03_TREVOR, false, false, null, Feature.Player.PlayerModel.SetToTrevor);
-            //InitPlayerModelSelectorAnimalsMenu();
-            //AddMenuItem(Menus.Players.MSPs.Model, MenuText.Player.ModelSkinProps.ModelSelector.I04_ANIMALS, false, false, Menus.Players.MSPs.Models.Animals);
-            //InitPlayerModelSelectorNPCsMenu();
-            //AddMenuItem(Menus.Players.MSPs.Model, MenuText.Player.ModelSkinProps.ModelSelector.I05_NPCS, false, false, Menus.Players.MSPs.Models.NPCs);
-        }
-
-        /// <summary>
-        /// Initialize player Model selector animals menu
-        /// </summary>
-        private static void InitPlayerModelSelectorAnimalsMenu()
-        {
-            //Menus.Players.MSPs.Models.Animals = new Menu(MenuText.Player.ModelSkinProps.ModelSelector.Animals.I00_TITLE);
-            //foreach (ModelData Model in ModelStorage.MODEL_ANIMALS)
-            //{
-            //    MenuItem mi = AddMenuItem(Menus.Players.MSPs.Models.Animals, Model.Name, false, false, null, Feature.Player.PlayerModel.SetToModel, null, null, Model);
-            //}
-        }
-
-        /// <summary>
-        /// Initialize player Model selector NPCs menu
-        /// </summary>
-        private static void InitPlayerModelSelectorNPCsMenu()
-        {
-            //Menus.Players.MSPs.Models.NPCs = new Menu(MenuText.Player.ModelSkinProps.ModelSelector.NPCs.I00_TITLE);
-            //Menus.Players.MSPs.Models.NPCs.Width = 350;
-            //Menus.Players.MSPs.Models.NPCs.PageTextOffset = new System.Drawing.Point(275, 5);
-            //foreach (ModelData Model in ModelStorage.MODEL_NPCS)
-            //{
-            //    MenuItem mi = AddMenuItem(Menus.Players.MSPs.Models.NPCs, Model.Name, false, false, null, Feature.Player.PlayerModel.SetToModel, null, null, Model);
-            //}
-        }
-
-        /// <summary>
-        /// Initialize player model &amp; skin &amp; props custom sets menu
-        /// </summary>
-        private static void InitPlayerMSPCustomSetsMenu()
-        {
-            //Menus.Players.MSPs.CustomSet = new Menu(MenuText.Player.ModelSkinProps.CustomSet.I00_TITLE);
-            //Menus.Players.MSPs.CustomSet.Width = 600;
-            //Menus.Players.MSPs.CustomSet.HasSubmenuSignOffset = new System.Drawing.Point(570, 5);
-            //Menus.Players.MSPs.CustomSet.PageTextOffset = new System.Drawing.Point(535, 5);
-            //MenuItems.Player.MSPCustomSet.Create = AddMenuItem(Menus.Players.MSPs.CustomSet, MenuText.Player.ModelSkinProps.CustomSet.I01_CREATE, false, false, null, Feature.Player.MSPCustomSets.Create);
-        }
-
-        /// <summary>
-        /// Initialize player model &amp; skin &amp; props custom set item menu
-        /// </summary>
-        private static void InitPlayerMSPCustomSetItemMenu()
-        {
-            //Menus.Players.MSPs.CustomSets.Item = new Menu(null);
-            //Menus.Players.MSPs.CustomSets.Item.Width = 700;
-            //Menus.Players.MSPs.CustomSets.Item.HasSubmenuSignOffset = new System.Drawing.Point(670, 5);
-            //MenuItems.Player.MSPCustomSet.Item.Apply = AddMenuItem(Menus.Players.MSPs.CustomSets.Item, MenuText.Player.ModelSkinProps.CustomSet.Item.I01_APPLY, false, false, null, Feature.Player.MSPCustomSets.Apply);
-            //MenuItems.Player.MSPCustomSet.Item.Rename = AddMenuItem(Menus.Players.MSPs.CustomSets.Item, MenuText.Player.ModelSkinProps.CustomSet.Item.I02_RENAME, false, false, null, Feature.Player.MSPCustomSets.Rename);
-            //MenuItems.Player.MSPCustomSet.Item.Overwrite = AddMenuItem(Menus.Players.MSPs.CustomSets.Item, MenuText.Player.ModelSkinProps.CustomSet.Item.I03_OVERWRITE, false, false, null, Feature.Player.MSPCustomSets.Overwrite);
-            //MenuItems.Player.MSPCustomSet.Item.Delete = AddMenuItem(Menus.Players.MSPs.CustomSets.Item, MenuText.Player.ModelSkinProps.CustomSet.Item.I04_DELETE, false, false, null, Feature.Player.MSPCustomSets.Delete);
+            MenuItems.Player.Wanted.NeverWanted = AddMenuItem(Menus.Players.Wanted, MenuText.Player.Wanted.NEVER_WANTED, true, Feature.Player.Wanted.NeverWanted, null, Feature.Player.Wanted.SetNeverWanted);
+            MenuItems.Player.Wanted.EveryoneIgnored = AddMenuItem(Menus.Players.Wanted, MenuText.Player.Wanted.EVERYONE_IGNORED, true, Feature.Player.Wanted.EveryoneIgnored, null, Feature.Player.Wanted.SetEveryoneIgonred);
         }
 
         /// <summary>
@@ -1239,15 +1044,15 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitLocationMenu()
         {
-            Menus.Location = new Menu(MenuText.Location.I00_TITLE);
+            Menus.Location = new Menu(MenuText.Location.TITLE);
             InitLocationTeleporterMenu();
-            AddMenuItem(Menus.Location, MenuText.Location.I01_LOCATION_TELEPORTER, false, false, Menus.Locations.LTeleporter);
+            AddMenuItem(Menus.Location, MenuText.Location.LOCATION_TELEPORTER, false, false, Menus.Locations.LTeleporter);
             InitCustomLocationTeleporterMenu();
             InitCustomLocationTeleporterItemMenu();
-            AddMenuItem(Menus.Location, MenuText.Location.I02_CUSTOM_LOCATION_TELEPORTER, false, false, Menus.Locations.CLTeleporter, null, Feature.Location.CustomLocationTeleporter.GenerateTargetList);
+            AddMenuItem(Menus.Location, MenuText.Location.CUSTOM_LOCATION_TELEPORTER, false, false, Menus.Locations.CLTeleporter, null, Feature.Location.CustomLocationTeleporter.GenerateTargetList);
             InitXyzTeleporterMenu();
-            AddMenuItem(Menus.Location, MenuText.Location.I03_XYZ_TELEPORTER, false, false, Menus.Locations.XyzTeleporter);
-            MenuItems.Location.ShowCoordinate = AddMenuItem(Menus.Location, MenuText.Location.I04_SHOW_COORDINATE, true, Feature.Location.ShowCoordinates, null, Feature.Location.SetShowCoordinates);
+            AddMenuItem(Menus.Location, MenuText.Location.XYZ_TELEPORTER, false, false, Menus.Locations.XyzTeleporter);
+            MenuItems.Location.ShowCoordinate = AddMenuItem(Menus.Location, MenuText.Location.SHOW_COORDINATE, true, Feature.Location.ShowCoordinates, null, Feature.Location.SetShowCoordinates);
         }
 
         /// <summary>
@@ -1255,8 +1060,8 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitLocationTeleporterMenu()
         {
-            Menus.Locations.LTeleporter = new Menu(MenuText.Location.LocationTeleporter.I00_TITLE);
-            AddMenuItem(Menus.Locations.LTeleporter, MenuText.Location.LocationTeleporter.I01_MAP_MARKER, false, false, null, Feature.Location.LocationTeleporter.MapMarker);
+            Menus.Locations.LTeleporter = new Menu(MenuText.Location.LocationTeleporter.TITLE);
+            AddMenuItem(Menus.Locations.LTeleporter, MenuText.Location.LocationTeleporter.MAP_MARKER, false, false, null, Feature.Location.LocationTeleporter.MapMarker);
             foreach (TeleportCategory tc in TeleportTargetStorage.CATEGORIES)
             {
                 Menu menu = new Menu(tc.Name);
@@ -1270,11 +1075,11 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitCustomLocationTeleporterMenu()
         {
-            Menus.Locations.CLTeleporter = new Menu(MenuText.Location.CustomLocationTeleporter.I00_TITLE);
+            Menus.Locations.CLTeleporter = new Menu(MenuText.Location.CustomLocationTeleporter.TITLE);
             Menus.Locations.CLTeleporter.Width = 600;
             Menus.Locations.CLTeleporter.HasSubmenuSignOffset = new System.Drawing.Point(570, 5);
             Menus.Locations.CLTeleporter.PageTextOffset = new System.Drawing.Point(535, 5);
-            MenuItems.Location.CustomLocationTeleporter.SaveCurrentLocation = AddMenuItem(Menus.Locations.CLTeleporter, MenuText.Location.CustomLocationTeleporter.I01_SAVE, false, false, null, Feature.Location.CustomLocationTeleporter.SaveCurrentLocation);
+            MenuItems.Location.CustomLocationTeleporter.SaveCurrentLocation = AddMenuItem(Menus.Locations.CLTeleporter, MenuText.Location.CustomLocationTeleporter.SAVE, false, false, null, Feature.Location.CustomLocationTeleporter.SaveCurrentLocation);
         }
 
         /// <summary>
@@ -1285,10 +1090,10 @@ namespace BETrainerRdr2.Menu
             Menus.Locations.CLTeleporters.Item = new Menu(null);
             Menus.Locations.CLTeleporters.Item.Width = 700;
             Menus.Locations.CLTeleporters.Item.HasSubmenuSignOffset = new System.Drawing.Point(670, 5);
-            MenuItems.Location.CustomLocationTeleporter.Item.Teleport = AddMenuItem(Menus.Locations.CLTeleporters.Item, MenuText.Location.CustomLocationTeleporter.Item.I01_TELEPORT, false, false, null, Feature.Location.CustomLocationTeleporter.Teleport);
-            MenuItems.Location.CustomLocationTeleporter.Item.Rename = AddMenuItem(Menus.Locations.CLTeleporters.Item, MenuText.Location.CustomLocationTeleporter.Item.I02_RENAME, false, false, null, Feature.Location.CustomLocationTeleporter.Rename);
-            MenuItems.Location.CustomLocationTeleporter.Item.Overwrite = AddMenuItem(Menus.Locations.CLTeleporters.Item, MenuText.Location.CustomLocationTeleporter.Item.I03_OVERWRITE, false, false, null, Feature.Location.CustomLocationTeleporter.Overwrite);
-            MenuItems.Location.CustomLocationTeleporter.Item.Delete = AddMenuItem(Menus.Locations.CLTeleporters.Item, MenuText.Location.CustomLocationTeleporter.Item.I04_DELETE, false, false, null, Feature.Location.CustomLocationTeleporter.Delete);
+            MenuItems.Location.CustomLocationTeleporter.Item.Teleport = AddMenuItem(Menus.Locations.CLTeleporters.Item, MenuText.Location.CustomLocationTeleporter.Item.TELEPORT, false, false, null, Feature.Location.CustomLocationTeleporter.Teleport);
+            MenuItems.Location.CustomLocationTeleporter.Item.Rename = AddMenuItem(Menus.Locations.CLTeleporters.Item, MenuText.Location.CustomLocationTeleporter.Item.RENAME, false, false, null, Feature.Location.CustomLocationTeleporter.Rename);
+            MenuItems.Location.CustomLocationTeleporter.Item.Overwrite = AddMenuItem(Menus.Locations.CLTeleporters.Item, MenuText.Location.CustomLocationTeleporter.Item.OVERWRITE, false, false, null, Feature.Location.CustomLocationTeleporter.Overwrite);
+            MenuItems.Location.CustomLocationTeleporter.Item.Delete = AddMenuItem(Menus.Locations.CLTeleporters.Item, MenuText.Location.CustomLocationTeleporter.Item.DELETE, false, false, null, Feature.Location.CustomLocationTeleporter.Delete);
         }
 
         /// <summary>
@@ -1296,12 +1101,12 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitXyzTeleporterMenu()
         {
-            Menus.Locations.XyzTeleporter = new Menu(MenuText.Location.XyzTeleporter.I00_TITLE);
+            Menus.Locations.XyzTeleporter = new Menu(MenuText.Location.XyzTeleporter.TITLE);
             InitXyzTeleporterOffsetMenu();
-            AddMenuItem(Menus.Locations.XyzTeleporter, MenuText.Location.XyzTeleporter.I01_OFFSET, false, false, Menus.Locations.XyzTeleporters.Offset);
+            AddMenuItem(Menus.Locations.XyzTeleporter, MenuText.Location.XyzTeleporter.OFFSET, false, false, Menus.Locations.XyzTeleporters.Offset);
             InitXyzTeleporterCoordinatesMenu();
-            AddMenuItem(Menus.Locations.XyzTeleporter, MenuText.Location.XyzTeleporter.I02_COORDINATES, false, false, Menus.Locations.XyzTeleporters.Coordinates, Feature.Location.XyzTeleporter.Coordinates.EnterMenu);
-            AddMenuItem(Menus.Locations.XyzTeleporter, MenuText.Location.XyzTeleporter.I03_RANDOM, false, false, null, Feature.Location.XyzTeleporter.Random);
+            AddMenuItem(Menus.Locations.XyzTeleporter, MenuText.Location.XyzTeleporter.COORDINATES, false, false, Menus.Locations.XyzTeleporters.Coordinates, Feature.Location.XyzTeleporter.Coordinates.EnterMenu);
+            AddMenuItem(Menus.Locations.XyzTeleporter, MenuText.Location.XyzTeleporter.RANDOM, false, false, null, Feature.Location.XyzTeleporter.Random);
         }
 
         /// <summary>
@@ -1309,21 +1114,21 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitXyzTeleporterOffsetMenu()
         {
-            Menus.Locations.XyzTeleporters.Offset = new Menu(MenuText.Location.XyzTeleporter.Offset.I00_TITLE);
-            MenuItems.Location.XyzTeleporter.Offset.X = AddMenuItem(Menus.Locations.XyzTeleporters.Offset, MenuText.Location.XyzTeleporter.Offset.I01_X, false, false, null, Feature.Location.XyzTeleporter.Offset.SetX);
+            Menus.Locations.XyzTeleporters.Offset = new Menu(MenuText.Location.XyzTeleporter.Offset.TITLE);
+            MenuItems.Location.XyzTeleporter.Offset.X = AddMenuItem(Menus.Locations.XyzTeleporters.Offset, MenuText.Location.XyzTeleporter.Offset.X, false, false, null, Feature.Location.XyzTeleporter.Offset.SetX);
             MenuItems.Location.XyzTeleporter.Offset.X.ShowLeftRightAdjustableSign = true;
             MenuItems.Location.XyzTeleporter.Offset.X.LeftPressed += Feature.Location.XyzTeleporter.Offset.DecX;
             MenuItems.Location.XyzTeleporter.Offset.X.RightPressed += Feature.Location.XyzTeleporter.Offset.IncX;
-            MenuItems.Location.XyzTeleporter.Offset.Y = AddMenuItem(Menus.Locations.XyzTeleporters.Offset, MenuText.Location.XyzTeleporter.Offset.I02_Y, false, false, null, Feature.Location.XyzTeleporter.Offset.SetY);
+            MenuItems.Location.XyzTeleporter.Offset.Y = AddMenuItem(Menus.Locations.XyzTeleporters.Offset, MenuText.Location.XyzTeleporter.Offset.Y, false, false, null, Feature.Location.XyzTeleporter.Offset.SetY);
             MenuItems.Location.XyzTeleporter.Offset.Y.ShowLeftRightAdjustableSign = true;
             MenuItems.Location.XyzTeleporter.Offset.Y.LeftPressed += Feature.Location.XyzTeleporter.Offset.DecY;
             MenuItems.Location.XyzTeleporter.Offset.Y.RightPressed += Feature.Location.XyzTeleporter.Offset.IncY;
-            MenuItems.Location.XyzTeleporter.Offset.Z = AddMenuItem(Menus.Locations.XyzTeleporters.Offset, MenuText.Location.XyzTeleporter.Offset.I03_Z, false, false, null, Feature.Location.XyzTeleporter.Offset.SetZ);
+            MenuItems.Location.XyzTeleporter.Offset.Z = AddMenuItem(Menus.Locations.XyzTeleporters.Offset, MenuText.Location.XyzTeleporter.Offset.Z, false, false, null, Feature.Location.XyzTeleporter.Offset.SetZ);
             MenuItems.Location.XyzTeleporter.Offset.Z.ShowLeftRightAdjustableSign = true;
             MenuItems.Location.XyzTeleporter.Offset.Z.LeftPressed += Feature.Location.XyzTeleporter.Offset.DecZ;
             MenuItems.Location.XyzTeleporter.Offset.Z.RightPressed += Feature.Location.XyzTeleporter.Offset.IncZ;
-            AddMenuItem(Menus.Locations.XyzTeleporters.Offset, MenuText.Location.XyzTeleporter.Offset.I04_RESET, false, false, null, Feature.Location.XyzTeleporter.Offset.Reset);
-            AddMenuItem(Menus.Locations.XyzTeleporters.Offset, MenuText.Location.XyzTeleporter.Offset.I05_TELEPORT, false, false, null, Feature.Location.XyzTeleporter.Offset.Teleport);
+            AddMenuItem(Menus.Locations.XyzTeleporters.Offset, MenuText.Location.XyzTeleporter.Offset.RESET, false, false, null, Feature.Location.XyzTeleporter.Offset.Reset);
+            AddMenuItem(Menus.Locations.XyzTeleporters.Offset, MenuText.Location.XyzTeleporter.Offset.TELEPORT, false, false, null, Feature.Location.XyzTeleporter.Offset.Teleport);
             Feature.Location.XyzTeleporter.Offset.UpdateXMenuText();
             Feature.Location.XyzTeleporter.Offset.UpdateYMenuText();
             Feature.Location.XyzTeleporter.Offset.UpdateZMenuText();
@@ -1334,21 +1139,21 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitXyzTeleporterCoordinatesMenu()
         {
-            Menus.Locations.XyzTeleporters.Coordinates = new Menu(MenuText.Location.XyzTeleporter.Coordinates.I00_TITLE);
-            MenuItems.Location.XyzTeleporter.Coordinates.X = AddMenuItem(Menus.Locations.XyzTeleporters.Coordinates, MenuText.Location.XyzTeleporter.Coordinates.I01_X, false, false, null, Feature.Location.XyzTeleporter.Coordinates.SetX);
+            Menus.Locations.XyzTeleporters.Coordinates = new Menu(MenuText.Location.XyzTeleporter.Coordinates.TITLE);
+            MenuItems.Location.XyzTeleporter.Coordinates.X = AddMenuItem(Menus.Locations.XyzTeleporters.Coordinates, MenuText.Location.XyzTeleporter.Coordinates.X, false, false, null, Feature.Location.XyzTeleporter.Coordinates.SetX);
             MenuItems.Location.XyzTeleporter.Coordinates.X.ShowLeftRightAdjustableSign = true;
             MenuItems.Location.XyzTeleporter.Coordinates.X.LeftPressed += Feature.Location.XyzTeleporter.Coordinates.DecX;
             MenuItems.Location.XyzTeleporter.Coordinates.X.RightPressed += Feature.Location.XyzTeleporter.Coordinates.IncX;
-            MenuItems.Location.XyzTeleporter.Coordinates.Y = AddMenuItem(Menus.Locations.XyzTeleporters.Coordinates, MenuText.Location.XyzTeleporter.Coordinates.I02_Y, false, false, null, Feature.Location.XyzTeleporter.Coordinates.SetY);
+            MenuItems.Location.XyzTeleporter.Coordinates.Y = AddMenuItem(Menus.Locations.XyzTeleporters.Coordinates, MenuText.Location.XyzTeleporter.Coordinates.Y, false, false, null, Feature.Location.XyzTeleporter.Coordinates.SetY);
             MenuItems.Location.XyzTeleporter.Coordinates.Y.ShowLeftRightAdjustableSign = true;
             MenuItems.Location.XyzTeleporter.Coordinates.Y.LeftPressed += Feature.Location.XyzTeleporter.Coordinates.DecY;
             MenuItems.Location.XyzTeleporter.Coordinates.Y.RightPressed += Feature.Location.XyzTeleporter.Coordinates.IncY;
-            MenuItems.Location.XyzTeleporter.Coordinates.Z = AddMenuItem(Menus.Locations.XyzTeleporters.Coordinates, MenuText.Location.XyzTeleporter.Coordinates.I03_Z, false, false, null, Feature.Location.XyzTeleporter.Coordinates.SetZ);
+            MenuItems.Location.XyzTeleporter.Coordinates.Z = AddMenuItem(Menus.Locations.XyzTeleporters.Coordinates, MenuText.Location.XyzTeleporter.Coordinates.Z, false, false, null, Feature.Location.XyzTeleporter.Coordinates.SetZ);
             MenuItems.Location.XyzTeleporter.Coordinates.Z.ShowLeftRightAdjustableSign = true;
             MenuItems.Location.XyzTeleporter.Coordinates.Z.LeftPressed += Feature.Location.XyzTeleporter.Coordinates.DecZ;
             MenuItems.Location.XyzTeleporter.Coordinates.Z.RightPressed += Feature.Location.XyzTeleporter.Coordinates.IncZ;
-            AddMenuItem(Menus.Locations.XyzTeleporters.Coordinates, MenuText.Location.XyzTeleporter.Coordinates.I04_RESET, false, false, null, Feature.Location.XyzTeleporter.Coordinates.Reset);
-            AddMenuItem(Menus.Locations.XyzTeleporters.Coordinates, MenuText.Location.XyzTeleporter.Coordinates.I05_TELEPORT, false, false, null, Feature.Location.XyzTeleporter.Coordinates.Teleport);
+            AddMenuItem(Menus.Locations.XyzTeleporters.Coordinates, MenuText.Location.XyzTeleporter.Coordinates.RESET, false, false, null, Feature.Location.XyzTeleporter.Coordinates.Reset);
+            AddMenuItem(Menus.Locations.XyzTeleporters.Coordinates, MenuText.Location.XyzTeleporter.Coordinates.TELEPORT, false, false, null, Feature.Location.XyzTeleporter.Coordinates.Teleport);
             Feature.Location.XyzTeleporter.Coordinates.UpdateXMenuText();
             Feature.Location.XyzTeleporter.Coordinates.UpdateYMenuText();
             Feature.Location.XyzTeleporter.Coordinates.UpdateZMenuText();
@@ -1359,27 +1164,16 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitVehicleMenu()
         {
-            Menus.Vehicle = new Menu(MenuText.Vehicle.I00_TITLE);
+            Menus.Vehicle = new Menu(MenuText.Vehicle.TITLE);
             InitVehicleSpawnMenu();
-            AddMenuItem(Menus.Vehicle, MenuText.Vehicle.I01_SPAWN, false, false, Menus.Vehicles.SpawnVehicle);
-            //InitVehicleCustomMenu();
-            //AddMenuItem(Menus.Vehicle, MenuText.Vehicle.I02_CUSTOM, false, false, Menus.Vehicles.CustomVehicle, null, Feature.Vehicle.Custom.PreEnterMenu);
-            //InitVehiclePaintMenu();
-            //MenuItem miPaint = AddMenuItem(Menus.Vehicle, MenuText.Vehicle.I03_PAINT, false, false, Menus.Vehicles.Paint, null, Feature.Vehicle.Paint.PreEnterPaintMenu);
-            //InitVehicleModMenu();
-            //AddMenuItem(Menus.Vehicle, MenuText.Vehicle.I04_MODS, false, false, Menus.Vehicles.Mod, null, Feature.Vehicle.Mod.PreEnterModMenu);
-            //InitVehicleDoorMenu();
-            //AddMenuItem(Menus.Vehicle, MenuText.Vehicle.I05_DOORS, false, false, Menus.Vehicles.Doors);
+            AddMenuItem(Menus.Vehicle, MenuText.Vehicle.SPAWN, false, false, Menus.Vehicles.SpawnVehicle);
             InitVehicleSpeedMeterMenu();
-            AddMenuItem(Menus.Vehicle, MenuText.Vehicle.I06_SPEED_METER, false, false, Menus.Vehicles.SpeedMeter);
-            //AddMenuItem(Menus.Vehicle, MenuText.Vehicle.I07_REPAIR, false, false, null, Feature.Vehicle.Repair);
-            //AddMenuItem(Menus.Vehicle, MenuText.Vehicle.I08_CLEAN, false, false, null, Feature.Vehicle.Clean);
-            MenuItems.Vehicle.Invincible = AddMenuItem(Menus.Vehicle, MenuText.Vehicle.I09_INVINCIBLE, true, Feature.Vehicle.Invincible, null, Feature.Vehicle.SetInvincible);
+            AddMenuItem(Menus.Vehicle, MenuText.Vehicle.SPEED_METER, false, false, Menus.Vehicles.SpeedMeter);
+            MenuItems.Vehicle.Invincible = AddMenuItem(Menus.Vehicle, MenuText.Vehicle.INVINCIBLE, true, Feature.Vehicle.Invincible, null, Feature.Vehicle.SetInvincible);
             MenuItems.Vehicle.InfiniteStamina = AddMenuItem(Menus.Vehicle, MenuText.Vehicle.I091_INFINITE_STAMINA, true, Feature.Vehicle.InfiniteStamina, null, Feature.Vehicle.SetInfiniteStamina);
-            //MenuItems.Vehicle.SeatBelt = AddMenuItem(Menus.Vehicle, MenuText.Vehicle.I10_SEAT_BELT, true, Feature.Vehicle.SeatBelt, null, Feature.Vehicle.SetSeatBelt);
-            MenuItems.Vehicle.SpawnIntoVehicle = AddMenuItem(Menus.Vehicle, MenuText.Vehicle.I11_SPAWN_INTO, true, Feature.Vehicle.SpawnIntoVehicle, null, Feature.Vehicle.SetSpawnIntoVehicle);
+            MenuItems.Vehicle.SpawnIntoVehicle = AddMenuItem(Menus.Vehicle, MenuText.Vehicle.SPAWN_INTO, true, Feature.Vehicle.SpawnIntoVehicle, null, Feature.Vehicle.SetSpawnIntoVehicle);
             InitVehicleBoostMenu();
-            AddMenuItem(Menus.Vehicle, MenuText.Vehicle.I12_VEHICLE_BOOST, false, false, Menus.Vehicles.VehicleBoost);
+            AddMenuItem(Menus.Vehicle, MenuText.Vehicle.VEHICLE_BOOST, false, false, Menus.Vehicles.VehicleBoost);
         }
 
         /// <summary>
@@ -1387,17 +1181,17 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitVehicleBoostMenu()
         {
-            Menus.Vehicles.VehicleBoost = new Menu(MenuText.Vehicle.VehicleBoost.I00_TITLE);
+            Menus.Vehicles.VehicleBoost = new Menu(MenuText.Vehicle.VehicleBoost.TITLE);
             Menus.Vehicles.VehicleBoost.Width = 700;
             Menus.Vehicles.VehicleBoost.LeftRightAdjustableSignOffset = new System.Drawing.Point(660, 5);
             Menus.Vehicles.VehicleBoost.ToggleTextOffset = new System.Drawing.Point(650, 5);
-            MenuItems.Vehicle.VehicleBoost.BoostProgressive = AddMenuItem(Menus.Vehicles.VehicleBoost, MenuText.Vehicle.VehicleBoost.I01_BOOST_PROGRESSIVE, true, Feature.Vehicle.VehicleBoost.BoostProgressive, null, Feature.Vehicle.VehicleBoost.SetBoostProgressive);
-            MenuItems.Vehicle.VehicleBoost.BoostProgressiveSpeedInc = AddMenuItem(Menus.Vehicles.VehicleBoost, MenuText.Vehicle.VehicleBoost.I02_BOOST_PROGRESSIVE_SPEED_INC);
+            MenuItems.Vehicle.VehicleBoost.BoostProgressive = AddMenuItem(Menus.Vehicles.VehicleBoost, MenuText.Vehicle.VehicleBoost.BOOST_PROGRESSIVE, true, Feature.Vehicle.VehicleBoost.BoostProgressive, null, Feature.Vehicle.VehicleBoost.SetBoostProgressive);
+            MenuItems.Vehicle.VehicleBoost.BoostProgressiveSpeedInc = AddMenuItem(Menus.Vehicles.VehicleBoost, MenuText.Vehicle.VehicleBoost.BOOST_PROGRESSIVE_SPEED_INC);
             MenuItems.Vehicle.VehicleBoost.BoostProgressiveSpeedInc.ShowLeftRightAdjustableSign = true;
             MenuItems.Vehicle.VehicleBoost.BoostProgressiveSpeedInc.LeftPressed += Feature.Vehicle.VehicleBoost.DecBoostProgressiveSpeed;
             MenuItems.Vehicle.VehicleBoost.BoostProgressiveSpeedInc.RightPressed += Feature.Vehicle.VehicleBoost.IncBoostProgressiveSpeed;
-            MenuItems.Vehicle.VehicleBoost.BoostInstant = AddMenuItem(Menus.Vehicles.VehicleBoost, MenuText.Vehicle.VehicleBoost.I03_BOOST_INSTANT, true, Feature.Vehicle.VehicleBoost.BoostInstant, null, Feature.Vehicle.VehicleBoost.SetBoostInstant);
-            MenuItems.Vehicle.VehicleBoost.BoostInstantSpeed = AddMenuItem(Menus.Vehicles.VehicleBoost, MenuText.Vehicle.VehicleBoost.I04_BOOST_INSTANT_SPEED);
+            MenuItems.Vehicle.VehicleBoost.BoostInstant = AddMenuItem(Menus.Vehicles.VehicleBoost, MenuText.Vehicle.VehicleBoost.BOOST_INSTANT, true, Feature.Vehicle.VehicleBoost.BoostInstant, null, Feature.Vehicle.VehicleBoost.SetBoostInstant);
+            MenuItems.Vehicle.VehicleBoost.BoostInstantSpeed = AddMenuItem(Menus.Vehicles.VehicleBoost, MenuText.Vehicle.VehicleBoost.BOOST_INSTANT_SPEED);
             MenuItems.Vehicle.VehicleBoost.BoostInstantSpeed.ShowLeftRightAdjustableSign = true;
             MenuItems.Vehicle.VehicleBoost.BoostInstantSpeed.LeftPressed += Feature.Vehicle.VehicleBoost.DecBoostInstantSpeed;
             MenuItems.Vehicle.VehicleBoost.BoostInstantSpeed.RightPressed += Feature.Vehicle.VehicleBoost.IncBoostInstantSpeed;
@@ -1406,139 +1200,14 @@ namespace BETrainerRdr2.Menu
         }
 
         /// <summary>
-        /// Initializes door menu
-        /// </summary>
-        private static void InitVehicleDoorMenu()
-        {
-            //Menus.Vehicles.Doors = new Menu(MenuText.Vehicle.Door.I00_TITLE);
-            //AddMenuItem(Menus.Vehicles.Doors, MenuText.Vehicle.Door.I01_INSTANT_OPEN_CLOSE, true, Feature.Vehicle.Door.InstantOpenClose, null, Feature.Vehicle.Door.SetInstantOpenClose);
-            //AddMenuItem(Menus.Vehicles.Doors, MenuText.Vehicle.Door.I02_FRONT_RIGHT, false, false, null, Feature.Vehicle.Door.ToggleDoor);
-            //AddMenuItem(Menus.Vehicles.Doors, MenuText.Vehicle.Door.I03_FRONT_LEFT, false, false, null, Feature.Vehicle.Door.ToggleDoor);
-            //AddMenuItem(Menus.Vehicles.Doors, MenuText.Vehicle.Door.I04_REAR_RIGHT, false, false, null, Feature.Vehicle.Door.ToggleDoor);
-            //AddMenuItem(Menus.Vehicles.Doors, MenuText.Vehicle.Door.I05_REAR_LEFT, false, false, null, Feature.Vehicle.Door.ToggleDoor);
-            //AddMenuItem(Menus.Vehicles.Doors, MenuText.Vehicle.Door.I06_HOOD, false, false, null, Feature.Vehicle.Door.ToggleDoor);
-            //AddMenuItem(Menus.Vehicles.Doors, MenuText.Vehicle.Door.I07_TRUNK, false, false, null, Feature.Vehicle.Door.ToggleDoor);
-            //AddMenuItem(Menus.Vehicles.Doors, MenuText.Vehicle.Door.I08_TRUNK2, false, false, null, Feature.Vehicle.Door.ToggleDoor);
-        }
-
-        /// <summary>
-        /// Initialize custom vehicle menu
-        /// </summary>
-        private static void InitVehicleCustomMenu()
-        {
-            //Menus.Vehicles.CustomVehicle = new Menu(MenuText.Vehicle.CustomVehicle.I00_TITLE);
-            //Menus.Vehicles.CustomVehicle.Width = 600;
-            //Menus.Vehicles.CustomVehicle.HasSubmenuSignOffset = new System.Drawing.Point(570, 5);
-            //Menus.Vehicles.CustomVehicle.PageTextOffset = new System.Drawing.Point(535, 5);
-            //MenuItems.Vehicle.CustomVehicle.SaveCurrent = AddMenuItem(Menus.Vehicles.CustomVehicle, MenuText.Vehicle.CustomVehicle.I01_SAVE, false, false, null, Feature.Vehicle.Custom.SaveCurrent);
-            //Menus.Vehicles.CustomVehicles.Item = new Menu(null);
-            //Menus.Vehicles.CustomVehicles.Item.Width = 700;
-            //Menus.Vehicles.CustomVehicles.Item.HasSubmenuSignOffset = new System.Drawing.Point(670, 5);
-            //MenuItems.Vehicle.CustomVehicle.Item.Spawn = AddMenuItem(Menus.Vehicles.CustomVehicles.Item, MenuText.Vehicle.CustomVehicle.Item.I01_SPAWN, false, false, null, Feature.Vehicle.Custom.Spawn);
-            //MenuItems.Vehicle.CustomVehicle.Item.Rename = AddMenuItem(Menus.Vehicles.CustomVehicles.Item, MenuText.Vehicle.CustomVehicle.Item.I02_RENAME, false, false, null, Feature.Vehicle.Custom.Rename);
-            //MenuItems.Vehicle.CustomVehicle.Item.Overwrite = AddMenuItem(Menus.Vehicles.CustomVehicles.Item, MenuText.Vehicle.CustomVehicle.Item.I03_OVERWRITE, false, false, null, Feature.Vehicle.Custom.Overwrite);
-            //MenuItems.Vehicle.CustomVehicle.Item.Delete = AddMenuItem(Menus.Vehicles.CustomVehicles.Item, MenuText.Vehicle.CustomVehicle.Item.I04_DELETE, false, false, null, Feature.Vehicle.Custom.Delete);
-        }
-
-        /// <summary>
-        /// Initialize vehicle paint menu
-        /// </summary>
-        private static void InitVehiclePaintMenu()
-        {
-            //Menus.Vehicles.Paint = new Menu(MenuText.Vehicle.I03_PAINT);
-            //InitPrimaryColorMenu();
-            //MenuItems.Vehicle.Paint.PrimaryColor = AddMenuItem(Menus.Vehicles.Paint, MenuText.Vehicle.Paint.I01_PRIMARY, false, false, Menus.Vehicles.Paints.PrimaryColor, Feature.Vehicle.Paint.EnterPrimaryMenu);
-            //InitSecondaryColorMenu();
-            //MenuItems.Vehicle.Paint.SecondaryColor = AddMenuItem(Menus.Vehicles.Paint, MenuText.Vehicle.Paint.I02_SECONDARY, false, false, Menus.Vehicles.Paints.SecondaryColor, Feature.Vehicle.Paint.EnterSecondaryMenu);
-            //InitPearlTopcoatMenu();
-            //MenuItems.Vehicle.Paint.PearlTopcoat = AddMenuItem(Menus.Vehicles.Paint, MenuText.Vehicle.Paint.I03_PEARL_TOPCOAT, false, false, Menus.Vehicles.Paints.PearlTopcoat, null, Feature.Vehicle.Paint.PreEnterPearlTopcoatMenu);
-            //InitWheelsMenu();
-            //MenuItems.Vehicle.Paint.Wheels = AddMenuItem(Menus.Vehicles.Paint, MenuText.Vehicle.Paint.I04_WHEELS, false, false, Menus.Vehicles.Paints.Wheels, null, Feature.Vehicle.Paint.PreEnterWheelsMenu);
-            //Menus.Vehicles.Paints.Livery = new Menu(MenuText.Vehicle.Paint.Livery.I00_TITLE);
-            //MenuItems.Vehicle.Paint.Livery = AddMenuItem(Menus.Vehicles.Paint, MenuText.Vehicle.Paint.I05_LIVERY, false, false, Menus.Vehicles.Paints.Livery, Feature.Vehicle.Paint.EnterLiveryMenu);
-        }
-
-        /// <summary>
-        /// Initializes vehicle mod menu
-        /// </summary>
-        private static void InitVehicleModMenu()
-        {
-            //Menus.Vehicles.Mod = new Menu(MenuText.Vehicle.Mod.I00_TITLE);
-            //MenuItems.Vehicle.Mod.AllPerformance = AddMenuItem(Menus.Vehicles.Mod, MenuText.Vehicle.Mod.I01_ALL_PERFORMANCE, false, false, null, Feature.Vehicle.Mod.AllPerformance);
-            //MenuItems.Vehicle.Mod.AllArmor = AddMenuItem(Menus.Vehicles.Mod, MenuText.Vehicle.Mod.I02_ALL_ARMOR, false, false, null, Feature.Vehicle.Mod.AllArmor);
-            //MenuItems.Vehicle.Mod.RemoveAll = AddMenuItem(Menus.Vehicles.Mod, MenuText.Vehicle.Mod.I03_REMOVE_ALL, false, false, null, Feature.Vehicle.Mod.RemoveAll);
-            //Menus.Vehicles.Mods.ModItem = new Menu(null);
-        }
-
-        /// <summary>
-        /// Initialize primary color menu
-        /// </summary>
-        private static void InitPrimaryColorMenu()
-        {
-            //Menus.Vehicles.Paints.PrimaryColor = new Menu(MenuText.Vehicle.Paint.CHOOSE_PAINT_TYPE);
-            //for (int i = 0; i < PaintStorage.PAINT_TYPES.Length; i++)
-            //{
-            //    Menu subMenu = new Menu(PaintStorage.PAINT_TYPES[i]);
-            //    for (int j = 0; j < PaintStorage.PAINTS[i].Length; j++)
-            //    {
-            //        MenuItem mi = AddMenuItem(subMenu, PaintStorage.PAINTS[i][j].Name, false, false, null, null, null, Feature.Vehicle.Paint.ApplyColor, PaintStorage.PAINTS[i][j]);
-            //    }
-            //    MenuItem m = AddMenuItem(Menus.Vehicles.Paints.PrimaryColor, PaintStorage.PAINT_TYPES[i], false, false, subMenu, null, Feature.Vehicle.Paint.PreEnterPaintTypeMenu, Feature.Vehicle.Paint.SelectPaintType, i);
-            //}
-        }
-
-        /// <summary>
-        /// Initialize Secondary color menu
-        /// </summary>
-        private static void InitSecondaryColorMenu()
-        {
-            //Menus.Vehicles.Paints.SecondaryColor = new Menu(MenuText.Vehicle.Paint.CHOOSE_PAINT_TYPE);
-            //for (int i = 0; i < PaintStorage.PAINT_TYPES.Length; i++)
-            //{
-            //    Menu subMenu = new Menu(PaintStorage.PAINT_TYPES[i]);
-            //    for (int j = 0; j < PaintStorage.PAINTS[i].Length; j++)
-            //    {
-            //        MenuItem mi = AddMenuItem(subMenu, PaintStorage.PAINTS[i][j].Name);
-            //        mi.Data = PaintStorage.PAINTS[i][j];
-            //        mi.Highlighted += Feature.Vehicle.Paint.ApplyColor;
-            //    }
-            //    MenuItem m = AddMenuItem(Menus.Vehicles.Paints.SecondaryColor, PaintStorage.PAINT_TYPES[i], false, false, subMenu, null, Feature.Vehicle.Paint.PreEnterPaintTypeMenu, Feature.Vehicle.Paint.SelectPaintType, i);
-            //}
-        }
-
-        /// <summary>
-        /// Initialize pearl topcoat menu
-        /// </summary>
-        private static void InitPearlTopcoatMenu()
-        {
-            //Menus.Vehicles.Paints.PearlTopcoat = new Menu(MenuText.Vehicle.Paint.CHOOSE_COLOR);
-            //for (int i = 0; i < PaintStorage.PEARL_TOPCOAT_PAINTS.Length; i++)
-            //{
-            //    MenuItem mi = AddMenuItem(Menus.Vehicles.Paints.PearlTopcoat, PaintStorage.PEARL_TOPCOAT_PAINTS[i].Name, false, false, null, null, null, Feature.Vehicle.Paint.ApplyColor, PaintStorage.PEARL_TOPCOAT_PAINTS[i]);
-            //}
-        }
-
-        /// <summary>
-        /// Initialize wheels menu
-        /// </summary>
-        private static void InitWheelsMenu()
-        {
-            //Menus.Vehicles.Paints.Wheels = new Menu(MenuText.Vehicle.Paint.CHOOSE_COLOR);
-            //for (int i = 0; i < PaintStorage.WHEELS_PAINTS.Length; i++)
-            //{
-            //    MenuItem mi = AddMenuItem(Menus.Vehicles.Paints.Wheels, PaintStorage.WHEELS_PAINTS[i].Name, false, false, null, null, null, Feature.Vehicle.Paint.ApplyColor, PaintStorage.WHEELS_PAINTS[i]);
-            //}
-        }
-
-        /// <summary>
         /// Initialize vehicle speed meter menu
         /// </summary>
         private static void InitVehicleSpeedMeterMenu()
         {
-            Menus.Vehicles.SpeedMeter = new Menu(MenuText.Vehicle.SpeedMeter.I00_TITLE);
-            MenuItems.Vehicle.SpeedMeter.Show = AddMenuItem(Menus.Vehicles.SpeedMeter, MenuText.Vehicle.SpeedMeter.I01_SHOW, true, Feature.Vehicle.SpeedMeter.Show, null, Feature.Vehicle.SpeedMeter.SetShow);
-            MenuItems.Vehicle.SpeedMeter.ShowInMetric = AddMenuItem(Menus.Vehicles.SpeedMeter, MenuText.Vehicle.SpeedMeter.I02_SHOW_IN_METRIC, true, Feature.Vehicle.SpeedMeter.ShowInMetric, null, Feature.Vehicle.SpeedMeter.SetShowInMetric);
-            MenuItems.Vehicle.SpeedMeter.ShowWithoutVehicle = AddMenuItem(Menus.Vehicles.SpeedMeter, MenuText.Vehicle.SpeedMeter.I03_SHOW_WITHOUT_VEHICLE, true, Feature.Vehicle.SpeedMeter.ShowWithoutVehicle, null, Feature.Vehicle.SpeedMeter.SetShowWithoutVehicle);
+            Menus.Vehicles.SpeedMeter = new Menu(MenuText.Vehicle.SpeedMeter.TITLE);
+            MenuItems.Vehicle.SpeedMeter.Show = AddMenuItem(Menus.Vehicles.SpeedMeter, MenuText.Vehicle.SpeedMeter.SHOW, true, Feature.Vehicle.SpeedMeter.Show, null, Feature.Vehicle.SpeedMeter.SetShow);
+            MenuItems.Vehicle.SpeedMeter.ShowInMetric = AddMenuItem(Menus.Vehicles.SpeedMeter, MenuText.Vehicle.SpeedMeter.SHOW_IN_METRIC, true, Feature.Vehicle.SpeedMeter.ShowInMetric, null, Feature.Vehicle.SpeedMeter.SetShowInMetric);
+            MenuItems.Vehicle.SpeedMeter.ShowWithoutVehicle = AddMenuItem(Menus.Vehicles.SpeedMeter, MenuText.Vehicle.SpeedMeter.SHOW_WITHOUT_VEHICLE, true, Feature.Vehicle.SpeedMeter.ShowWithoutVehicle, null, Feature.Vehicle.SpeedMeter.SetShowWithoutVehicle);
         }
 
         /// <summary>
@@ -1546,7 +1215,7 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitVehicleSpawnMenu()
         {
-            Menus.Vehicles.SpawnVehicle = new Menu(MenuText.Vehicle.Spawn.I00_TITLE);
+            Menus.Vehicles.SpawnVehicle = new Menu(MenuText.Vehicle.Spawn.TITLE);
             Menu subMenuBoat = new Menu(MenuText.Vehicle.Spawn.BOAT);
             Menu subMenuTrain = new Menu(MenuText.Vehicle.Spawn.TRAIN);
             Menu subMenuWagon = new Menu(MenuText.Vehicle.Spawn.WAGON);
@@ -1593,34 +1262,7 @@ namespace BETrainerRdr2.Menu
                     Info = vi,
                     WagonOnly = true,
                 });
-                //MenuItem mi = AddMenuItem(Menus.Vehicles.SpawnVehicle, vd.Name, false, false, null, Feature.Vehicle.SpawnVehicle, null, null, vd);
             }
-            //for (int i = 0; i < VehicleStorage.MAIN_CATEGORIES.Length; i++)
-            //{
-            //    MenuItem mi = AddMenuItem(Menus.Vehicles.SpawnVehicle, VehicleStorage.MAIN_CATEGORIES[i]);
-            //    Menu subMenu = new Menu(VehicleStorage.MAIN_CATEGORIES[i]);
-            //    if (i < VehicleStorage.SUB_CATEGORY_COUNT)
-            //    {
-            //        for (int j = 0; j < VehicleStorage.SUB_CATEGORIES[i].Length; j++)
-            //        {
-            //            MenuItem miSub = AddMenuItem(subMenu, VehicleStorage.SUB_CATEGORIES[i][j]);
-            //            Menu menu = new Menu(VehicleStorage.SUB_CATEGORIES[i][j]);
-            //            for (int k = 0; k < VehicleStorage.VEHICLES[i][j].Length; k++)
-            //            {
-            //                MenuItem miVehicle = AddMenuItem(menu, VehicleStorage.VEHICLES[i][j][k].Name, false, false, null, Feature.Vehicle.SpawnVehicle, null, null, VehicleStorage.VEHICLES[i][j][k]);
-            //            }
-            //            miSub.SubMenu = menu;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        for (int j = 0; j < VehicleStorage.VEHICLES[i][0].Length; j++)
-            //        {
-            //            MenuItem miVehicle = AddMenuItem(subMenu, VehicleStorage.VEHICLES[i][0][j].Name, false, false, null, Feature.Vehicle.SpawnVehicle, null, null, VehicleStorage.VEHICLES[i][0][j]);
-            //        }
-            //    }
-            //    mi.SubMenu = subMenu;
-            //}
         }
 
         /// <summary>
@@ -1628,20 +1270,10 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitConfigurationMenu()
         {
-            Menus.Configuration = new Menu(MenuText.Configuration.I00_TITLE);
-            AddMenuItem(Menus.Configuration, MenuText.Configuration.I01_SAVE, false, false, null, Feature.Config.Save);
-            AddMenuItem(Menus.Configuration, MenuText.Configuration.I02_LOAD, false, false, null, Feature.Config.Load);
-            AddMenuItem(Menus.Configuration, MenuText.Configuration.I03_AUTO_SAVE, true, Feature.Config.AutoSave, null, Feature.Config.SetAutoSave);
-        }
-
-        /// <summary>
-        /// Initialize language menu
-        /// </summary>
-        private static void InitLanguageMenu()
-        {
-            Menus.Language = new Menu(MenuText.Language.I00_TITLE);
-            AddMenuItem(Menus.Language, MenuText.Language.I01_ENGLISH, false, false, null, Language.SetToEnglish);
-            AddMenuItem(Menus.Language, MenuText.Language.I02_CHINESE_TRADITIONAL, false, false, null, Language.SetToChineseSimplified);
+            Menus.Configuration = new Menu(MenuText.Configuration.TITLE);
+            AddMenuItem(Menus.Configuration, MenuText.Configuration.SAVE, false, false, null, Feature.Config.Save);
+            AddMenuItem(Menus.Configuration, MenuText.Configuration.LOAD, false, false, null, Feature.Config.Load);
+            AddMenuItem(Menus.Configuration, MenuText.Configuration.AUTO_SAVE, true, Feature.Config.AutoSave, null, Feature.Config.SetAutoSave);
         }
 
         /// <summary>
@@ -1649,18 +1281,16 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         private static void InitMainMenu()
         {
-            Menus.Main = new Menu(MenuText.Main.I00_TITLE);
-            AddMenuItem(Menus.Main, MenuText.Main.I01_PLAYER, false, false, Menus.Player);
-            AddMenuItem(Menus.Main, MenuText.Main.I02_LOCATION, false, false, Menus.Location);
-            AddMenuItem(Menus.Main, MenuText.Main.I03_VEHICLE, false, false, Menus.Vehicle);
-            AddMenuItem(Menus.Main, MenuText.Main.I04_WEAPON, false, false, Menus.Weapon);
+            Menus.Main = new Menu(MenuText.Main.TITLE);
+            AddMenuItem(Menus.Main, MenuText.Main.PLAYER, false, false, Menus.Player);
+            AddMenuItem(Menus.Main, MenuText.Main.LOCATION, false, false, Menus.Location);
+            AddMenuItem(Menus.Main, MenuText.Main.VEHICLE, false, false, Menus.Vehicle);
+            AddMenuItem(Menus.Main, MenuText.Main.WEAPON, false, false, Menus.Weapon);
             AddMenuItem(Menus.Main, MenuText.Main.MODEL, false, false, Menus.Model);
-            AddMenuItem(Menus.Main, MenuText.Main.I05_DATE_TIME_SPEED, false, false, Menus.DateTimeSpeed);
-            //AddMenuItem(Menus.Main, MenuText.Main.I06_WORLD, false, false, Menus.World);
-            AddMenuItem(Menus.Main, MenuText.Main.I07_WEATHER, false, false, Menus.Weather);
-            AddMenuItem(Menus.Main, MenuText.Main.I08_MISC, false, false, Menus.Misc);
-            AddMenuItem(Menus.Main, MenuText.Main.I09_CONFIGURATION, false, false, Menus.Configuration);
-            //AddMenuItem(Menus.Main, MenuText.Main.I10_LANGUAGE, false, false, Menus.Language);
+            AddMenuItem(Menus.Main, MenuText.Main.DATE_TIME_SPEED, false, false, Menus.DateTimeSpeed);
+            AddMenuItem(Menus.Main, MenuText.Main.WEATHER, false, false, Menus.Weather);
+            AddMenuItem(Menus.Main, MenuText.Main.MISC, false, false, Menus.Misc);
+            AddMenuItem(Menus.Main, MenuText.Main.CONFIGURATION, false, false, Menus.Configuration);
 
             EnterMenu(Menus.Main);
         }

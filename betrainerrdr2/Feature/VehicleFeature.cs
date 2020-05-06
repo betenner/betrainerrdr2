@@ -7,12 +7,7 @@
 //             Native Trainer
 ///////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BETrainerRdr2.Menu;
 using BETrainerRdr2.Vehicle;
 using RDR2;
@@ -41,7 +36,6 @@ namespace BETrainerRdr2
             private static bool _invincibleUpdated = true;
             public static bool InfiniteStamina = false;
             public static bool SeatBelt = false;
-            //private static bool _seatBeltUpdated = true;
             public static bool SpawnIntoVehicle = false;
 
             /// <summary>
@@ -54,19 +48,6 @@ namespace BETrainerRdr2
                 if (Game.Player.Character.IsInVehicle()) return true;
                 if (showNotification) Utils.ShowNotification(GlobalConst.Message.VEHICLE_NOT_IN_VEHICLE);
                 return false;
-            }
-
-            private static bool CheckMounted(bool showNotification = true)
-            {
-                if (Game.Player.Character.IsOnMount) return true;
-                if (showNotification) Utils.ShowNotification(GlobalConst.Message.VEHICLE_NOT_MOUNTED);
-                return false;
-            }
-
-            private static bool CheckInTrain()
-            {
-                if (!Game.Player.Character.IsInVehicle()) return false;
-                return Game.Player.Character.CurrentVehicle.Model.IsTrain;
             }
 
             /// <summary>
@@ -167,26 +148,6 @@ namespace BETrainerRdr2
                 SpawnIntoVehicle = sender.On;
                 Config.DoAutoSave();
             }
-
-            ///// <summary>
-            ///// Spawns the specified vehicle
-            ///// </summary>
-            ///// <param name="sender">Source menu item</param>
-            //public static void SpawnVehicle(MenuItem sender)
-            //{
-            //    SpawnVehicle(sender.Data as VehicleData, true);
-            //}
-
-            ///// <summary>
-            ///// Spawns the specified vehicle
-            ///// </summary>
-            ///// <param name="data">Vehicle data</param>
-            ///// <param name="cleanUp">Whether mark the spawned vehicle as no longer needed</param>
-            ///// <returns>Vehicle handle</returns>
-            //private static int SpawnVehicle(VehicleData data, bool cleanUp)
-            //{
-            //    return SpawnVehicle(data.InternalValue, data.Name, cleanUp);
-            //}
 
             /// <summary>
             /// Spawns the specified vehicle
@@ -381,7 +342,7 @@ namespace BETrainerRdr2
                 public static void UpdateBoostProgressiveSpeed()
                 {
                     MenuStorage.MenuItems.Vehicle.VehicleBoost.BoostProgressiveSpeedInc.Text =
-                        Utils.FormatML(MenuText.Vehicle.VehicleBoost.I02_BOOST_PROGRESSIVE_SPEED_INC, BoostProgressiveSpeedInc, Utils.Mps2Kph(BoostProgressiveSpeedInc), Utils.Mps2Mph(BoostProgressiveSpeedInc));
+                        Utils.FormatML(MenuText.Vehicle.VehicleBoost.BOOST_PROGRESSIVE_SPEED_INC, BoostProgressiveSpeedInc, Utils.Mps2Kph(BoostProgressiveSpeedInc), Utils.Mps2Mph(BoostProgressiveSpeedInc));
                 }
 
                 /// <summary>
@@ -412,7 +373,7 @@ namespace BETrainerRdr2
                 public static void UpdateBoostInstantSpeed()
                 {
                     MenuStorage.MenuItems.Vehicle.VehicleBoost.BoostInstantSpeed.Text =
-                        Utils.FormatML(MenuText.Vehicle.VehicleBoost.I04_BOOST_INSTANT_SPEED, BoostInstantSpeed, Utils.Mps2Kph(BoostInstantSpeed), Utils.Mps2Mph(BoostInstantSpeed));
+                        Utils.FormatML(MenuText.Vehicle.VehicleBoost.BOOST_INSTANT_SPEED, BoostInstantSpeed, Utils.Mps2Kph(BoostInstantSpeed), Utils.Mps2Mph(BoostInstantSpeed));
                 }
             }
         }

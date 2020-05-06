@@ -12,9 +12,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using BEGroup.Utility;
-using BETrainerRdr2.Config;
 using BETrainerRdr2.Teleport;
-using BETrainerRdr2.Vehicle;
 
 namespace BETrainerRdr2
 {
@@ -138,14 +136,6 @@ namespace BETrainerRdr2
         private const string CONFIG_TIME_SYNC_WITH_SYSTEM = "SyncWithSystem";
         private const string CONFIG_AIMING_SPEED = "AimingSpeed";
 
-        private const string CONFIG_WORLD = "World";
-        private const string CONFIG_WORLD_MOON_GRAVITY = "MoonGravity";
-        private const string CONFIG_WORLD_RANDOM_COPS = "RandomCops";
-        private const string CONFIG_WORLD_RANDOM_TRAINS = "RandomTrains";
-        private const string CONFIG_WORLD_RANDOM_BOATS = "RandomBoats";
-        private const string CONFIG_WORLD_GARBATE_TRUCKS = "GarbageTrucks";
-        private const string CONFIG_WORLD_RESTRICTED_ZONES = "RestrictedZones";
-
         private const string CONFIG_WEATHER = "Weather";
         private const string CONFIG_WEATHER_WIND = "Wind";
         private const string CONFIG_WEATHER_FREEZE = "Freeze";
@@ -197,9 +187,6 @@ namespace BETrainerRdr2
                 Feature.Player.Wanted.NeverWanted = Utils.ParseBoolStr(ini.GetValue(CONFIG_PLAYER, CONFIG_PLAYER_NEVER_WANTED)); 
                 Feature.Player.Wanted.EveryoneIgnored = Utils.ParseBoolStr(ini.GetValue(CONFIG_PLAYER, CONFIG_PLAYER_EVERYONE_IGNORED)); 
 
-                // Player MSP Custom Sets
-                //MSPCustomSets.LoadMSPCustomSets();
-
                 // Location
                 Feature.Location.ShowCoordinates = Utils.ParseBoolStr(ini.GetValue(CONFIG_LOCATION, CONFIG_LOCATION_SHOW_COORDINATES)); 
                 Location.LoadCustomLocations();
@@ -207,27 +194,18 @@ namespace BETrainerRdr2
                 // Vehicle
                 Feature.Vehicle.Invincible = Utils.ParseBoolStr(ini.GetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_INVINCIBLE));
                 Feature.Vehicle.InfiniteStamina = Utils.ParseBoolStr(ini.GetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_INFINITE_STAMINA));
-                //Feature.Vehicle.SeatBelt = Utils.ParseBoolStr(ini.GetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_SEATBELT)); 
                 Feature.Vehicle.SpawnIntoVehicle = Utils.ParseBoolStr(ini.GetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_SPAWN_INTO));
                 Feature.Vehicle.SpeedMeter.Show = Utils.ParseBoolStr(ini.GetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_SPEEDMETER_SHOW));
                 Feature.Vehicle.SpeedMeter.ShowInMetric = Utils.ParseBoolStr(ini.GetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_SPEEDMETER_SHOW_IN_METRIC));
                 Feature.Vehicle.SpeedMeter.ShowWithoutVehicle = Utils.ParseBoolStr(ini.GetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_SPEEDMETER_SHOW_WITHOUT_VEHICLE));
-                //Feature.Vehicle.Door.InstantOpenClose = Utils.ParseBoolStr(ini.GetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_DOOR_INSTANT));
                 Feature.Vehicle.VehicleBoost.BoostProgressive = Utils.ParseBoolStr(ini.GetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_BOOST_PROGRESSIVE));
                 Feature.Vehicle.VehicleBoost.BoostProgressiveSpeedInc = Utils.ParseFloat(ini.GetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_BOOST_PROGRESSIVE_SPEED_INC), Feature.Vehicle.VehicleBoost.BoostProgressiveSpeedInc);
                 Feature.Vehicle.VehicleBoost.BoostInstant = Utils.ParseBoolStr(ini.GetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_BOOST_INSTANT));
                 Feature.Vehicle.VehicleBoost.BoostInstantSpeed = Utils.ParseFloat(ini.GetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_BOOST_INSTANT_SPEED), Feature.Vehicle.VehicleBoost.BoostInstantSpeed);
-                //Vehicle.LoadCustomVehicles();
 
                 // Weapon
-                //Feature.Weapon.ExplosiveAmmo = Utils.ParseBoolStr(ini.GetValue(CONFIG_WEAPON, CONFIG_WEAPON_EXPLOSIVE_AMMO));
-                //Feature.Weapon.ExplosiveMelee = Utils.ParseBoolStr(ini.GetValue(CONFIG_WEAPON, CONFIG_WEAPON_EXPLOSIVE_MELEE));
-                //Feature.Weapon.FireAmmo = Utils.ParseBoolStr(ini.GetValue(CONFIG_WEAPON, CONFIG_WEAPON_FIRE_AMMO));
                 Feature.Weapon.InfiniteAmmo = Utils.ParseBoolStr(ini.GetValue(CONFIG_WEAPON, CONFIG_WEAPON_INFINITE_AMMO));
                 Feature.Weapon.DamageMultiplierIndex = Utils.ParseInt(ini.GetValue(CONFIG_WEAPON, CONFIG_WEAPON_DAMAGE_MULTIPLIER_INDEX), Feature.Weapon.DamageMultiplierIndex);
-                //Feature.Weapon.NoReload = Utils.ParseBoolStr(ini.GetValue(CONFIG_WEAPON, CONFIG_WEAPON_NO_RELOAD));
-                //Feature.Weapon.PermanentParachute = Utils.ParseBoolStr(ini.GetValue(CONFIG_WEAPON, CONFIG_WEAPON_PERMANENT_PARACHUTE));
-                //Feature.Weapon.VehicleRocket = Utils.ParseBoolStr(ini.GetValue(CONFIG_WEAPON, CONFIG_WEAPON_VEHICLE_ROCKETS));
 
                 // Time
                 Feature.DateTimeSpeed.ShowTime = Utils.ParseBoolStr(ini.GetValue(CONFIG_TIME, CONFIG_TIME_SHOW_TIME));
@@ -235,14 +213,6 @@ namespace BETrainerRdr2
                 Feature.DateTimeSpeed.SyncWithSystem = Utils.ParseBoolStr(ini.GetValue(CONFIG_TIME, CONFIG_TIME_SYNC_WITH_SYSTEM));
                 Feature.DateTimeSpeed.AimingSpeed = Utils.ParseFloat(ini.GetValue(CONFIG_TIME, CONFIG_AIMING_SPEED), Feature.DateTimeSpeed.AimingSpeed);
                 Feature.DateTimeSpeed.UpdateAimingSpeed();
-
-                // World
-                //Feature.World.MoonGravity = Utils.ParseBoolStr(ini.GetValue(CONFIG_WORLD, CONFIG_WORLD_MOON_GRAVITY));
-                //Feature.World.RandomCops = Utils.ParseBoolStr(ini.GetValue(CONFIG_WORLD, CONFIG_WORLD_RANDOM_COPS), true);
-                //Feature.World.RandomTrains = Utils.ParseBoolStr(ini.GetValue(CONFIG_WORLD, CONFIG_WORLD_RANDOM_TRAINS), true);
-                //Feature.World.RandomBoats = Utils.ParseBoolStr(ini.GetValue(CONFIG_WORLD, CONFIG_WORLD_RANDOM_BOATS), true);
-                //Feature.World.GarbageTrucks = Utils.ParseBoolStr(ini.GetValue(CONFIG_WORLD, CONFIG_WORLD_GARBATE_TRUCKS), true);
-                //Feature.World.RestrictedZones = Utils.ParseBoolStr(ini.GetValue(CONFIG_WORLD, CONFIG_WORLD_RESTRICTED_ZONES), true);
 
                 // Weather
                 Feature.Weather.Wind = Utils.ParseBoolStr(ini.GetValue(CONFIG_WEATHER, CONFIG_WEATHER_WIND));
@@ -307,26 +277,18 @@ namespace BETrainerRdr2
                 // Vehicle
                 ini.SetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_INVINCIBLE, Feature.Vehicle.Invincible.ToString());
                 ini.SetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_INFINITE_STAMINA, Feature.Vehicle.InfiniteStamina.ToString());
-                //ini.SetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_SEATBELT, Feature.Vehicle.SeatBelt.ToString());
                 ini.SetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_SPAWN_INTO, Feature.Vehicle.SpawnIntoVehicle.ToString());
                 ini.SetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_SPEEDMETER_SHOW, Feature.Vehicle.SpeedMeter.Show.ToString());
                 ini.SetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_SPEEDMETER_SHOW_IN_METRIC, Feature.Vehicle.SpeedMeter.ShowInMetric.ToString());
                 ini.SetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_SPEEDMETER_SHOW_WITHOUT_VEHICLE, Feature.Vehicle.SpeedMeter.ShowWithoutVehicle.ToString());
-                //ini.SetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_DOOR_INSTANT, Feature.Vehicle.Door.InstantOpenClose.ToString());
                 ini.SetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_BOOST_PROGRESSIVE, Feature.Vehicle.VehicleBoost.BoostProgressive.ToString());
                 ini.SetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_BOOST_PROGRESSIVE_SPEED_INC, Feature.Vehicle.VehicleBoost.BoostProgressiveSpeedInc.ToString());
                 ini.SetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_BOOST_INSTANT, Feature.Vehicle.VehicleBoost.BoostInstant.ToString());
                 ini.SetValue(CONFIG_VEHICLE, CONFIG_VEHICLE_BOOST_INSTANT_SPEED, Feature.Vehicle.VehicleBoost.BoostInstantSpeed.ToString());
 
                 // Weapon
-                //ini.SetValue(CONFIG_WEAPON, CONFIG_WEAPON_EXPLOSIVE_AMMO, Feature.Weapon.ExplosiveAmmo.ToString());
-                //ini.SetValue(CONFIG_WEAPON, CONFIG_WEAPON_EXPLOSIVE_MELEE, Feature.Weapon.ExplosiveMelee.ToString());
-                //ini.SetValue(CONFIG_WEAPON, CONFIG_WEAPON_FIRE_AMMO, Feature.Weapon.FireAmmo.ToString());
                 ini.SetValue(CONFIG_WEAPON, CONFIG_WEAPON_INFINITE_AMMO, Feature.Weapon.InfiniteAmmo.ToString());
                 ini.SetValue(CONFIG_WEAPON, CONFIG_WEAPON_DAMAGE_MULTIPLIER_INDEX, Feature.Weapon.DamageMultiplierIndex.ToString());
-                //ini.SetValue(CONFIG_WEAPON, CONFIG_WEAPON_NO_RELOAD, Feature.Weapon.NoReload.ToString());
-                //ini.SetValue(CONFIG_WEAPON, CONFIG_WEAPON_PERMANENT_PARACHUTE, Feature.Weapon.PermanentParachute.ToString());
-                //ini.SetValue(CONFIG_WEAPON, CONFIG_WEAPON_VEHICLE_ROCKETS, Feature.Weapon.VehicleRocket.ToString());
 
                 // Time
                 ini.SetValue(CONFIG_TIME, CONFIG_TIME_SHOW_TIME, Feature.DateTimeSpeed.ShowTime.ToString());
@@ -334,16 +296,7 @@ namespace BETrainerRdr2
                 ini.SetValue(CONFIG_TIME, CONFIG_TIME_SYNC_WITH_SYSTEM, Feature.DateTimeSpeed.SyncWithSystem.ToString());
                 ini.SetValue(CONFIG_TIME, CONFIG_AIMING_SPEED, Feature.DateTimeSpeed.AimingSpeed.ToString());
 
-                // World
-                //ini.SetValue(CONFIG_WORLD, CONFIG_WORLD_MOON_GRAVITY, Feature.World.MoonGravity.ToString());
-                //ini.SetValue(CONFIG_WORLD, CONFIG_WORLD_RANDOM_COPS, Feature.World.RandomCops.ToString());
-                //ini.SetValue(CONFIG_WORLD, CONFIG_WORLD_RANDOM_TRAINS, Feature.World.RandomTrains.ToString());
-                //ini.SetValue(CONFIG_WORLD, CONFIG_WORLD_RANDOM_BOATS, Feature.World.RandomBoats.ToString());
-                //ini.SetValue(CONFIG_WORLD, CONFIG_WORLD_GARBATE_TRUCKS, Feature.World.GarbageTrucks.ToString());
-                //ini.SetValue(CONFIG_WORLD, CONFIG_WORLD_RESTRICTED_ZONES, Feature.World.RestrictedZones.ToString());
-
                 // Misc
-                //ini.SetValue(CONFIG_MISC, CONFIG_MISC_PORTABLE_RADIO, Feature.Misc.PortableRadio.ToString());
                 ini.SetValue(CONFIG_MISC, CONFIG_MISC_HIDE_HUD, Feature.Misc.HideHud.ToString());
 
                 // Language
@@ -358,67 +311,6 @@ namespace BETrainerRdr2
             }
         }
 
-        /// <summary>
-        /// MSP custom set configurations
-        /// </summary>
-        public static class MSPCustomSets
-        {
-            private const string CONFIG_FILE_MSPCS = ".\\scripts\\BETrainerRdr2_MSPCustomSets.ini";
-
-            private const string CONFIG_MSPCS = "MSPCustomSets";
-            private const string CONFIG_MSPCS_COUNT = "Count";
-            private const string CONFIG_MSPCS_ENTRY = "{0:000}";
-
-            /// <summary>
-            /// Player Model &amp; Skin &amp; Props custom sets
-            /// </summary>
-            public static List<MSPCustomSet> Items = null;
-
-            /// <summary>
-            /// Loads player model &amp; skin &amp; props custom sets
-            /// </summary>
-            public static void LoadMSPCustomSets()
-            {
-                Items = new List<MSPCustomSet>();
-                if (!File.Exists(CONFIG_FILE_MSPCS)) return;
-
-                IniFile ini = new IniFile(CONFIG_FILE_MSPCS);
-
-                int count = 0; if (!int.TryParse(ini.GetValue(CONFIG_MSPCS, CONFIG_MSPCS_COUNT), out count)) count = 0;
-                if (count == 0) return;
-
-                Items.Capacity = count;
-
-                for (int i = 1; i <= count; i++)
-                {
-                    MSPCustomSet set = MSPCustomSet.Deserialize(ini.GetValue(CONFIG_MSPCS, Utils.FormatML(CONFIG_MSPCS_ENTRY, i)));
-                    if (set != null) Items.Add(set);
-                }
-
-                Items.Sort();
-            }
-
-            /// <summary>
-            /// Saves player model &amp; skin &amp; props custom sets
-            /// </summary>
-            public static void SaveMSPCustomSets()
-            {
-                if (File.Exists(CONFIG_FILE_MSPCS)) File.Delete(CONFIG_FILE_MSPCS);
-                if (Items == null || Items.Count == 0) return;
-
-                IniFile ini = new IniFile(CONFIG_FILE_MSPCS);
-
-                ini.SetValue(CONFIG_MSPCS, CONFIG_MSPCS_COUNT, Items.Count.ToString());
-                for (int i = 1; i <= Items.Count; i++)
-                {
-                    MSPCustomSet set = Items[i - 1];
-                    ini.SetValue(CONFIG_MSPCS, Utils.FormatML(CONFIG_MSPCS_ENTRY, i), set.Serialize());
-                }
-
-                ini.Save();
-            }
-        }
-    
         /// <summary>
         /// Location configurations
         /// </summary>
@@ -475,64 +367,6 @@ namespace BETrainerRdr2
                     if (target != null) Targets.Add(target);
                 }
                 Targets.Sort();
-            }
-        }
-
-        /// <summary>
-        /// Vehicle configurations
-        /// </summary>
-        public static class Vehicle
-        {
-            private const string CONFIG_FILE_CUSTOM_VEHICLES = ".\\scripts\\BETrainerRdr2_CustomVehicles.ini";
-            private const string CONFIG_CV = "CustomVehicles";
-            private const string CONFIG_CV_COUNT = "Count";
-            private const string CONFIG_CV_ITEM = "{0:000}";
-
-            public static List<CustomVehicle> CustomVehicles = null;
-
-            /// <summary>
-            /// Loads all custom vehicles
-            /// </summary>
-            public static void LoadCustomVehicles()
-            {
-                CustomVehicles = new List<CustomVehicle>();
-                if (!File.Exists(CONFIG_FILE_CUSTOM_VEHICLES)) return;
-
-                IniFile ini = new IniFile(CONFIG_FILE_CUSTOM_VEHICLES);
-                int count = 0; if (!int.TryParse(ini.GetValue(CONFIG_CV, CONFIG_CV_COUNT), out count)) count = 0;
-                if (count <= 0) return;
-
-                CustomVehicles.Capacity = count;
-
-                for (int i = 0; i < count; i++)
-                {
-                    string data = ini.GetValue(CONFIG_CV, Utils.FormatML(CONFIG_CV_ITEM, i + 1));
-                    CustomVehicle cv = CustomVehicle.Deserialize(data);
-                    if (cv != null)
-                    {
-                        CustomVehicles.Add(cv);
-                    }
-                }
-
-                CustomVehicles.Sort();
-            }
-
-            /// <summary>
-            /// Saves all custom vehicles
-            /// </summary>
-            public static void SaveCustomVehicles()
-            {
-                if (File.Exists(CONFIG_FILE_CUSTOM_VEHICLES)) File.Delete(CONFIG_FILE_CUSTOM_VEHICLES);
-                if (CustomVehicles == null || CustomVehicles.Count == 0) return;
-
-                IniFile ini = new IniFile(CONFIG_FILE_CUSTOM_VEHICLES);
-
-                ini.SetValue(CONFIG_CV, CONFIG_CV_COUNT, CustomVehicles.Count.ToString());
-                for (int i = 0; i < CustomVehicles.Count; i++)
-                {
-                    ini.SetValue(CONFIG_CV, Utils.FormatML(CONFIG_CV_ITEM, i + 1), CustomVehicles[i].Serialize());
-                }
-                ini.Save();
             }
         }
     }

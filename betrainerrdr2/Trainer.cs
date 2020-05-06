@@ -138,7 +138,6 @@ namespace BETrainerRdr2
             else if (e.KeyCode == Configuration.InputKey.ToggleMenu)
             {
                 ShowingTrainerMenu = !ShowingTrainerMenu;
-                Menu.MenuStorage.PlayMenuBeep();
             }
 
         }

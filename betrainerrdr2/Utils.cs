@@ -11,12 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using RDR2;
-using RDR2.UI;
 using RDR2.Native;
 using System.Windows.Forms;
-using System.Xml.Serialization;
-using RDR2.Math;
-using System.Collections.Specialized;
 
 namespace BETrainerRdr2
 {
@@ -84,16 +80,6 @@ namespace BETrainerRdr2
             Function.Call(Hash.SET_TEXT_CENTRE, align == GlobalConst.HAlignment.Center);
             Function.Call(Hash.SET_TEXT_DROPSHADOW, shadowOffset, shadowColor.R, shadowColor.G, shadowColor.B, shadowColor.A);
             Function.Call((Hash)GlobalConst.CustomHash.DRAW_TEXT, Function.Call<string>((Hash)GlobalConst.CustomHash.CREATE_STRING, 10, "LITERAL_STRING", ML(text)), (float)x / screenWidth, (float)y / screenHeight);
-        }
-
-        /// <summary>
-        /// Play a sound
-        /// </summary>
-        /// <param name="sound">Sound name</param>
-        /// <param name="soundSet">Sound set name</param>
-        public static void PlaySound(string sound, string soundSet)
-        {
-            //Function.Call(Hash.PLAY_SOUND_FRONTEND, -1, sound, soundSet, 0);
         }
 
         /// <summary>

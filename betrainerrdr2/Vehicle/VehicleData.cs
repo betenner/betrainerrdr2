@@ -9,11 +9,6 @@
 
 using RDR2.Math;
 using RDR2.Native;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BETrainerRdr2.Vehicle
 {

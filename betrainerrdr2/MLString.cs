@@ -30,6 +30,9 @@ namespace BETrainerRdr2
             return new MLString(a);
         }
 
+        /// <summary>
+        /// Static instance of an empty MLString.
+        /// </summary>
         public static readonly MLString Empty = string.Empty;
 
         /// <summary>

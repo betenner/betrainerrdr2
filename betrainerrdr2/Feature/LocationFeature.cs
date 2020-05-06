@@ -8,13 +8,11 @@
 ///////////////////////////////////////////////
 
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using RDR2;
 using RDR2.Native;
 using BETrainerRdr2.Menu;
 using BETrainerRdr2.Teleport;
-using BETrainerRdr2.Weapon;
 
 namespace BETrainerRdr2
 {
@@ -69,7 +67,6 @@ namespace BETrainerRdr2
                     string coord = Utils.FormatML(COORDINATE_FORMAT, Game.Player.Character.Position.X, Game.Player.Character.Position.Y, Game.Player.Character.Position.Z);
                     Utils.DrawText(coord, COORDINATE_POS.X, COORDINATE_POS.Y, COORDINATE_ALIGN, COORDINATE_TEXT_COLOR, COORDINATE_SCALE);
                 }
-                //Debug.Log("Coordinates drawn.");
             }
 
             /// <summary>
@@ -237,12 +234,6 @@ namespace BETrainerRdr2
                 private const float Y_MIN = -4000f;
                 private const float Z_MAX = 1000f;
                 private const float Z_MIN = -200f;
-                private const float GROUND_CHECK_START = 0f;
-                private const float GROUND_CHECK_END = 800f;
-                private const float GROUND_CHECK_STEP = 50f;
-                private const int GROUND_CHECK_WAIT = 100;
-                private const float RANDOM_TP_EXTRA_Z = 1f;
-                private const float PARACHUTE_HEIGHT = 1000f;
 
                 /// <summary>
                 /// Teleports to a random location
@@ -255,31 +246,6 @@ namespace BETrainerRdr2
                     float y = (float)rnd.NextDouble() * (Y_MAX - Y_MIN) + Y_MIN;
 
                     Utils.TeleportWithGroundCheck(new RDR2.Math.Vector3(x, y, 0));
-
-                    //int handle = Game.Player.Character.Handle;
-                    //if (Game.Player.Character.IsInVehicle()) handle = Game.Player.Character.CurrentVehicle.Handle;
-
-                    //bool grounded = false;
-                    //float zz = 0;
-                    //for (float z = GROUND_CHECK_START; z < GROUND_CHECK_END; z += GROUND_CHECK_STEP)
-                    //{
-                    //    Function.Call(Hash.SET_ENTITY_COORDS_NO_OFFSET, handle, x, y, z, 0, 0, 1);
-                    //    Script.Wait(GROUND_CHECK_WAIT);
-                    //    unsafe
-                    //    {
-                    //        if (Function.Call<bool>(Hash.GET_GROUND_Z_FOR_3D_COORD, x, y, z, &zz))
-                    //        {
-                    //            Function.Call(Hash.SET_ENTITY_COORDS_NO_OFFSET, handle, x, y, zz + RANDOM_TP_EXTRA_Z, 0, 0, 1);
-                    //            grounded = true;
-                    //            break;
-                    //        }
-                    //    }
-                    //}
-                    //if (!grounded)
-                    //{
-                    //    Function.Call(Hash.GIVE_DELAYED_WEAPON_TO_PED, Game.Player.Character.Handle, WeaponStorage.PARACHUTE_HASH, 1, false);
-                    //    Game.Player.Character.Position = new RDR2.Math.Vector3(x, y, PARACHUTE_HEIGHT);
-                    //}
                     Utils.ShowNotification(GlobalConst.Message.XYZ_RANDOM_TELEPORTED);
                 }
 
@@ -332,7 +298,7 @@ namespace BETrainerRdr2
                     /// </summary>
                     public static void UpdateXMenuText()
                     {
-                        MenuStorage.MenuItems.Location.XyzTeleporter.Coordinates.X.Text = Utils.FormatML(MenuText.Location.XyzTeleporter.Coordinates.I01_X, _x);
+                        MenuStorage.MenuItems.Location.XyzTeleporter.Coordinates.X.Text = Utils.FormatML(MenuText.Location.XyzTeleporter.Coordinates.X, _x);
                     }
 
                     /// <summary>
@@ -340,7 +306,7 @@ namespace BETrainerRdr2
                     /// </summary>
                     public static void UpdateYMenuText()
                     {
-                        MenuStorage.MenuItems.Location.XyzTeleporter.Coordinates.Y.Text = Utils.FormatML(MenuText.Location.XyzTeleporter.Coordinates.I02_Y, _y);
+                        MenuStorage.MenuItems.Location.XyzTeleporter.Coordinates.Y.Text = Utils.FormatML(MenuText.Location.XyzTeleporter.Coordinates.Y, _y);
                     }
 
                     /// <summary>
@@ -348,7 +314,7 @@ namespace BETrainerRdr2
                     /// </summary>
                     public static void UpdateZMenuText()
                     {
-                        MenuStorage.MenuItems.Location.XyzTeleporter.Coordinates.Z.Text = Utils.FormatML(MenuText.Location.XyzTeleporter.Coordinates.I03_Z, _z);
+                        MenuStorage.MenuItems.Location.XyzTeleporter.Coordinates.Z.Text = Utils.FormatML(MenuText.Location.XyzTeleporter.Coordinates.Z, _z);
                     }
 
                     /// <summary>
@@ -528,7 +494,7 @@ namespace BETrainerRdr2
                     /// </summary>
                     public static void UpdateXMenuText()
                     {
-                        MenuStorage.MenuItems.Location.XyzTeleporter.Offset.X.Text = Utils.FormatML(MenuText.Location.XyzTeleporter.Offset.I01_X, _x);
+                        MenuStorage.MenuItems.Location.XyzTeleporter.Offset.X.Text = Utils.FormatML(MenuText.Location.XyzTeleporter.Offset.X, _x);
                     }
 
                     /// <summary>
@@ -536,7 +502,7 @@ namespace BETrainerRdr2
                     /// </summary>
                     public static void UpdateYMenuText()
                     {
-                        MenuStorage.MenuItems.Location.XyzTeleporter.Offset.Y.Text = Utils.FormatML(MenuText.Location.XyzTeleporter.Offset.I02_Y, _y);
+                        MenuStorage.MenuItems.Location.XyzTeleporter.Offset.Y.Text = Utils.FormatML(MenuText.Location.XyzTeleporter.Offset.Y, _y);
                     }
 
                     /// <summary>
@@ -544,7 +510,7 @@ namespace BETrainerRdr2
                     /// </summary>
                     public static void UpdateZMenuText()
                     {
-                        MenuStorage.MenuItems.Location.XyzTeleporter.Offset.Z.Text = Utils.FormatML(MenuText.Location.XyzTeleporter.Offset.I03_Z, _z);
+                        MenuStorage.MenuItems.Location.XyzTeleporter.Offset.Z.Text = Utils.FormatML(MenuText.Location.XyzTeleporter.Offset.Z, _z);
                     }
 
                     /// <summary>

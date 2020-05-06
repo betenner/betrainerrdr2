@@ -7,12 +7,6 @@
 //             Native Trainer
 ///////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace BETrainerRdr2.Teleport
 {
     /// <summary>
@@ -20,7 +14,6 @@ namespace BETrainerRdr2.Teleport
     /// </summary>
     public class TeleportTarget
     {
-        private MLString _name = null;
         private RDR2.Math.Vector3 _coords;
         private string[] _requiredIPLs = null;
         private string[] _removeIPLs = null;
@@ -28,13 +21,7 @@ namespace BETrainerRdr2.Teleport
         /// <summary>
         /// Name of the target
         /// </summary>
-        public MLString Name
-        {
-            get
-            {
-                return _name;
-            }
-        }
+        public MLString Name { get; } = null;
 
         /// <summary>
         /// Coordinate of the target
@@ -103,7 +90,7 @@ namespace BETrainerRdr2.Teleport
         /// <param name="isLoaded">Is loaded</param>
         public TeleportTarget(MLString name, float x, float y, float z, string[] requiredIPLs = null, string[] removeIPLs = null)
         {
-            _name = name;
+            Name = name;
             _coords = new RDR2.Math.Vector3(x, y, z);
             _requiredIPLs = requiredIPLs;
             _removeIPLs = removeIPLs;

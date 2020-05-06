@@ -7,12 +7,6 @@
 //             Native Trainer
 ///////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace BETrainerRdr2.Menu
 {
     /// <summary>
@@ -25,17 +19,17 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         public static class Main
         {
-            public static readonly MLString I00_TITLE = GlobalConst.TRAINER_NAME + " " + GlobalConst.TRAINER_VERSION;
-            public static readonly MLString I01_PLAYER = Utils.CSML("Player", "玩家");
-            public static readonly MLString I02_LOCATION = Utils.CSML("Location", "地点");
-            public static readonly MLString I03_VEHICLE = Utils.CSML("Vehicle", "载具");
-            public static readonly MLString I04_WEAPON = Utils.CSML("Weapon", "武器");
-            public static readonly MLString I05_DATE_TIME_SPEED = Utils.CSML("Date & Time & Speed", "日期时间与速度");
-            public static readonly MLString I06_WORLD = Utils.CSML("World", "世界");
-            public static readonly MLString I07_WEATHER = Utils.CSML("Weather", "天气");
-            public static readonly MLString I08_MISC = Utils.CSML("Misc", "其他");
-            public static readonly MLString I09_CONFIGURATION = Utils.CSML("Configuration", "配置");
-            public static readonly MLString I10_LANGUAGE = "Language / 语言";
+            public static readonly MLString TITLE = GlobalConst.TRAINER_NAME + " " + GlobalConst.TRAINER_VERSION;
+            public static readonly MLString PLAYER = "Player";
+            public static readonly MLString LOCATION = "Location";
+            public static readonly MLString VEHICLE = "Vehicle";
+            public static readonly MLString WEAPON = "Weapon";
+            public static readonly MLString DATE_TIME_SPEED = "Date & Time & Speed";
+            public static readonly MLString WORLD = "World";
+            public static readonly MLString WEATHER = "Weather";
+            public static readonly MLString MISC = "Misc";
+            public static readonly MLString CONFIGURATION = "Configuration";
+            public static readonly MLString LANGUAGE = "Language";
             public static readonly MLString MODEL = "Model";
         }
 
@@ -68,17 +62,17 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         public static class Player
         {
-            public static readonly MLString I00_TITLE = Utils.CSML("Player Options", "玩家选项");
-            public static readonly MLString I01_MODEL_SKIN_PROPS = Utils.CSML("Model & Skin & Props", "外观");
-            public static readonly MLString I02_WANTED = Utils.CSML("Wanted", "通缉");
-            public static readonly MLString I03_CASH = Utils.CSML("Cash {0}${1:#,0.00}", "现金 {0}${1:#,0.00}");
-            public static readonly MLString I04_HEAL = Utils.CSML("Quick Heal", "快速治疗");
-            public static readonly MLString I05_INVINCIBLE = Utils.CSML("Invincible", "无敌");
-            public static readonly MLString I06_INFINITE_ABILITY = Utils.CSML("Infinite Ability", "无限能力");
-            public static readonly MLString I07_FAST_RUN = Utils.CSML("Fast Run", "快速移动");
-            public static readonly MLString I08_FAST_SWIM = Utils.CSML("Fast Swim", "快速游泳");
-            public static readonly MLString I09_SUPER_JUMP = Utils.CSML("Super Jump", "超级跳");
-            public static readonly MLString I10_NOISELESS = Utils.CSML("Noiseless", "无声模式");
+            public static readonly MLString TITLE = "Player Options";
+            public static readonly MLString MODEL_SKIN_PROPS = "Model & Skin & Props";
+            public static readonly MLString WANTED = "Wanted";
+            public static readonly MLString CASH = "Cash {0}${1:#,0.00}";
+            public static readonly MLString HEAL = "Quick Heal";
+            public static readonly MLString INVINCIBLE = "Invincible";
+            public static readonly MLString INFINITE_ABILITY = "Infinite Ability";
+            public static readonly MLString FAST_RUN = "Fast Run";
+            public static readonly MLString FAST_SWIM = "Fast Swim";
+            public static readonly MLString SUPER_JUMP = "Super Jump";
+            public static readonly MLString NOISELESS = "Noiseless";
             public static readonly MLString INFINITE_STAMINA = "Infinite Stamina";
 
             /// <summary>
@@ -86,13 +80,13 @@ namespace BETrainerRdr2.Menu
             /// </summary>
             public static class Wanted
             {
-                public static readonly MLString I00_TITLE = Utils.CSML("Wanted Options", "通缉选项");
+                public static readonly MLString TITLE = "Wanted Options";
                 public static readonly MLString I001_CLEAR_BOUNTY = new MLString("Clear Bounty");
-                public static readonly MLString I01_NEVER_WANTED = Utils.CSML("Never Wanted", "永不通缉");
-                public static readonly MLString I02_POLICE_IGNORED = Utils.CSML("Police Ignores Me", "被警察忽略");
-                public static readonly MLString I03_EVERYONE_IGNORED = Utils.CSML("Everyone Ignores Me", "被所有人忽略");
-                public static readonly MLString I04_WANTED_UP = Utils.CSML("Wanted Level Up", "提高通缉等级");
-                public static readonly MLString I05_WANTED_DOWN = Utils.CSML("Wanted Level Down", "降低通缉等级");
+                public static readonly MLString NEVER_WANTED = "Never Wanted";
+                public static readonly MLString POLICE_IGNORED = "Police Ignores Me";
+                public static readonly MLString EVERYONE_IGNORED = "Everyone Ignores Me";
+                public static readonly MLString WANTED_UP = "Wanted Level Up";
+                public static readonly MLString WANTED_DOWN = "Wanted Level Down";
             }
 
             /// <summary>
@@ -100,34 +94,34 @@ namespace BETrainerRdr2.Menu
             /// </summary>
             public static class ModelSkinProps
             {
-                public static readonly MLString I00_TITLE = Utils.CSML("Model & Skin & Props", "外观设置");
-                public static readonly MLString I01_CUSTOM_SETS = Utils.CSML("Custom Sets", "自定义方案");
-                public static readonly MLString I02_SET_MODEL = Utils.CSML("Set Model", "设置模型");
-                public static readonly MLString I03_SET_SKIN = Utils.CSML("Set Skin", "设置皮肤");
-                public static readonly MLString I04_SET_PROPS = Utils.CSML("Set Props", "设置饰品");
-                public static readonly MLString I05_RANDOM_MODEL = Utils.CSML("Random Model", "随机模型");
-                public static readonly MLString I06_RANDOM_SKIN = Utils.CSML("Random Skin", "随机皮肤");
-                public static readonly MLString I07_RANDOM_PROPS = Utils.CSML("Random Props", "随机饰品");
-                public static readonly MLString I08_RESET_SKIN = Utils.CSML("Reset Skin", "重置皮肤");
-                public static readonly MLString I09_CLEAR_PROPS = Utils.CSML("Clear Props", "清除饰品");
+                public static readonly MLString TITLE = "Model & Skin & Props";
+                public static readonly MLString CUSTOM_SETS = "Custom Sets";
+                public static readonly MLString SET_MODEL = "Set Model";
+                public static readonly MLString SET_SKIN = "Set Skin";
+                public static readonly MLString SET_PROPS = "Set Props";
+                public static readonly MLString RANDOM_MODEL = "Random Model";
+                public static readonly MLString RANDOM_SKIN = "Random Skin";
+                public static readonly MLString RANDOM_PROPS = "Random Props";
+                public static readonly MLString RESET_SKIN = "Reset Skin";
+                public static readonly MLString CLEAR_PROPS = "Clear Props";
 
                 /// <summary>
                 /// Custom sets menu
                 /// </summary>
                 public static class CustomSet
                 {
-                    public static readonly MLString I00_TITLE = Utils.CSML("Custom Sets", "自定义方案");
-                    public static readonly MLString I01_CREATE = Utils.CSML("Create New Set", "创建新方案");
+                    public static readonly MLString TITLE = "Custom Sets";
+                    public static readonly MLString CREATE = "Create New Set";
 
                     /// <summary>
                     /// Item menu
                     /// </summary>
                     public static class Item
                     {
-                        public static readonly MLString I01_APPLY = Utils.CSML("Apply", "应用");
-                        public static readonly MLString I02_RENAME = Utils.CSML("Rename", "重命名");
-                        public static readonly MLString I03_OVERWRITE = Utils.CSML("Overwrite with Current", "用当前外观覆盖");
-                        public static readonly MLString I04_DELETE = Utils.CSML("Delete", "删除");
+                        public static readonly MLString APPLY = "Apply";
+                        public static readonly MLString RENAME = "Rename";
+                        public static readonly MLString OVERWRITE = "Overwrite with Current";
+                        public static readonly MLString DELETE = "Delete";
                     }
                 }
 
@@ -136,20 +130,20 @@ namespace BETrainerRdr2.Menu
                 /// </summary>
                 public static class ModelSelector
                 {
-                    public static readonly MLString I00_TITLE = Utils.CSML("Model Selector", "模型选择");
-                    public static readonly MLString I01_MICHAEL = Utils.CSML("Michael", "麦可");
-                    public static readonly MLString I02_FRANKLIN = Utils.CSML("Franklin", "富兰克林");
-                    public static readonly MLString I03_TREVOR = Utils.CSML("Trevor", "崔佛");
-                    public static readonly MLString I04_ANIMALS = Utils.CSML("Animals", "动物");
-                    public static readonly MLString I05_NPCS = Utils.CSML("NPCs", "人物");
-                    public static readonly MLString I06_RANDOM = Utils.CSML("Random", "随机");
+                    public static readonly MLString TITLE = "Model Selector";
+                    public static readonly MLString MICHAEL = "Michael";
+                    public static readonly MLString FRANKLIN = "Franklin";
+                    public static readonly MLString TREVOR = "Trevor";
+                    public static readonly MLString ANIMALS = "Animals";
+                    public static readonly MLString NPCS = "NPCs";
+                    public static readonly MLString RANDOM = "Random";
 
                     /// <summary>
                     /// Model selector animals menu
                     /// </summary>
                     public static class Animals
                     {
-                        public static readonly MLString I00_TITLE = Utils.CSML("Model Selector - Animals", "模型选择 - 动物");
+                        public static readonly MLString TITLE = "Model Selector - Animals";
                     }
 
                     /// <summary>
@@ -157,7 +151,7 @@ namespace BETrainerRdr2.Menu
                     /// </summary>
                     public static class NPCs
                     {
-                        public static readonly MLString I00_TITLE = Utils.CSML("Model Selector - NPCs", "模型选择 - 人物");
+                        public static readonly MLString TITLE = "Model Selector - NPCs";
                     }
                 }
 
@@ -166,25 +160,25 @@ namespace BETrainerRdr2.Menu
                 /// </summary>
                 public static class SkinCategories
                 {
-                    public static readonly MLString I00_TITLE = Utils.CSML("Skin Categories", "皮肤类别");
-                    public static readonly MLString I01_SLOT = Utils.CSML("Slot {0}: {1} ({2})", "位置 {0}: {1} ({2})");
-                    public static readonly MLString I02_NO_AVAILABLE_SLOT = Utils.CSML("No Available Slot", "没有可用的位置");
+                    public static readonly MLString TITLE = "Skin Categories";
+                    public static readonly MLString SLOT = "Slot {0}: {1} ({2})";
+                    public static readonly MLString NO_AVAILABLE_SLOT = "No Available Slot";
 
                     /// <summary>
                     /// Drawable selector menu
                     /// </summary>
                     public static class DrawableSelector
                     {
-                        public static readonly MLString I00_TITLE = Utils.CSML("Drawable Selector", "样式选择");
-                        public static readonly MLString I01_DRAWABLE = Utils.CSML("Drawable #{0} ({1})", "样式 #{0} ({1})");
+                        public static readonly MLString TITLE = "Drawable Selector";
+                        public static readonly MLString DRAWABLE = "Drawable #{0} ({1})";
 
                         /// <summary>
                         /// Texture selector menu
                         /// </summary>
                         public static class TextureSelector
                         {
-                            public static readonly MLString I00_TITLE = Utils.CSML("Texture Selector", "纹理选择");
-                            public static readonly MLString I01_TEXTURE = Utils.CSML("Texture #{0}", "纹理 #{0}");
+                            public static readonly MLString TITLE = "Texture Selector";
+                            public static readonly MLString TEXTURE = "Texture #{0}";
                         }
                     }
                 }
@@ -194,26 +188,26 @@ namespace BETrainerRdr2.Menu
                 /// </summary>
                 public static class PropCategories
                 {
-                    public static readonly MLString I00_TITLE = Utils.CSML("Prop Categories", "饰品类别");
-                    public static readonly MLString I01_SLOT = Utils.CSML("Slot {0}: {1} ({2})", "位置 {0}: {1} ({2})");
-                    public static readonly MLString I02_NO_AVAILABLE_SLOT = Utils.CSML("No Available Slot", "没有可用的位置");
+                    public static readonly MLString TITLE = "Prop Categories";
+                    public static readonly MLString SLOT = "Slot {0}: {1} ({2})";
+                    public static readonly MLString NO_AVAILABLE_SLOT = "No Available Slot";
 
                     /// <summary>
                     /// Drawable selector menu
                     /// </summary>
                     public static class PropsSelector
                     {
-                        public static readonly MLString I00_TITLE = Utils.CSML("Prop Selector", "饰品选择");
-                        public static readonly MLString I01_NOTHING = Utils.CSML("Nothing", "无");
-                        public static readonly MLString I02_PROP = Utils.CSML("Prop #{0} ({1})", "饰品 #{0} ({1})");
+                        public static readonly MLString TITLE = "Prop Selector";
+                        public static readonly MLString NOTHING = "Nothing";
+                        public static readonly MLString PROP = "Prop #{0} ({1})";
 
                         /// <summary>
                         /// Texture selector menu
                         /// </summary>
                         public static class TextureSelector
                         {
-                            public static readonly MLString I00_TITLE = Utils.CSML("Texture Selector", "纹理选择");
-                            public static readonly MLString I01_TEXTURE = Utils.CSML("Texture #{0}", "纹理 #{0}");
+                            public static readonly MLString TITLE = "Texture Selector";
+                            public static readonly MLString TEXTURE = "Texture #{0}";
                         }
                     }
                 }
@@ -226,28 +220,28 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         public static class Location
         {
-            public static readonly MLString I00_TITLE = Utils.CSML("Location Options", "地点选项");
-            public static readonly MLString I01_LOCATION_TELEPORTER = Utils.CSML("Location Teleporter", "预设地点传送");
-            public static readonly MLString I02_CUSTOM_LOCATION_TELEPORTER = Utils.CSML("Custom Location Teleporter", "自定义地点传送");
-            public static readonly MLString I03_XYZ_TELEPORTER = Utils.CSML("XYZ Teleporter", "坐标传送");
-            public static readonly MLString I04_SHOW_COORDINATE = Utils.CSML("Show Coordinates", "显示坐标");
+            public static readonly MLString TITLE = "Location Options";
+            public static readonly MLString LOCATION_TELEPORTER = "Location Teleporter";
+            public static readonly MLString CUSTOM_LOCATION_TELEPORTER = "Custom Location Teleporter";
+            public static readonly MLString XYZ_TELEPORTER = "XYZ Teleporter";
+            public static readonly MLString SHOW_COORDINATE = "Show Coordinates";
 
             /// <summary>
             /// Location teleporter menu
             /// </summary>
             public static class LocationTeleporter
             {
-                public static readonly MLString I00_TITLE = Utils.CSML("Location Teleporter", "预设地点传送");
-                public static readonly MLString I01_MAP_MARKER = Utils.CSML("Map Marker", "地图标记");
-                public static readonly MLString I02_MAP_LOCATIONS = Utils.CSML("Map Locations", "地图位置");
-                public static readonly MLString I03_LANDMARKS = Utils.CSML("Landmarks", "地标建筑");
-                public static readonly MLString I04_ROOF_HIGH = Utils.CSML("Roof & High Places", "至高点");
-                public static readonly MLString I05_UNDERWATER = Utils.CSML("Underwater Places", "水下");
-                public static readonly MLString I06_INTERIORS = Utils.CSML("Interiors", "室内");
-                public static readonly MLString I07_SPECIALS = Utils.CSML("Special Places", "特殊地点");
-                public static readonly MLString I08_STUNT_JUMPS = Utils.CSML("Stunt Jumps", "飞车跳跃点");
-                public static readonly MLString I09_SPACESHIP_PARTS = Utils.CSML("Spaceship Parts", "外星飞船碎片");
-                public static readonly MLString I10_LETTER_SCRAPS = Utils.CSML("Letter Scraps", "信件碎片");
+                public static readonly MLString TITLE = "Location Teleporter";
+                public static readonly MLString MAP_MARKER = "Map Marker";
+                public static readonly MLString MAP_LOCATIONS = "Map Locations";
+                public static readonly MLString LANDMARKS = "Landmarks";
+                public static readonly MLString ROOF_HIGH = "Roof & High Places";
+                public static readonly MLString UNDERWATER = "Underwater Places";
+                public static readonly MLString INTERIORS = "Interiors";
+                public static readonly MLString SPECIALS = "Special Places";
+                public static readonly MLString STUNT_JUMPS = "Stunt Jumps";
+                public static readonly MLString SPACESHIP_PARTS = "Spaceship Parts";
+                public static readonly MLString LETTER_SCRAPS = "Letter Scraps";
             }
 
             /// <summary>
@@ -255,18 +249,18 @@ namespace BETrainerRdr2.Menu
             /// </summary>
             public static class CustomLocationTeleporter
             {
-                public static readonly MLString I00_TITLE = Utils.CSML("Custom Location Teleporter", "自定义地点传送");
-                public static readonly MLString I01_SAVE = Utils.CSML("Save Current Location", "保存当前地点");
+                public static readonly MLString TITLE = "Custom Location Teleporter";
+                public static readonly MLString SAVE = "Save Current Location";
 
                 /// <summary>
                 /// Custom loactoin teleporter item menu
                 /// </summary>
                 public static class Item
                 {
-                    public static readonly MLString I01_TELEPORT = Utils.CSML("Teleport", "传送");
-                    public static readonly MLString I02_RENAME = Utils.CSML("Rename", "重命名");
-                    public static readonly MLString I03_OVERWRITE = Utils.CSML("Overwrite With Current Location", "使用当前地点覆盖");
-                    public static readonly MLString I04_DELETE = Utils.CSML("Delete", "删除");
+                    public static readonly MLString TELEPORT = "Teleport";
+                    public static readonly MLString RENAME = "Rename";
+                    public static readonly MLString OVERWRITE = "Overwrite With Current Location";
+                    public static readonly MLString DELETE = "Delete";
                 }
             }
 
@@ -275,22 +269,22 @@ namespace BETrainerRdr2.Menu
             /// </summary>
             public static class XyzTeleporter
             {
-                public static readonly MLString I00_TITLE = Utils.CSML("XYZ Teleporter", "坐标传送");
-                public static readonly MLString I01_OFFSET = Utils.CSML("Teleport by Offsets", "偏移量传送");
-                public static readonly MLString I02_COORDINATES = Utils.CSML("Teleport to Coordinates", "传送到指定坐标");
-                public static readonly MLString I03_RANDOM = Utils.CSML("Teleport to Random Location", "传送到随机地点");
+                public static readonly MLString TITLE = "XYZ Teleporter";
+                public static readonly MLString OFFSET = "Teleport by Offsets";
+                public static readonly MLString COORDINATES = "Teleport to Coordinates";
+                public static readonly MLString RANDOM = "Teleport to Random Location";
 
                 /// <summary>
                 /// Teleport by Offsets menu
                 /// </summary>
                 public static class Offset
                 {
-                    public static readonly MLString I00_TITLE = Utils.CSML("Teleport by Offsets", "偏移量传送");
-                    public static readonly MLString I01_X = "X: {0:#0.000000}";
-                    public static readonly MLString I02_Y = "Y: {0:#0.000000}";
-                    public static readonly MLString I03_Z = "Z: {0:#0.000000}";
-                    public static readonly MLString I04_RESET = Utils.CSML("Reset", "重置");
-                    public static readonly MLString I05_TELEPORT = Utils.CSML("Teleport", "传送");
+                    public static readonly MLString TITLE = "Teleport by Offsets";
+                    public static readonly MLString X = "X: {0:#0.000000}";
+                    public static readonly MLString Y = "Y: {0:#0.000000}";
+                    public static readonly MLString Z = "Z: {0:#0.000000}";
+                    public static readonly MLString RESET = "Reset";
+                    public static readonly MLString TELEPORT = "Teleport";
                 }
 
                 /// <summary>
@@ -298,12 +292,12 @@ namespace BETrainerRdr2.Menu
                 /// </summary>
                 public static class Coordinates
                 {
-                    public static readonly MLString I00_TITLE = Utils.CSML("Ttleport to Coordinates", "传送到指定坐标");
-                    public static readonly MLString I01_X = "X: {0:#0.000000}";
-                    public static readonly MLString I02_Y = "Y: {0:#0.000000}";
-                    public static readonly MLString I03_Z = "Z: {0:#0.000000}";
-                    public static readonly MLString I04_RESET = Utils.CSML("Reset to Current Location", "重置为当前坐标");
-                    public static readonly MLString I05_TELEPORT = Utils.CSML("Teleport", "传送");
+                    public static readonly MLString TITLE = "Ttleport to Coordinates";
+                    public static readonly MLString X = "X: {0:#0.000000}";
+                    public static readonly MLString Y = "Y: {0:#0.000000}";
+                    public static readonly MLString Z = "Z: {0:#0.000000}";
+                    public static readonly MLString RESET = "Reset to Current Location";
+                    public static readonly MLString TELEPORT = "Teleport";
                 }
             }
         }
@@ -313,31 +307,31 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         public static class Vehicle
         {
-            public static readonly MLString I00_TITLE = Utils.CSML("Vehicle Options", "载具选项");
-            public static readonly MLString I01_SPAWN = Utils.CSML("Spawn Vehicle", "生成载具");
-            public static readonly MLString I02_CUSTOM = Utils.CSML("Custom Vehicles", "自定义载具");
-            public static readonly MLString I03_PAINT = Utils.CSML("Paints", "喷漆");
-            public static readonly MLString I04_MODS = Utils.CSML("Modifications", "改装");
-            public static readonly MLString I05_DOORS = Utils.CSML("Door Control", "门控制");
-            public static readonly MLString I06_SPEED_METER = Utils.CSML("Speed Meter", "速度表");
-            public static readonly MLString I07_REPAIR = Utils.CSML("Repair Vehicle", "修理载具");
-            public static readonly MLString I08_CLEAN = Utils.CSML("Clean Vehicle", "清洁载具");
-            public static readonly MLString I09_INVINCIBLE = Utils.CSML("Invincible", "无敌");
-            public static readonly MLString I091_INFINITE_STAMINA = Utils.CSML("Infinite Stamina", "无限耐力");
-            public static readonly MLString I10_SEAT_BELT = Utils.CSML("Seat Belt", "安全带");
-            public static readonly MLString I11_SPAWN_INTO = Utils.CSML("Spawn into Vehicle", "生成载具时直接驾驶");
-            public static readonly MLString I12_VEHICLE_BOOST = Utils.CSML("Vehicle Boost", "载具加速");
+            public static readonly MLString TITLE = "Vehicle Options";
+            public static readonly MLString SPAWN = "Spawn Vehicle";
+            public static readonly MLString CUSTOM = "Custom Vehicles";
+            public static readonly MLString PAINT = "Paints";
+            public static readonly MLString MODS = "Modifications";
+            public static readonly MLString DOORS = "Door Control";
+            public static readonly MLString SPEED_METER = "Speed Meter";
+            public static readonly MLString REPAIR = "Repair Vehicle";
+            public static readonly MLString CLEAN = "Clean Vehicle";
+            public static readonly MLString INVINCIBLE = "Invincible";
+            public static readonly MLString I091_INFINITE_STAMINA = "Infinite Stamina";
+            public static readonly MLString SEAT_BELT = "Seat Belt";
+            public static readonly MLString SPAWN_INTO = "Spawn into Vehicle";
+            public static readonly MLString VEHICLE_BOOST = "Vehicle Boost";
 
             /// <summary>
             /// Vehicle boost menu
             /// </summary>
             public static class VehicleBoost
             {
-                public static readonly MLString I00_TITLE = Utils.CSML("Vehicle Boost", "载具加速");
-                public static readonly MLString I01_BOOST_PROGRESSIVE = Utils.CSML("Progressive Boost", "渐进加速");
-                public static readonly MLString I02_BOOST_PROGRESSIVE_SPEED_INC = Utils.CSML("Progressive Boost Speed Increment: {0:#0.00}m/s ({1:#0.0}km/h, {2:#0.0}mph)", "渐进加速倍率: {0:#0}m/s ({1:#0.0}km/h, {2:#0.0}mph)");
-                public static readonly MLString I03_BOOST_INSTANT = Utils.CSML("Instant Boost", "瞬间加速");
-                public static readonly MLString I04_BOOST_INSTANT_SPEED = Utils.CSML("Instant Boost Speed: {0:#0}m/s ({1:#0.0}km/h, {2:#0.0}mph)", "瞬间加速速度: {0:#0}m/s ({1:#0.0}km/h, {2:#0.0}mph)");
+                public static readonly MLString TITLE = "Vehicle Boost";
+                public static readonly MLString BOOST_PROGRESSIVE = "Progressive Boost";
+                public static readonly MLString BOOST_PROGRESSIVE_SPEED_INC = "Progressive Boost Speed Increment: {0:#0.00}m/s ({1:#0.0}km/h, {2:#0.0}mph)";
+                public static readonly MLString BOOST_INSTANT = "Instant Boost";
+                public static readonly MLString BOOST_INSTANT_SPEED = "Instant Boost Speed: {0:#0}m/s ({1:#0.0}km/h, {2:#0.0}mph)";
             }
 
             /// <summary>
@@ -345,7 +339,7 @@ namespace BETrainerRdr2.Menu
             /// </summary>
             public static class Spawn
             {
-                public static readonly MLString I00_TITLE = Utils.CSML("Spawn Vehicle", "生成载具");
+                public static readonly MLString TITLE = "Spawn Vehicle";
                 public static readonly MLString BOAT = "Boat";
                 public static readonly MLString TRAIN = "Train";
                 public static readonly MLString WAGON = "Wagon";
@@ -359,20 +353,20 @@ namespace BETrainerRdr2.Menu
             /// </summary>
             public static class CustomVehicle
             {
-                public static readonly MLString I00_TITLE = Utils.CSML("Custom Vehicle Options", "自定义载具");
-                public static readonly MLString I01_SAVE = Utils.CSML("Save Current Vehicle", "保存当前载具");
-                public static readonly MLString I02_ITEM = "[{0}]";
+                public static readonly MLString TITLE = "Custom Vehicle Options";
+                public static readonly MLString SAVE = "Save Current Vehicle";
+                public static readonly MLString ITEM = "[{0}]";
 
                 /// <summary>
                 /// Item menu
                 /// </summary>
                 public static class Item
                 {
-                    public static readonly MLString I00_TITLE = "[{0}]";
-                    public static readonly MLString I01_SPAWN = Utils.CSML("Spawn", "生成");
-                    public static readonly MLString I02_RENAME = Utils.CSML("Rename", "重命名");
-                    public static readonly MLString I03_OVERWRITE = Utils.CSML("Overwrite With Current Vehicle", "使用当前载具覆盖");
-                    public static readonly MLString I04_DELETE = Utils.CSML("Delete", "删除");
+                    public static readonly MLString TITLE = "[{0}]";
+                    public static readonly MLString SPAWN = "Spawn";
+                    public static readonly MLString RENAME = "Rename";
+                    public static readonly MLString OVERWRITE = "Overwrite With Current Vehicle";
+                    public static readonly MLString DELETE = "Delete";
                 }
             }
 
@@ -381,23 +375,23 @@ namespace BETrainerRdr2.Menu
             /// </summary>
             public static class Paint
             {
-                public static readonly MLString I00_TITLE = Utils.CSML("Choose a Part to Paint", "选择要喷漆的部位");
-                public static readonly MLString I01_PRIMARY = Utils.CSML("Primary Color", "主颜色");
-                public static readonly MLString I02_SECONDARY = Utils.CSML("Secondary Color", "副颜色");
-                public static readonly MLString I03_PEARL_TOPCOAT = Utils.CSML("Pearl Topcoat", "高亮层");
-                public static readonly MLString I04_WHEELS = Utils.CSML("Wheels", "轮子");
-                public static readonly MLString I05_LIVERY = Utils.CSML("Liveries ({0})", "车身图案 ({0})");
+                public static readonly MLString TITLE = "Choose a Part to Paint";
+                public static readonly MLString PRIMARY = "Primary Color";
+                public static readonly MLString SECONDARY = "Secondary Color";
+                public static readonly MLString PEARL_TOPCOAT = "Pearl Topcoat";
+                public static readonly MLString WHEELS = "Wheels";
+                public static readonly MLString LIVERY = "Liveries ({0})";
 
-                public static readonly MLString CHOOSE_PAINT_TYPE = Utils.CSML("Choose Paint Type", "选择喷漆类型");
-                public static readonly MLString CHOOSE_COLOR = Utils.CSML("Choose Color", "选择颜色");
+                public static readonly MLString CHOOSE_PAINT_TYPE = "Choose Paint Type";
+                public static readonly MLString CHOOSE_COLOR = "Choose Color";
 
                 /// <summary>
                 /// Livery menu
                 /// </summary>
                 public static class Livery
                 {
-                    public static readonly MLString I00_TITLE = Utils.CSML("Choose Livery", "选择图案");
-                    public static readonly MLString I01_ITEM = Utils.CSML("Livery #{0}", "图案 #{0}");
+                    public static readonly MLString TITLE = "Choose Livery";
+                    public static readonly MLString ITEM = "Livery #{0}";
                 }
             }
 
@@ -406,22 +400,22 @@ namespace BETrainerRdr2.Menu
             /// </summary>
             public static class Mod
             {
-                public static readonly MLString I00_TITLE = Utils.CSML("Vehicle Mod Options", "载具改装选项");
-                public static readonly MLString I01_ALL_PERFORMANCE = Utils.CSML("Applies All Performance Upgrades", "升级所有性能改装");
-                public static readonly MLString I02_ALL_ARMOR = Utils.CSML("Applies All Armor Upgrades", "升级所有护甲改装");
-                public static readonly MLString I03_REMOVE_ALL = Utils.CSML("Removes All Upgrades", "移除所有升级改装");
+                public static readonly MLString TITLE = "Vehicle Mod Options";
+                public static readonly MLString ALL_PERFORMANCE = "Applies All Performance Upgrades";
+                public static readonly MLString ALL_ARMOR = "Applies All Armor Upgrades";
+                public static readonly MLString REMOVE_ALL = "Removes All Upgrades";
 
                 public static readonly MLString FORMAT_MOD_CATEGORY = "{0} ({1})";
-                public static readonly MLString TURBO_TUNING = Utils.CSML("Turbo Tuning", "涡轮调教");
-                public static readonly MLString TURBO_XEON_LIGHTS = Utils.CSML("Turbo Xeon Lights", "高亮氙灯");
-                public static readonly MLString BULLETPROOF_TYRES = Utils.CSML("Bulletproof Tyres", "防弹轮胎");
-                public static readonly MLString CUSTOM_TYRES = Utils.CSML("Custom Tyres", "自定义轮胎");
-                public static readonly MLString EXTRA = Utils.CSML("Extra #{0}", "配件 #{0}");
-                public static readonly MLString SET_PLATE_TEXT = Utils.CSML("Set Plate Text", "设置车牌号");
-                public static readonly MLString NO_AVAILABLE_MOD = Utils.CSML("No Available Mod for this Vehicle", "该载具没有可用的改装");
-                public static readonly MLString DEFAULT_WHEEL = Utils.CSML("Set to Default Wheel", "设为默认轮胎");
-                public static readonly MLString DEFAULT = Utils.CSML("Default", "默认");
-                public static readonly MLString MOD_ITEM = Utils.CSML("{0} Item #{1}", "{0} 物品 #{1}");
+                public static readonly MLString TURBO_TUNING = "Turbo Tuning";
+                public static readonly MLString TURBO_XEON_LIGHTS = "Turbo Xeon Lights";
+                public static readonly MLString BULLETPROOF_TYRES = "Bulletproof Tyres";
+                public static readonly MLString CUSTOM_TYRES = "Custom Tyres";
+                public static readonly MLString EXTRA = "Extra #{0}";
+                public static readonly MLString SET_PLATE_TEXT = "Set Plate Text";
+                public static readonly MLString NO_AVAILABLE_MOD = "No Available Mod for this Vehicle";
+                public static readonly MLString DEFAULT_WHEEL = "Set to Default Wheel";
+                public static readonly MLString DEFAULT = "Default";
+                public static readonly MLString MOD_ITEM = "{0} Item #{1}";
             }
 
             /// <summary>
@@ -429,10 +423,10 @@ namespace BETrainerRdr2.Menu
             /// </summary>
             public static class SpeedMeter
             {
-                public static readonly MLString I00_TITLE = Utils.CSML("Speed Meter Options", "速度表选项");
-                public static readonly MLString I01_SHOW = Utils.CSML("Show Speed Meter", "显示速度表");
-                public static readonly MLString I02_SHOW_IN_METRIC = Utils.CSML("Show in Metric", "使用公制显示");
-                public static readonly MLString I03_SHOW_WITHOUT_VEHICLE = Utils.CSML("Show Without Vehicle", "不在载具内时显示");
+                public static readonly MLString TITLE = "Speed Meter Options";
+                public static readonly MLString SHOW = "Show Speed Meter";
+                public static readonly MLString SHOW_IN_METRIC = "Show in Metric";
+                public static readonly MLString SHOW_WITHOUT_VEHICLE = "Show Without Vehicle";
             }
 
             /// <summary>
@@ -440,15 +434,15 @@ namespace BETrainerRdr2.Menu
             /// </summary>
             public static class Door
             {
-                public static readonly MLString I00_TITLE = Utils.CSML("Door Control", "门控制");
-                public static readonly MLString I01_INSTANT_OPEN_CLOSE = Utils.CSML("Instant Open/Close", "瞬间打开/关闭");
-                public static readonly MLString I02_FRONT_RIGHT = Utils.CSML("Front Right", "右前门");
-                public static readonly MLString I03_FRONT_LEFT = Utils.CSML("Front Left", "左前门");
-                public static readonly MLString I04_REAR_RIGHT = Utils.CSML("Rear Right", "右后门");
-                public static readonly MLString I05_REAR_LEFT = Utils.CSML("Rear Left", "左后门");
-                public static readonly MLString I06_HOOD = Utils.CSML("Hood", "引擎盖");
-                public static readonly MLString I07_TRUNK = Utils.CSML("Trunk", "后备箱");
-                public static readonly MLString I08_TRUNK2 = Utils.CSML("Trunk 2", "后备箱2");
+                public static readonly MLString TITLE = "Door Control";
+                public static readonly MLString INSTANT_OPEN_CLOSE = "Instant Open/Close";
+                public static readonly MLString FRONT_RIGHT = "Front Right";
+                public static readonly MLString FRONT_LEFT = "Front Left";
+                public static readonly MLString REAR_RIGHT = "Rear Right";
+                public static readonly MLString REAR_LEFT = "Rear Left";
+                public static readonly MLString HOOD = "Hood";
+                public static readonly MLString TRUNK = "Trunk";
+                public static readonly MLString TRUNK2 = "Trunk 2";
             }
         }
 
@@ -457,16 +451,16 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         public static class Weapon
         {
-            public static readonly MLString I00_TITLE = Utils.CSML("Weapon Options", "武器选项");
-            public static readonly MLString I01_GET_ALL_WEAPONS = Utils.CSML("Get All Weapons", "获取所有武器");
-            public static readonly MLString I02_GET_SPECIFIC_WEAPON = Utils.CSML("Get Specific Weapon", "获取指定武器");
-            public static readonly MLString I03_INFINITE_AMMO = Utils.CSML("Infinite Ammo", "无限弹药");
-            public static readonly MLString I04_PERMANENT_PARACHUTE = Utils.CSML("Permanent Parachute", "永久降落伞");
-            public static readonly MLString I05_NO_RELOAD = Utils.CSML("No Reload", "无需装弹");
-            public static readonly MLString I06_FIRE_AMMO = Utils.CSML("Fire Ammo", "火焰子弹");
-            public static readonly MLString I07_EXPLOSIVE_AMMO = Utils.CSML("Explosive Ammo", "爆炸子弹");
-            public static readonly MLString I08_EXPLOSIVE_MELEE = Utils.CSML("Explosive Melee", "爆炸近战");
-            public static readonly MLString I09_VEHICLE_ROCKETS = Utils.CSML("Vehicle Rockets", "载具火箭弹");
+            public static readonly MLString TITLE = "Weapon Options";
+            public static readonly MLString GET_ALL_WEAPONS = "Get All Weapons";
+            public static readonly MLString GET_SPECIFIC_WEAPON = "Get Specific Weapon";
+            public static readonly MLString INFINITE_AMMO = "Infinite Ammo";
+            public static readonly MLString PERMANENT_PARACHUTE = "Permanent Parachute";
+            public static readonly MLString NO_RELOAD = "No Reload";
+            public static readonly MLString FIRE_AMMO = "Fire Ammo";
+            public static readonly MLString EXPLOSIVE_AMMO = "Explosive Ammo";
+            public static readonly MLString EXPLOSIVE_MELEE = "Explosive Melee";
+            public static readonly MLString VEHICLE_ROCKETS = "Vehicle Rockets";
             public static readonly MLString I031_DAMAGE_MULTIPLIER = new MLString("Guns Damage Multiplier: {0:0%}");
 
             /// <summary>
@@ -474,12 +468,12 @@ namespace BETrainerRdr2.Menu
             /// </summary>
             public static class SpecificWeapon
             {
-                public static readonly MLString I00_TITLE = Utils.CSML("Select Weapon", "选择武器");
+                public static readonly MLString TITLE = "Select Weapon";
 
-                public static readonly MLString HAS = Utils.CSML("Has this Weapon", "拥有此武器");
-                public static readonly MLString FILL_AMMO_CLIP = Utils.CSML("Fill Ammo & Clip", "填充弹药");
-                public static readonly MLString TINT = Utils.CSML("Weapon Tint", "武器颜色");
-                public static readonly MLString SELECT_TINT = Utils.CSML("Select Tint", "选择颜色");
+                public static readonly MLString HAS = "Has this Weapon";
+                public static readonly MLString FILL_AMMO_CLIP = "Fill Ammo & Clip";
+                public static readonly MLString TINT = "Weapon Tint";
+                public static readonly MLString SELECT_TINT = "Select Tint";
             }
         }
 
@@ -488,32 +482,32 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         public static class DateTimeSpeed
         {
-            public static readonly MLString I00_TITLE = Utils.CSML("Date & Time & Speed Options", "日期时间与速度选项");
-            public static readonly MLString I01_SET_DATETIME = Utils.CSML("Set Date & Time", "设置日期与时间");
-            public static readonly MLString I02_SET_GAME_SPEED = Utils.CSML("Set Game Speed", "设置游戏速度");
-            public static readonly MLString I03_SET_AIMING_SPEED = Utils.CSML("Set Aiming Speed", "设置瞄准时游戏速度");
-            public static readonly MLString I04_HOUR_FORWARD = Utils.CSML("Hour Forward", "快进一小时");
-            public static readonly MLString I05_HOUR_BACKWARD = Utils.CSML("Hour Backward", "倒退一小时");
-            public static readonly MLString I06_DAY_FORWARD = Utils.CSML("Day Forward", "快进一天");
-            public static readonly MLString I07_DAY_BACKWARD = Utils.CSML("Day Backward", "倒退一天");
-            public static readonly MLString I08_SHOW_TIME = Utils.CSML("Show Time", "显示时间");
-            public static readonly MLString I09_TIME_PAUSED = Utils.CSML("Time Paused", "时间暂停");
-            public static readonly MLString I10_SYNC_WITH_SYSTEM = Utils.CSML("Sync with System", "与系统时间同步");
+            public static readonly MLString TITLE = "Date & Time & Speed Options";
+            public static readonly MLString SET_DATETIME = "Set Date & Time";
+            public static readonly MLString SET_GAME_SPEED = "Set Game Speed";
+            public static readonly MLString SET_AIMING_SPEED = "Set Aiming Speed";
+            public static readonly MLString HOUR_FORWARD = "Hour Forward";
+            public static readonly MLString HOUR_BACKWARD = "Hour Backward";
+            public static readonly MLString DAY_FORWARD = "Day Forward";
+            public static readonly MLString DAY_BACKWARD = "Day Backward";
+            public static readonly MLString SHOW_TIME = "Show Time";
+            public static readonly MLString TIME_PAUSED = "Time Paused";
+            public static readonly MLString SYNC_WITH_SYSTEM = "Sync with System";
 
             /// <summary>
             /// Set date time menu
             /// </summary>
             public static class SetDateTime
             {
-                public static readonly MLString I00_TITLE = Utils.CSML("Set Date & Time", "设置日期与时间");
-                public static readonly MLString I01_YEAR = Utils.CSML("Year: {0:0000}", "年：{0:0000}");
-                public static readonly MLString I02_MONTH = Utils.CSML("Month: {0:00}", "月：{0:00}");
-                public static readonly MLString I03_DAY = Utils.CSML("Day: {0:00}", "日：{0:00}");
-                public static readonly MLString I04_HOUR = Utils.CSML("Hour: {0:00}", "时：{0:00}");
-                public static readonly MLString I05_MINUTE = Utils.CSML("Minute: {0:00}", "分：{0:00}");
-                public static readonly MLString I06_SECOND = Utils.CSML("Second: {0:00}", "秒：{0:00}");
-                public static readonly MLString I07_SET_TO_CURRENT = Utils.CSML("Set to Current", "设置为当前时间");
-                public static readonly MLString I08_SET_TO_SYSTEM = Utils.CSML("Set to System", "设置为系统时间");
+                public static readonly MLString TITLE = "Set Date & Time";
+                public static readonly MLString YEAR = "Year: {0:0000}";
+                public static readonly MLString MONTH = "Month: {0:00}";
+                public static readonly MLString DAY = "Day: {0:00}";
+                public static readonly MLString HOUR = "Hour: {0:00}";
+                public static readonly MLString MINUTE = "Minute: {0:00}";
+                public static readonly MLString SECOND = "Second: {0:00}";
+                public static readonly MLString SET_TO_CURRENT = "Set to Current";
+                public static readonly MLString SET_TO_SYSTEM = "Set to System";
             }
 
             /// <summary>
@@ -521,14 +515,14 @@ namespace BETrainerRdr2.Menu
             /// </summary>
             public static class SetGameSpeed
             {
-                public static readonly MLString I00_TITLE = Utils.CSML("Change Game Speed", "更改游戏速度");
-                public static readonly MLString I01_SPEED = Utils.CSML("Speed: {0:#0%}", "速度：{0:#0%}");
-                public static readonly MLString I02_SET_TO_100 = Utils.CSML("Set to 100%", "设置为100%");
-                public static readonly MLString I03_SET_TO_75 = Utils.CSML("Set to 75%", "设置为75%");
-                public static readonly MLString I04_SET_TO_50 = Utils.CSML("Set to 50%", "设置为50%");
-                public static readonly MLString I05_SET_TO_25 = Utils.CSML("Set to 25%", "设置为25%");
-                public static readonly MLString I06_SET_TO_10 = Utils.CSML("Set to 10%", "设置为10%");
-                public static readonly MLString I07_SET_TO_0 = Utils.CSML("Set to 0%", "设置为0%");
+                public static readonly MLString TITLE = "Change Game Speed";
+                public static readonly MLString SPEED = "Speed: {0:#0%}";
+                public static readonly MLString SET_TO_100 = "Set to 100%";
+                public static readonly MLString SET_TO_75 = "Set to 75%";
+                public static readonly MLString SET_TO_50 = "Set to 50%";
+                public static readonly MLString SET_TO_25 = "Set to 25%";
+                public static readonly MLString SET_TO_10 = "Set to 10%";
+                public static readonly MLString SET_TO_0 = "Set to 0%";
             }
 
             /// <summary>
@@ -536,14 +530,14 @@ namespace BETrainerRdr2.Menu
             /// </summary>
             public static class SetAimingSpeed
             {
-                public static readonly MLString I00_TITLE = Utils.CSML("Change Aiming Speed", "更改瞄准时游戏速度");
-                public static readonly MLString I01_SPEED = Utils.CSML("Speed: {0:#0%}", "速度：{0:#0%}");
-                public static readonly MLString I02_SET_TO_100 = Utils.CSML("Set to 100%", "设置为100%");
-                public static readonly MLString I03_SET_TO_75 = Utils.CSML("Set to 75%", "设置为75%");
-                public static readonly MLString I04_SET_TO_50 = Utils.CSML("Set to 50%", "设置为50%");
-                public static readonly MLString I05_SET_TO_25 = Utils.CSML("Set to 25%", "设置为25%");
-                public static readonly MLString I06_SET_TO_10 = Utils.CSML("Set to 10%", "设置为10%");
-                public static readonly MLString I07_SET_TO_0 = Utils.CSML("Set to 0%", "设置为0%");
+                public static readonly MLString TITLE = "Change Aiming Speed";
+                public static readonly MLString SPEED = "Speed: {0:#0%}";
+                public static readonly MLString SET_TO_100 = "Set to 100%";
+                public static readonly MLString SET_TO_75 = "Set to 75%";
+                public static readonly MLString SET_TO_50 = "Set to 50%";
+                public static readonly MLString SET_TO_25 = "Set to 25%";
+                public static readonly MLString SET_TO_10 = "Set to 10%";
+                public static readonly MLString SET_TO_0 = "Set to 0%";
             }
 
         }
@@ -553,13 +547,13 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         public static class World
         {
-            public static readonly MLString I00_TITLE = Utils.CSML("World Options", "世界选项");
-            public static readonly MLString I01_MOON_GRAVITY = Utils.CSML("Moon Gravity", "月球重力");
-            public static readonly MLString I02_RANDOM_COPS = Utils.CSML("Random Cops", "随机警察");
-            public static readonly MLString I03_RANDOM_TRAINS = Utils.CSML("Random Trains", "随机火车");
-            public static readonly MLString I04_RANDOM_BOATS = Utils.CSML("Random Boats", "随机船只");
-            public static readonly MLString I05_GARBAGE_TRUCKS = Utils.CSML("Garbage Trucks", "随机垃圾车");
-            public static readonly MLString I06_RESTRICTED_ZONES = Utils.CSML("Restricted Zones", "禁区");
+            public static readonly MLString TITLE = "World Options";
+            public static readonly MLString MOON_GRAVITY = "Moon Gravity";
+            public static readonly MLString RANDOM_COPS = "Random Cops";
+            public static readonly MLString RANDOM_TRAINS = "Random Trains";
+            public static readonly MLString RANDOM_BOATS = "Random Boats";
+            public static readonly MLString GARBAGE_TRUCKS = "Garbage Trucks";
+            public static readonly MLString RESTRICTED_ZONES = "Restricted Zones";
         }
 
         /// <summary>
@@ -567,9 +561,9 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         public static class Weather
         {
-            public static readonly MLString I00_TITLE = Utils.CSML("Weather Options", "天气选项");
-            public static readonly MLString I01_WIND = Utils.CSML("Wind", "风");
-            public static readonly MLString I02_FREEZE_WEATHER = Utils.CSML("Freeze Weather", "冻结天气");
+            public static readonly MLString TITLE = "Weather Options";
+            public static readonly MLString WIND = "Wind";
+            public static readonly MLString FREEZE_WEATHER = "Freeze Weather";
         }
 
         /// <summary>
@@ -577,10 +571,10 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         public static class Misc
         {
-            public static readonly MLString I00_TITLE = Utils.CSML("Misc Options", "其他选项");
-            public static readonly MLString I01_PORTABLE_RADIO = Utils.CSML("Portable Radio", "随身广播");
-            public static readonly MLString I02_HIDE_HUD = Utils.CSML("Hide HUD", "隐藏接口");
-            public static readonly MLString I03_NEXT_RADIO_TRACK = Utils.CSML("Next Radio Track", "下一广播");
+            public static readonly MLString TITLE = "Misc Options";
+            public static readonly MLString PORTABLE_RADIO = "Portable Radio";
+            public static readonly MLString HIDE_HUD = "Hide HUD";
+            public static readonly MLString NEXT_RADIO_TRACK = "Next Radio Track";
             public static readonly MLString REVEAL_MAP = new MLString("Reveal Map");
         }
 
@@ -589,10 +583,10 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         public static class Configuration
         {
-            public static readonly MLString I00_TITLE = Utils.CSML("Configuration Options", "配置");
-            public static readonly MLString I01_SAVE = Utils.CSML("Save", "保存");
-            public static readonly MLString I02_LOAD = Utils.CSML("Load", "加载");
-            public static readonly MLString I03_AUTO_SAVE = Utils.CSML("Auto Save", "自动保存");
+            public static readonly MLString TITLE = "Configuration Options";
+            public static readonly MLString SAVE = "Save";
+            public static readonly MLString LOAD = "Load";
+            public static readonly MLString AUTO_SAVE = "Auto Save";
         }
 
         /// <summary>
@@ -600,9 +594,9 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         public static class Language
         {
-            public static readonly MLString I00_TITLE = Utils.CSML("Choose Language", "选择语言");
-            public static readonly MLString I01_ENGLISH = "English";
-            public static readonly MLString I02_CHINESE_TRADITIONAL = "简体中文 (Chinese Simplified)";
+            public static readonly MLString TITLE = "Choose Language";
+            public static readonly MLString ENGLISH = "English";
+            public static readonly MLString CHINESE_TRADITIONAL = "简体中文 (Chinese Simplified)";
         }
     }
 }

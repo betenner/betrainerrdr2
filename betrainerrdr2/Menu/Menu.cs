@@ -7,11 +7,7 @@
 //             Native Trainer
 ///////////////////////////////////////////////
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 
 namespace BETrainerRdr2.Menu
@@ -27,12 +23,12 @@ namespace BETrainerRdr2.Menu
         private const string TOGGLE_BRACE = "[     ]";
 
         // On
-        private static readonly MLString TOGGLE_ON = Utils.CSML(" On", "  開");
+        private static readonly MLString TOGGLE_ON = " On";
         private static readonly Color TOGGLE_ON_COLOR = Color.LightGreen;
         private static readonly Color TOGGLE_ON_COLOR_SELECTED = Color.DarkGreen;
 
         // Off
-        private static readonly MLString TOGGLE_OFF = Utils.CSML(" Off", "  關");
+        private static readonly MLString TOGGLE_OFF = " Off";
         private static readonly Color TOGGLE_OFF_COLOR = Color.Red;
         private static readonly Color TOGGLE_OFF_COLOR_SELECTED = Color.DarkRed;
 
@@ -46,11 +42,6 @@ namespace BETrainerRdr2.Menu
         /// Gets or sets the location of the top-left point of the menu in pixel
         /// </summary>
         public Point Location = new Point(10, 10);
-
-        /// <summary>
-        /// Gets or sets a value indicating whether play a beep sound when moving cursor
-        /// </summary>
-        public bool PlayBeep = true;
 
         /// <summary>
         /// Menu title
@@ -77,23 +68,10 @@ namespace BETrainerRdr2.Menu
         /// </summary>
         public Color TitleBackColor = Color.FromArgb(192, Color.Black);
 
-        // Menu title height in pixel
-        private int _titleHeight = 50;
-
         /// <summary>
         /// Gets or sets the title height
         /// </summary>
-        public int TitleHeight
-        {
-            get
-            {
-                return _titleHeight;
-            }
-            set
-            {
-                _titleHeight = value;
-            }
-        }
+        public int TitleHeight { get; set; } = 50;
 
         /// <summary>
         /// Menu title font
@@ -608,7 +586,6 @@ namespace BETrainerRdr2.Menu
         public void Activate()
         {
             if (SelectedItem != null) SelectedItem.OnActivated();
-            if (PlayBeep) MenuStorage.PlayMenuBeep();
         }
 
         /// <summary>
@@ -623,7 +600,6 @@ namespace BETrainerRdr2.Menu
             if (_selectedIndex > li) _selectedIndex = fi;
             if (oldSelectedIndex != _selectedIndex && SelectedItem != null)
             {
-                if (PlayBeep) MenuStorage.PlayMenuBeep();
                 SelectedItem.OnHighlighted();
             }
         }
@@ -640,7 +616,6 @@ namespace BETrainerRdr2.Menu
             if (_selectedIndex < fi) _selectedIndex = li;
             if (oldSelectedIndex != _selectedIndex && SelectedItem != null)
             {
-                if (PlayBeep) MenuStorage.PlayMenuBeep();
                 SelectedItem.OnHighlighted();
             }
         }
@@ -657,18 +632,15 @@ namespace BETrainerRdr2.Menu
                 if (SelectedItem.SubMenu != null)
                 {
                     SelectedItem.OnActivated();
-                    if (PlayBeep) MenuStorage.PlayMenuBeep();
                 }
                 else if (SelectedItem.FakeSubMenu)
                 {
                     SelectedItem.OnActivated();
-                    if (PlayBeep) MenuStorage.PlayMenuBeep();
                 }
                 return;
             }
             if (++_page > PageCount) _page = 1;
             EnsureSelectedIndexInCurrentPage();
-            if (PlayBeep) MenuStorage.PlayMenuBeep();
         }
 
         /// <summary>
@@ -681,7 +653,6 @@ namespace BETrainerRdr2.Menu
             if (PageCount == 1) return;
             if (--_page < 1) _page = PageCount;
             EnsureSelectedIndexInCurrentPage();
-            if (PlayBeep) MenuStorage.PlayMenuBeep();
         }
 
         // Ensure the current page is valid
@@ -745,7 +716,7 @@ namespace BETrainerRdr2.Menu
         public void Draw()
         {
             // Title
-            Utils.DrawRect(Location.X, Location.Y, _width, _titleHeight, TitleBackColor);
+            Utils.DrawRect(Location.X, Location.Y, _width, TitleHeight, TitleBackColor);
             if (!string.IsNullOrEmpty(Utils.ML(Title)))
             {
                 Utils.DrawText(Title, Location.X + TitleOffset.X, Location.Y + TitleOffset.Y, TitleAlign, TitleTextColor, TitleScale);
@@ -770,11 +741,11 @@ namespace BETrainerRdr2.Menu
                 {
                     if (_selectedIndex == i)
                     {
-                        Utils.DrawText(mi.Text, Location.X + mi.TextOffset.X, Location.Y + _titleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + mi.TextOffset.Y, mi.Align, mi.SelectedTextColor, mi.SelectedScale);
+                        Utils.DrawText(mi.Text, Location.X + mi.TextOffset.X, Location.Y + TitleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + mi.TextOffset.Y, mi.Align, mi.SelectedTextColor, mi.SelectedScale);
                     }
                     else
                     {
-                        Utils.DrawText(mi.Text, Location.X + mi.TextOffset.X, Location.Y + _titleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + mi.TextOffset.Y, mi.Align, mi.TextColor, mi.Scale);
+                        Utils.DrawText(mi.Text, Location.X + mi.TextOffset.X, Location.Y + TitleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + mi.TextOffset.Y, mi.Align, mi.TextColor, mi.Scale);
                     }
                 }
 
@@ -783,13 +754,13 @@ namespace BETrainerRdr2.Menu
                 {
                     if (_selectedIndex == i)
                     {
-                        Utils.DrawText(TOGGLE_BRACE, Location.X + ToggleTextOffset.X, Location.Y + _titleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + ToggleTextOffset.Y, GlobalConst.HAlignment.Left, mi.SelectedTextColor, mi.SelectedScale);
-                        Utils.DrawText((mi.On ? TOGGLE_ON : TOGGLE_OFF), Location.X + ToggleTextOffset.X, Location.Y + _titleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + ToggleTextOffset.Y, GlobalConst.HAlignment.Left, (mi.On ? TOGGLE_ON_COLOR_SELECTED : TOGGLE_OFF_COLOR_SELECTED), mi.SelectedScale);
+                        Utils.DrawText(TOGGLE_BRACE, Location.X + ToggleTextOffset.X, Location.Y + TitleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + ToggleTextOffset.Y, GlobalConst.HAlignment.Left, mi.SelectedTextColor, mi.SelectedScale);
+                        Utils.DrawText((mi.On ? TOGGLE_ON : TOGGLE_OFF), Location.X + ToggleTextOffset.X, Location.Y + TitleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + ToggleTextOffset.Y, GlobalConst.HAlignment.Left, (mi.On ? TOGGLE_ON_COLOR_SELECTED : TOGGLE_OFF_COLOR_SELECTED), mi.SelectedScale);
                     }
                     else
                     {
-                        Utils.DrawText(TOGGLE_BRACE, Location.X + ToggleTextOffset.X, Location.Y + _titleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + ToggleTextOffset.Y, GlobalConst.HAlignment.Left, mi.TextColor, mi.Scale);
-                        Utils.DrawText((mi.On ? TOGGLE_ON : TOGGLE_OFF), Location.X + ToggleTextOffset.X, Location.Y + _titleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + ToggleTextOffset.Y, GlobalConst.HAlignment.Left, (mi.On ? TOGGLE_ON_COLOR : TOGGLE_OFF_COLOR), mi.Scale);
+                        Utils.DrawText(TOGGLE_BRACE, Location.X + ToggleTextOffset.X, Location.Y + TitleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + ToggleTextOffset.Y, GlobalConst.HAlignment.Left, mi.TextColor, mi.Scale);
+                        Utils.DrawText((mi.On ? TOGGLE_ON : TOGGLE_OFF), Location.X + ToggleTextOffset.X, Location.Y + TitleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + ToggleTextOffset.Y, GlobalConst.HAlignment.Left, (mi.On ? TOGGLE_ON_COLOR : TOGGLE_OFF_COLOR), mi.Scale);
                     }
                 }
 
@@ -798,11 +769,11 @@ namespace BETrainerRdr2.Menu
                 {
                     if (_selectedIndex == i)
                     {
-                        Utils.DrawText(HAS_SUBMENU, Location.X + HasSubmenuSignOffset.X, Location.Y + _titleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + HasSubmenuSignOffset.Y, GlobalConst.HAlignment.Left, mi.SelectedTextColor, mi.SelectedScale);
+                        Utils.DrawText(HAS_SUBMENU, Location.X + HasSubmenuSignOffset.X, Location.Y + TitleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + HasSubmenuSignOffset.Y, GlobalConst.HAlignment.Left, mi.SelectedTextColor, mi.SelectedScale);
                     }
                     else
                     {
-                        Utils.DrawText(HAS_SUBMENU, Location.X + HasSubmenuSignOffset.X, Location.Y + _titleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + HasSubmenuSignOffset.Y, GlobalConst.HAlignment.Left, mi.TextColor, mi.Scale);
+                        Utils.DrawText(HAS_SUBMENU, Location.X + HasSubmenuSignOffset.X, Location.Y + TitleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + HasSubmenuSignOffset.Y, GlobalConst.HAlignment.Left, mi.TextColor, mi.Scale);
                     }
                 }
 
@@ -811,22 +782,22 @@ namespace BETrainerRdr2.Menu
                 {
                     if (_selectedIndex == i)
                     {
-                        Utils.DrawText(LEFT_RIGHT_ADJUSTABLE, Location.X + LeftRightAdjustableSignOffset.X, Location.Y + _titleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + LeftRightAdjustableSignOffset.Y, GlobalConst.HAlignment.Left, mi.SelectedTextColor, mi.SelectedScale);
+                        Utils.DrawText(LEFT_RIGHT_ADJUSTABLE, Location.X + LeftRightAdjustableSignOffset.X, Location.Y + TitleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + LeftRightAdjustableSignOffset.Y, GlobalConst.HAlignment.Left, mi.SelectedTextColor, mi.SelectedScale);
                     }
                     else
                     {
-                        Utils.DrawText(LEFT_RIGHT_ADJUSTABLE, Location.X + LeftRightAdjustableSignOffset.X, Location.Y + _titleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + LeftRightAdjustableSignOffset.Y, GlobalConst.HAlignment.Left, mi.TextColor, mi.Scale);
+                        Utils.DrawText(LEFT_RIGHT_ADJUSTABLE, Location.X + LeftRightAdjustableSignOffset.X, Location.Y + TitleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index + LeftRightAdjustableSignOffset.Y, GlobalConst.HAlignment.Left, mi.TextColor, mi.Scale);
                     }
                 }
 
                 // Background
                 if (_selectedIndex == i)
                 {
-                    Utils.DrawRect(Location.X, Location.Y + _titleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index, _width, _itemHeight, mi.SelectedBackColor);
+                    Utils.DrawRect(Location.X, Location.Y + TitleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index, _width, _itemHeight, mi.SelectedBackColor);
                 }
                 else
                 {
-                    Utils.DrawRect(Location.X, Location.Y + _titleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index, _width, _itemHeight, mi.BackColor);
+                    Utils.DrawRect(Location.X, Location.Y + TitleHeight + _itemSpacing + (_itemHeight + _itemSpacing) * index, _width, _itemHeight, mi.BackColor);
                 }
 
                 index++;

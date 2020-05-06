@@ -49,8 +49,6 @@ namespace BETrainerRdr2
             public static float AimingSpeed = DEFAULT_SPEED;
 
             private static float _gameSpeed = DEFAULT_SPEED;
-            //private static float _aimingSpeed = DEFAULT_SPEED;
-
 
             private static DateTime _setDateTime = DateTime.Now;
 
@@ -411,12 +409,12 @@ namespace BETrainerRdr2
             /// </summary>
             public static void RefreshSetDateTimeMenu()
             {
-                MenuStorage.MenuItems.DateTimeSpeed.SetDateTimeMenu.Year.Text = Utils.FormatML(MenuText.DateTimeSpeed.SetDateTime.I01_YEAR, _setDateTime.Year);
-                MenuStorage.MenuItems.DateTimeSpeed.SetDateTimeMenu.Month.Text = Utils.FormatML(MenuText.DateTimeSpeed.SetDateTime.I02_MONTH, _setDateTime.Month);
-                MenuStorage.MenuItems.DateTimeSpeed.SetDateTimeMenu.Day.Text = Utils.FormatML(MenuText.DateTimeSpeed.SetDateTime.I03_DAY, _setDateTime.Day);
-                MenuStorage.MenuItems.DateTimeSpeed.SetDateTimeMenu.Hour.Text = Utils.FormatML(MenuText.DateTimeSpeed.SetDateTime.I04_HOUR, _setDateTime.Hour);
-                MenuStorage.MenuItems.DateTimeSpeed.SetDateTimeMenu.Minute.Text = Utils.FormatML(MenuText.DateTimeSpeed.SetDateTime.I05_MINUTE, _setDateTime.Minute);
-                MenuStorage.MenuItems.DateTimeSpeed.SetDateTimeMenu.Second.Text = Utils.FormatML(MenuText.DateTimeSpeed.SetDateTime.I06_SECOND, _setDateTime.Second);
+                MenuStorage.MenuItems.DateTimeSpeed.SetDateTimeMenu.Year.Text = Utils.FormatML(MenuText.DateTimeSpeed.SetDateTime.YEAR, _setDateTime.Year);
+                MenuStorage.MenuItems.DateTimeSpeed.SetDateTimeMenu.Month.Text = Utils.FormatML(MenuText.DateTimeSpeed.SetDateTime.MONTH, _setDateTime.Month);
+                MenuStorage.MenuItems.DateTimeSpeed.SetDateTimeMenu.Day.Text = Utils.FormatML(MenuText.DateTimeSpeed.SetDateTime.DAY, _setDateTime.Day);
+                MenuStorage.MenuItems.DateTimeSpeed.SetDateTimeMenu.Hour.Text = Utils.FormatML(MenuText.DateTimeSpeed.SetDateTime.HOUR, _setDateTime.Hour);
+                MenuStorage.MenuItems.DateTimeSpeed.SetDateTimeMenu.Minute.Text = Utils.FormatML(MenuText.DateTimeSpeed.SetDateTime.MINUTE, _setDateTime.Minute);
+                MenuStorage.MenuItems.DateTimeSpeed.SetDateTimeMenu.Second.Text = Utils.FormatML(MenuText.DateTimeSpeed.SetDateTime.SECOND, _setDateTime.Second);
             }
 
             /// <summary>
@@ -424,7 +422,7 @@ namespace BETrainerRdr2
             /// </summary>
             public static void UpdateGameSpeed()
             {
-                MenuStorage.MenuItems.DateTimeSpeed.SetGameSpeedMenu.Speed.Text = Utils.FormatML(MenuText.DateTimeSpeed.SetGameSpeed.I01_SPEED, _gameSpeed);
+                MenuStorage.MenuItems.DateTimeSpeed.SetGameSpeedMenu.Speed.Text = Utils.FormatML(MenuText.DateTimeSpeed.SetGameSpeed.SPEED, _gameSpeed);
             }
 
             /// <summary>
@@ -432,7 +430,7 @@ namespace BETrainerRdr2
             /// </summary>
             public static void UpdateAimingSpeed()
             {
-                MenuStorage.MenuItems.DateTimeSpeed.SetAimingSpeedMenu.Speed.Text = Utils.FormatML(MenuText.DateTimeSpeed.SetAimingSpeed.I01_SPEED, AimingSpeed);
+                MenuStorage.MenuItems.DateTimeSpeed.SetAimingSpeedMenu.Speed.Text = Utils.FormatML(MenuText.DateTimeSpeed.SetAimingSpeed.SPEED, AimingSpeed);
             }
 
             /// <summary>

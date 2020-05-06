@@ -8,12 +8,6 @@
 ///////////////////////////////////////////////
 
 using BETrainerRdr2.Menu;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RDR2;
 using RDR2.Native;
 
 namespace BETrainerRdr2
