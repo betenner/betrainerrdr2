@@ -493,6 +493,7 @@ namespace BETrainerRdr2.Menu
             public static readonly MLString SHOW_TIME = "Show Time";
             public static readonly MLString TIME_PAUSED = "Time Paused";
             public static readonly MLString SYNC_WITH_SYSTEM = "Sync with System";
+            public static readonly MLString USE_REAL_TIME_SCALE = "Use Real Time Scale";
 
             /// <summary>
             /// Set date time menu

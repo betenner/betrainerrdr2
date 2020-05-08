@@ -597,6 +597,7 @@ namespace BETrainerRdr2.Menu
                 public static MenuItem ShowTime = null;
                 public static MenuItem Paused = null;
                 public static MenuItem SyncWithSystem = null;
+                public static MenuItem UseRealTimeScale = null;
 
                 /// <summary>
                 /// Set date time menu items
@@ -889,6 +890,7 @@ namespace BETrainerRdr2.Menu
             MenuItems.DateTimeSpeed.ShowTime = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.SHOW_TIME, true, Feature.DateTimeSpeed.ShowTime, null, Feature.DateTimeSpeed.SetShowTime);
             MenuItems.DateTimeSpeed.Paused = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.TIME_PAUSED, true, Feature.DateTimeSpeed.Paused, null, Feature.DateTimeSpeed.SetPaused);
             MenuItems.DateTimeSpeed.SyncWithSystem = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.SYNC_WITH_SYSTEM, true, Feature.DateTimeSpeed.SyncWithSystem, null, Feature.DateTimeSpeed.SetSyncWithSystem);
+            MenuItems.DateTimeSpeed.UseRealTimeScale = AddMenuItem(Menus.DateTimeSpeed, MenuText.DateTimeSpeed.USE_REAL_TIME_SCALE, true, Feature.DateTimeSpeed.UseRealTimeScale, null, Feature.DateTimeSpeed.SetUseRealTimeScale);
         }
 
         /// <summary>

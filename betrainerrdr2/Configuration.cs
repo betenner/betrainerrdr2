@@ -134,6 +134,7 @@ namespace BETrainerRdr2
         private const string CONFIG_TIME_SHOW_TIME = "ShowTime";
         private const string CONFIG_TIME_PAUSED = "Paused";
         private const string CONFIG_TIME_SYNC_WITH_SYSTEM = "SyncWithSystem";
+        private const string CONFIG_TIME_USE_REAL_TIME_SCALE = "UseRealTimeScale";
         private const string CONFIG_AIMING_SPEED = "AimingSpeed";
 
         private const string CONFIG_WEATHER = "Weather";
@@ -212,7 +213,7 @@ namespace BETrainerRdr2
                 Feature.DateTimeSpeed.Paused = Utils.ParseBoolStr(ini.GetValue(CONFIG_TIME, CONFIG_TIME_PAUSED));
                 Feature.DateTimeSpeed.SyncWithSystem = Utils.ParseBoolStr(ini.GetValue(CONFIG_TIME, CONFIG_TIME_SYNC_WITH_SYSTEM));
                 Feature.DateTimeSpeed.AimingSpeed = Utils.ParseFloat(ini.GetValue(CONFIG_TIME, CONFIG_AIMING_SPEED), Feature.DateTimeSpeed.AimingSpeed);
-                Feature.DateTimeSpeed.UpdateAimingSpeed();
+                Feature.DateTimeSpeed.SetUseRealTimeScale(Utils.ParseBoolStr(ini.GetValue(CONFIG_TIME, CONFIG_TIME_USE_REAL_TIME_SCALE)));
 
                 // Weather
                 Feature.Weather.Wind = Utils.ParseBoolStr(ini.GetValue(CONFIG_WEATHER, CONFIG_WEATHER_WIND));
@@ -294,6 +295,7 @@ namespace BETrainerRdr2
                 ini.SetValue(CONFIG_TIME, CONFIG_TIME_SHOW_TIME, Feature.DateTimeSpeed.ShowTime.ToString());
                 ini.SetValue(CONFIG_TIME, CONFIG_TIME_PAUSED, Feature.DateTimeSpeed.Paused.ToString());
                 ini.SetValue(CONFIG_TIME, CONFIG_TIME_SYNC_WITH_SYSTEM, Feature.DateTimeSpeed.SyncWithSystem.ToString());
+                ini.SetValue(CONFIG_TIME, CONFIG_TIME_USE_REAL_TIME_SCALE, Feature.DateTimeSpeed.UseRealTimeScale.ToString());
                 ini.SetValue(CONFIG_TIME, CONFIG_AIMING_SPEED, Feature.DateTimeSpeed.AimingSpeed.ToString());
 
                 // Misc

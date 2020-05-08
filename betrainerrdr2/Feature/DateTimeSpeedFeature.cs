@@ -30,10 +30,7 @@ namespace BETrainerRdr2
             private const string SHOW_TIME_FORMAT = "{0:HH:mm} / {1:HH:mm}";
             private static readonly Point SHOWTIME_POS = new Point(960, 920);
             private const float SHOWTIME_SCALE = 0.45f;
-            //private const float SHOWTIME_Y_SCALE = 0.45f;
             private static readonly Color SHOWTIME_TEXT_COLOR = Color.White;
-            private static readonly Color SHOWTIME_SHADOW_COLOR = Color.Black;
-            private static readonly Point SHOWTIME_SHADOW_OFFSET = new Point(2, 3);
             private const GlobalConst.HAlignment SHOWTIME_ALIGN = GlobalConst.HAlignment.Center;
             private const float DEFAULT_SPEED = 1.0f;
             private const float SPEED_075 = 0.75f;
@@ -47,10 +44,13 @@ namespace BETrainerRdr2
             public static bool Paused = false;
             public static bool SyncWithSystem = false;
             public static float AimingSpeed = DEFAULT_SPEED;
+            public static bool UseRealTimeScale = false;
 
             private static float _gameSpeed = DEFAULT_SPEED;
 
             private static DateTime _setDateTime = DateTime.Now;
+            private static DateTime _lastRealDateTime;
+            private static DateTime _lastGameDateTime;
 
             /// <summary>
             /// Initializes features
@@ -75,6 +75,13 @@ namespace BETrainerRdr2
                 if (SyncWithSystem)
                 {
                     SetGameDateTime(DateTime.Now);
+                }
+
+                // Use real time scale
+                else if (UseRealTimeScale)
+                {
+                    long span = DateTime.Now.Ticks - _lastRealDateTime.Ticks;
+                    SetGameDateTime(_lastGameDateTime.AddTicks(span));
                 }
 
                 // Game & aiming speed
@@ -597,6 +604,28 @@ namespace BETrainerRdr2
                 UpdateAimingSpeed();
             }
 
+            /// <summary>
+            /// Sets use real time scale.
+            /// </summary>
+            /// <param name="sender">Source menu item</param>
+            public static void SetUseRealTimeScale(MenuItem sender)
+            {
+                SetUseRealTimeScale(sender.On);            }
+
+            /// <summary>
+            /// Sets use real time scale.
+            /// </summary>
+            /// <param name="on">Is on</param>
+            public static void SetUseRealTimeScale(bool on)
+            {
+                UseRealTimeScale = on;
+                if (UseRealTimeScale)
+                {
+                    _lastRealDateTime = DateTime.Now;
+                    _lastGameDateTime = GetGameDateTime();
+                }
+                Config.DoAutoSave();
+            }
         }
     }
 }
